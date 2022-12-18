@@ -1,0 +1,12 @@
+\beamer@sectionintoc {1}{Background}{3}{0}{1}
+\beamer@sectionintoc {2}{Literature Review}{7}{0}{2}
+\beamer@subsectionintoc {2}{1}{Formulations}{8}{0}{2}
+\beamer@subsectionintoc {2}{2}{Algorithms}{9}{0}{2}
+\beamer@subsectionintoc {2}{3}{the Latest Development}{10}{0}{2}
+\beamer@sectionintoc {3}{useful algorithms}{11}{0}{3}
+\beamer@subsectionintoc {3}{1}{Columnn Generation Algorithm}{16}{0}{3}
+\beamer@subsectionintoc {3}{2}{Outer Approximation Algorithm}{24}{0}{3}
+\beamer@subsectionintoc {3}{3}{Branch-bound-cut Algorithm}{30}{0}{3}
+\beamer@sectionintoc {4}{computational result of branch-bound-cut algorithm}{33}{0}{4}
+\beamer@sectionintoc {5}{Future Research Plan}{38}{0}{5}
+\beamer@sectionintoc {6}{Acknowledgement and Reference}{39}{0}{6}

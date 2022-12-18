@@ -60,6 +60,15 @@
 \newcommand{\x}{\mathbf{x}}
 \newcommand{\dd}{\mathrm{d}}
 
+\newcommand{\sumFromTo}[3]{\ensuremath{\sum_{#1}^{#2} #3}}
+
+\newcommand{\optimalProblem}[3]
+{\begin{align*}
+    #1 \quad &#2 \\
+    \mathrm{s. t.}\quad&#3
+\end{align*}}
+
+
 
 
 \title[Weapon Target Assignment problem]{Literature Review of Weapon Target Assignment problem and a Branch-Bound-Cut algorithm on it}%主标题
@@ -108,6 +117,14 @@ Chinese Academy of Sciences}
 \section{Background}
 \begin{frame}
     \frametitle{derivation}
+    \textbf{背景介绍}
+        \begin{itemize}
+            \item \textbf{Weapon Target Assignment problem}是一个军事领域中的问题
+            \item 其基本问题是考虑使用m个武器攻击n个目标，以最小化所有目标的加权存活概率.{\tiny（或等价地，对目标造成的加权伤害最大化）}
+            \item \textbf{该问题被证明是NP-C的}，并且通常被表述为非线性模型。
+            \item 在80个武器和80个目标的问题计算需要16.2个小时。
+            \item 将问题\textbf{线性化}后可以采用\textbf{列生成}求解。
+        \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -116,6 +133,30 @@ Chinese Academy of Sciences}
 
 \begin{frame}
     \frametitle{basic formulation}
+    \begin{columns}
+        \begin{column}{.70\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $I = \left\{1,\cdots,m\right\} $, 武器集合.
+                \item $J = \left\{1,\cdots,n\right\} $, 目标集合.
+                \item $p_{ij}\in [0,1]$, $i$击落$j$的概率.
+            \end{itemize}
+        \end{column}
+    \hspace{-1cm}
+        \begin{column}{.35\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $a_j$, 目标$j$的权重.
+                \item $x_{ij}$,武器$i$是否攻击$j$.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \begin{align}
+        \min\quad & \sum_{j=1}^n a_j \left( \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}} \right) \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq 1\quad \forall ~i \in I,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall~ j\in J , ~ i \in I.
+    \end{align}
 \end{frame}
 
 \section{Literature Review}
@@ -135,11 +176,348 @@ Chinese Academy of Sciences}
 \end{frame}
 
 \section{useful algorithms}
+\begin{frame}
+    \frametitle{basic formulation}
+    \begin{columns}
+        \begin{column}{.70\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $I = \left\{1,\cdots,m\right\} $, 武器集合.
+                \item $J = \left\{1,\cdots,n\right\} $, 目标集合.
+                \item $p_{ij}\in [0,1]$, $i$击落$j$的概率.
+            \end{itemize}
+        \end{column}
+    \hspace{-1cm}
+        \begin{column}{.35\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $a_j$, 目标$j$的权重.
+                \item $x_{ij}$,武器$i$是否攻击$j$.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \begin{align}
+        \min\quad & \sum_{j=1}^n a_j \left( \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}} \right) \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq 1\quad \forall ~i \in I,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall~ j\in J , ~ i \in I.
+    \end{align}
+\end{frame}
+
+\begin{frame}
+    \frametitle{formulation}
+    \begin{equation*}
+        \prod_{i=1}^{m}{(1-p_{ij}x_{ij})} \iff \prod_{i=1}^{m}{(1-p_{ij})^{x_{ij}}}, x \in \left\{ 0,1 \right\}
+    \end{equation*}
+    \begin{itemize}
+        \item 当两个问题限定$x$取值为$0,1$时，取值相等
+        \item 后一个形式进行松弛后问题是凸的（可以通过简单的求二阶导得到），因此对该问题可以采用外逼近算法。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{目标函数为多个凸函数的加权和}
+    考虑目标函数中的一项：
+    \begin{equation*}
+        f_j(x) =  \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}\quad \forall~  j \in J
+    \end{equation*}
+    考虑该问题的Hessian矩阵$H$：
+    \begin{equation*}
+        \frac{\partial f_j(x)}{\partial x_{aj} \partial x_{bj}} = \ln(1 - p_{aj}) \ln(1 - p_{bj}) f_j(x)
+    \end{equation*}
+    {
+    \scriptsize
+    \begin{equation*}
+        H = f(x)\begin{bmatrix}
+            \ln(1 - p_{1j}) \ln(1 - p_{1j}) & \ln(1 - p_{1j}) \ln(1 - p_{2j}) &\cdots & \ln(1 - p_{1j}) \ln(1 - p_{mj}) \\
+            \ln(1 - p_{2j}) \ln(1 - p_{1j}) & \ln(1 - p_{2j}) \ln(1 - p_{2j}) &\cdots & \ln(1 - p_{2j}) \ln(1 - p_{mj}) \\
+            \vdots & \vdots &\ddots &\vdots \\
+            \ln(1 - p_{mj}) \ln(1 - p_{1j}) & \ln(1 - p_{mj}) \ln(1 - p_{2j}) &\cdots & \ln(1 - p_{mj}) \ln(1 - p_{mj})
+
+
+        \end{bmatrix}
+    \end{equation*}
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{目标函数为多个凸函数的加权和}
+    若记
+    \begin{equation*}
+        l = \begin{bmatrix}
+            \ln(1 - p_{1j}) & \ln(1 - p_{2j}) & \cdots & \ln(1 - p_{mj})
+        \end{bmatrix}
+    \end{equation*}
+    可得到Hassien矩阵的形式为：
+    \begin{equation*}
+        H = f(x)l\cdot l^T
+    \end{equation*}
+    可以看出该矩阵是个秩一矩阵，即各列之间是线性相关的，从而其行列式为0，从而得到原函数是凸的。
+\end{frame}
+
+
 \subsection{Columnn Generation Algorithm}
+\begin{frame}
+    \frametitle{Basic Idea}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{How to use column generation in WTA Problem}
+    \begin{itemize}
+		\item \textbf{基本思路}：通过将所有目标场景$S$列出来的方式，将问题转化为一个线性规划问题。
+		\item \textbf{转化方式}：假设一共有$m$个武器，则对于任意一个目标$j$，每个武器可以选择打击$j$或不打击$j$，因此共有$2^m$个不同的打击方案。
+		\item \textbf{一个例子}：一共有8个武器，则使用第1，3，6号武器的攻击方案即记为$s_{[1,0,1,0,0,1,0,0]}$，$|S| = 2^8 = 256$
+		\item $n_{si}$：0-1变量，表示在第$s$个场景下，是否启用武器$i$. 在上面的例子中，$n_{s1} = 1,\ n_{s2} = 0$
+		\item $q_{js} = a_j \prod_{i = 1}^m (1 - n_{si}\cdot p_{ij})$：使用第方案$s$打击目标$j$的概率并加权，比如$q_{3s}$就是采用1,3,6号武器打击$3$号目标的击毁概率乘以目标$j$的权重。
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{transformed formulation}
+    \optimalProblem{\min}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{q_{js}y_{js}}}}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{n_{si}y_{js}}}\leq 1 \quad &\forall ~ i \in I\\& \sumFromTo{s = 0}{2^m - 1}{y_{js}} = 1 \quad &\forall ~ j \in J\\& y_{js} \in \left\{ 0,1 \right\} &\forall ~ j\in J,\ s\in S}
+    \begin{columns}
+        \begin{column}{.70\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $I = \left\{1,\cdots,m\right\} $, 武器集合.
+                \item $J = \left\{1,\cdots,n\right\} $, 目标集合.
+                \item $S = \left\{1,\cdots,2^m\right\}$, 场景集合.
+            \end{itemize}
+        \end{column}
+    \hspace{-3cm}
+        \begin{column}{.70\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $n_{si}$：场景$s$是否使用武器$i$
+                \item $y_{js}$：0-1变量，是否对目标$j$应用$s$
+                \item $q_{js}$：赋权后的场景$s$对$j$的摧毁概率
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{transformed formulation continuous}
+    \optimalProblem{\min}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{q_{js}y_{js}}}}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{n_{si}y_{js}}}\leq 1 \quad &\forall ~ i \in I\\& \sumFromTo{s = 0}{2^m - 1}{y_{js}} = 1 \quad &\forall ~ j \in J\\& y_{js} \in \left\{ 0,1 \right\} & \forall ~ j\in J,\ s\in S}
+    \begin{itemize}
+        \item \textbf{目标函数}：最小化赋权后的消灭概率
+        \item \textbf{第一个约束}：每个武器最多只能攻击一个目标
+        \item \textbf{第二个约束}：每个目标恰好安排一个场景
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{LP Relaxition}
+    \optimalProblem{\min}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{q_{js}y_{js}}}}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{n_{si}y_{js}}}\leq 1 \quad &\forall ~ i \in I\\& \sumFromTo{s = 0}{2^m - 1}{y_{js}} = 1 \quad &\forall ~  j \in J\\& y_{js} \geq 0 &\forall ~ j\in J,\ s\in S}
+    \begin{itemize}
+        \item 将问题进行线性松弛，第三个约束可以直接放成$y_{js} \geq 0$
+        \item 此时线性规划的特点为包含了$n \times 2^m$列
+        \item 列生成思路：仅取其中的部分列，并转化为对偶问题。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Dual Problem}
+    \optimalProblem{\max}{\sumFromTo{i=1}{m}{u_i} + \sumFromTo{j=1}{n}{v_j}}{\sumFromTo{i=1}{m}{x_{is}u_i}+ v_j \leq q_{js}\quad (P) \\ &u_i \leq 0,\quad v_j\ \mathrm{free}}
+    \begin{itemize}
+        \item 选择原问题中的部分列相当于对偶问题选择了部分行。
+        \item 求解得到$u^*, v^*$并带入原对偶，若都成立则一定为最优解。
+        \item 否则希望选择一个违背最严重的，即$\sumFromTo{i=1}{m}{x_{is}u_i}+ v_j > q_{js}$中最大的。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricted Dual Problem}
+    \optimalProblem{\max}{\sumFromTo{i=1}{m}{u_i} + \sumFromTo{j=1}{n}{v_j}}{\sumFromTo{i=1}{m}{x_{is}u_i}+ v_j \leq q_{js}\quad (P) \\ &u_i \leq 0,\quad v_j\ \mathrm{free}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{subproblem}
+    \optimalProblem{\min}{a_j \prod_{i=1}^{m}{(1-p_{ij}x_{is})} -\sumFromTo{i=1}{m}{x_{is}}u_i - v_j}{j \in J,\quad s \in S}
+    \begin{itemize}
+        \item （接上文）希望选择一个违背最严重的，即$\sumFromTo{i=1}{m}{x_{is}u_i}+ v_j > q_{js}$中最大的。
+        \item 将$q_{js}$的定义带入，即可得到上述子问题。
+        \item 可以将问题分离，之后对每个给定的目标$j$求解，其直观为使用每个武器攻击需要一个花费，希望平衡开启武器的花费和消灭目标的概率。
+    \end{itemize}
+\end{frame}
+
+
+
+
 \subsection{Outer Approximation Algorithm}
+\begin{frame}
+    \frametitle{transformed model}
+    原模型的目标函数为:
+    \begin{equation*}
+        \sum_{j=1}^n a_j \left( \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}} \right)
+    \end{equation*}
+    {\footnotesize
+    希望通过引入辅助变量的形式，将非线性项从目标函数转化到约束中。
+    
+    若记$\eta_j$ 为代表 $\prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}$引入的变量，原问题可转化为：
+    \begin{align}
+        \min\quad & \sum_{j=1}^n a_j \eta_j \\ 
+        \mathrm{s. t.}\quad & \eta_j \geq \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}, \quad \forall ~ j \in J \\ 
+        &\sum_{j=1}^n x_{ij} \leq 1\quad \forall ~ i \in I,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall ~ j\in J\quad i \in I.
+    \end{align}
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{Basic idea of outer approximation}
+    若$f(x)$为凸函数，则对于可行域中的任意一个点$x^*$，有
+    \begin{equation*}
+        f(x) \geq f(x^*) + \nabla f(x^*)(x - x^*)
+    \end{equation*}
+    因此若原问题的约束为$\eta \geq f(x)$，则此时
+    \begin{equation*}
+        \eta \geq f(x) \geq f(x^*) + \nabla f(x^*)(x - x^*)
+    \end{equation*}
+    一定成立。
+
+    即对于任意一个给定的点，都可以引入一个线性约束，保证可行域满足该约束。
+
+    外逼近方法即希望利用整数特性，通过引入多个线性约束来替代某个非线性约束，但保证转化前后问题是等价的。
+\end{frame}
+
+\begin{frame}
+    \frametitle{constraint formulation of outer approximation}
+    仍记$f_j(x) =  \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}\quad j \in J$，则对于任意给定的点$\bar{x}$，有
+    \begin{align*}
+        \nabla f(\bar{x})(x - \bar{x}) & = f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}})\\
+        &= f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})x_{ij} - f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})\bar{x_{ij}}
+    \end{align*}
+    其中前一项是变量的线性组合，有一项在$\bar{x}$给定时是常数。依据此外逼近约束的形式，即可得到问题的外逼近模型：
+\end{frame}
+
+\begin{frame}
+    \frametitle{outer approximation model}
+    若记问题中的全部整数可行解为集合$X$，则模型可以描述为
+    {\scriptsize
+    \begin{align}
+        \min\quad & \sum_{j=1}^n a_j \eta_j \\ 
+        \mathrm{s. t.}\quad & \eta_j \geq f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}}) + f(\bar{x}), \quad \forall ~ j \in J,\ \bar{x} \in X \\ 
+        &\sum_{i=1}^m x_{ij} \leq 1\quad \forall ~ j \in J,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall ~ j\in J\quad i \in I.
+    \end{align}
+    }
+    可以看出，此时约束的个数非常多，对问题的求解造成了一定的困难，因此考虑限制后的模型，即近考虑部分约束。
+\end{frame}
+
+\begin{frame}
+    \frametitle{Idea of outer approximation method}
+    {
+    \scriptsize
+    \begin{align*}
+        \min\quad & \sum_{j=1}^n a_j \eta_j \\ 
+        \mathrm{s. t.}\quad & \eta_j \geq f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}}) + f(\bar{x}), \quad j \in J,\ \bar{x} \in X \\ 
+        &\sum_{i=1}^m x_{ij} \leq 1\quad j \in J,\quad x_{ij} \in \left\{ 0,1 \right\} \quad j\in J\quad i \in I
+    \end{align*}
+    基本思路：约束（12）太多了，假设仅需要部分约束即可找到最优解，借此降低搜索规模
+
+    \textbf{Idea}
+    \begin{enumerate}
+        \item 去除全部约束（12），给出当前最优解$x, \eta$
+        \item 检验当前最优解是否能满足全部的约束（12），若可以，迭代终止，执行结束
+        \item 否则选择违背最严重的约束（12），加入到其中，重新求解并执行步骤2
+    \end{enumerate}
+    }
+\end{frame}
+
+\begin{frame}
+    \title{choose violate constraint}
+    \begin{align*}
+        \min\quad & \sum_{j=1}^n a_j \eta_j \\ 
+        \mathrm{s. t.}\quad & \eta_j \geq f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}}) + f(\bar{x}), \quad j \in J,\ \bar{x} \in X \\ 
+        &\sum_{i=1}^m x_{ij} \leq 1\quad j \in J,\quad x_{ij} \in \left\{ 0,1 \right\} \quad j\in J\quad i \in I
+    \end{align*}
+    \begin{itemize}
+        \item 除非已经找到了最优解，否则限制后的问题的解一定会带来一个违背的约束（放大了可行域，目标函数一定会更小，说明它不在原问题的可行域当中）
+        \item 可以直观地理解，违背即指$\eta_j$在可行域之外了，由于本身是求的最小化的问题，因此在找到的点加割即为最违背的割。
+        \item 由此可以得到当求解出一个在可行域当中的点时，如果$\eta < f_j(x)$，就说明这个点应该被包含在可行域之外，因此可以在这个点加入一个割。
+    \end{itemize}
+\end{frame}
+
+
 \subsection{Branch-bound-cut Algorithm}
+\begin{frame}
+    \frametitle{Branch-Bound-Cut Algorithm}
+    {\scriptsize
+    \begin{align}
+        \min\quad & \sum_{j=1}^n a_j \eta_j \\ 
+        \mathrm{s. t.}\quad & \eta_j \geq \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}, \quad \forall ~ j \in J \\ 
+        &\sum_{j=1}^n x_{ij} \leq 1\quad \forall ~ i \in I,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall ~ j\in J\quad i \in I.
+    \end{align}
+    }
+    \begin{itemize}
+        \item 仍然考虑该模型
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Basic Idea}
+    {\scriptsize
+    
+    \begin{align}
+        \min\quad & \sum_{j=1}^n a_j \eta_j \\ 
+        \mathrm{s. t.}\quad & \eta_j \geq f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}}) + f(\bar{x}), \quad \forall ~ j \in J,\ \bar{x} \in X \\ 
+        &\sum_{i=1}^m x_{ij} \leq 1\quad \forall ~ j \in J,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall ~ j\in J\quad i \in I.
+    \end{align}
+    }
+    \begin{itemize}
+        \item 受到上一个方法的启发，问题最优解可以在仅有部分切平面的约束时取到，
+        \item 当取到最优解时，全部的约束都应该满足，如果某个约束不被满足，则求解得到的节点应该被某个约束割掉。
+        \item 整体采用分支定界的框架，求解去除所有约束的问题。在求解得到某个节点时，对该节点进行判断，若此时不满足上述约束，则通过加割来割掉该节点
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{a potential improvement}
+    {\scriptsize
+    \begin{align}
+        \min\quad & \sum_{j=1}^n a_j \eta_j \\ 
+        \mathrm{s. t.}\quad & \eta_j \geq f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}}) + f(\bar{x}), \quad \forall ~ j \in J,\ \bar{x} \in X \\ 
+        &\sum_{i=1}^m x_{ij} \leq 1\quad \forall ~ j \in J,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall ~ j\in J\quad i \in I.
+    \end{align}
+    }
+    \begin{itemize}
+        \item 在外逼近算法中，仅在计算出整数解之后才往里添加割
+        \item 在分支定界算法中，每次求解LP松弛问题都会得到一个松弛解，该松弛解也可以给问题带来一个割。
+        \item 由于问题是凸的，因此这些分数割都是有效的不等式，即不会把原问题中的可行解割掉
+        \item 数值实验主要对比了仅对整数解加割和同时对分数解也加割的效果
+    \end{itemize}
+\end{frame}
+
 
 \section{computational result of branch-bound-cut algorithm}
+\begin{frame}
+    \frametitle{Numerical Experiment Environment}
+\end{frame}
+
+\begin{frame}
+    \frametitle{only use the feasible solution cut}
+\end{frame}
+
+\begin{frame}
+    \frametitle{also use the fractional silution cut}
+\end{frame}
+
+\begin{frame}
+    \frametitle{camparition of two situations}
+\end{frame}
+
+\begin{frame}
+    \frametitle{camparition with other methods}
+\end{frame}
+
+
+
+
 
 \section{Future Research Plan}
 
