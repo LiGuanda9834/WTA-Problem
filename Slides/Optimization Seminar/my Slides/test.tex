@@ -1,0 +1,107 @@
+\documentclass[10pt]{beamer}
+%\usepackage[utf8]{inputenc}
+%\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage {mathtools}
+%\usepackage{utopia} %font utopia imported
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+
+% set colors
+\definecolor{myNewColorA}{RGB}{25,25,112}
+\definecolor{myNewColorB}{RGB}{25,25,112}
+\definecolor{myNewColorC}{RGB}{25,25,112}
+\setbeamercolor*{palette primary}{bg=myNewColorC}
+\setbeamercolor*{palette secondary}{bg=myNewColorB, fg = white}
+\setbeamercolor*{palette tertiary}{bg=myNewColorA, fg = white}
+\setbeamercolor*{titlelike}{fg=myNewColorA}
+\setbeamercolor*{title}{bg=myNewColorA, fg = white}
+\setbeamercolor*{item}{fg=myNewColorA}
+\setbeamercolor*{caption name}{fg=myNewColorA}
+\usefonttheme{professionalfonts}
+\usepackage{natbib}
+\usepackage{hyperref}
+%------------------------------------------------------------
+%\titlegraphic{\includegraphics[height=1.5cm]{logo.png}} 
+
+\setbeamerfont{title}{size=\large}
+\setbeamerfont{subtitle}{size=\small}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{institute}{size=\small}
+
+
+
+%设置页码脚标
+%\setbeamertemplate{footline}[frame number]
+\defbeamertemplate{footline}{NGEGFootlineTemplate}{%
+	\leavevmode% 离开vmode，也就是离开竖直模式，进入水平模式
+	\hbox{%
+		\begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\ifnum \the\value{page}>1 \usebeamerfont{author in head/foot}\insertshortauthor\fi
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+			\ifnum \the\value{page}>1 \usebeamerfont{title in head/foot}\insertshorttitle\fi
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=0.2\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\ifnum \the\value{page}>1 \insertframenumber{} / \inserttotalframenumber\fi
+	\end{beamercolorbox}}%
+%	\vskip0pt%
+}
+\setbeamertemplate{footline}[NGEGFootlineTemplate]
+
+
+
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\dd}{\mathrm{d}}
+
+
+
+\title[Proximal Version of Gradient-Based Optimization]{Some Theoretical Studies on Proximal Gradient Descent and Its Acceleration}%主标题
+%\subtitle{ }%%副标题
+\author[Bowen Li]{Bowen Li
+\and joint work with Bin Shi and Ya-xiang Yuan}%%作者
+
+\institute[LSEC]{Institute of Computational Mathematics and Scientific/Engineering Computing,\\
+Academy of Mathematics and Systems Science,\\
+Chinese Academy of Sciences}
+\date[\textcolor{white} ]
+{December 13, 2022}
+
+%------------------------------------------------------------
+%This block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+%\AtBeginSection[]
+%{
+%  \begin{frame}
+%    \frametitle{Contents}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%}
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+%------------------------------------------------------------
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+\begin{frame}
+\frametitle{Contents}
+\tableofcontents
+\end{frame}
+
+\end{document}

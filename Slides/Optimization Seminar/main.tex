@@ -1,0 +1,612 @@
+\documentclass[10pt]{beamer}
+%\usepackage[utf8]{inputenc}
+%\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage {mathtools}
+%\usepackage{utopia} %font utopia imported
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+
+% set colors
+\definecolor{myNewColorA}{RGB}{25,25,112}
+\definecolor{myNewColorB}{RGB}{25,25,112}
+\definecolor{myNewColorC}{RGB}{25,25,112}
+\setbeamercolor*{palette primary}{bg=myNewColorC}
+\setbeamercolor*{palette secondary}{bg=myNewColorB, fg = white}
+\setbeamercolor*{palette tertiary}{bg=myNewColorA, fg = white}
+\setbeamercolor*{titlelike}{fg=myNewColorA}
+\setbeamercolor*{title}{bg=myNewColorA, fg = white}
+\setbeamercolor*{item}{fg=myNewColorA}
+\setbeamercolor*{caption name}{fg=myNewColorA}
+\usefonttheme{professionalfonts}
+\usepackage{natbib}
+\usepackage{hyperref}
+%------------------------------------------------------------
+%\titlegraphic{\includegraphics[height=1.5cm]{logo.png}} 
+
+\setbeamerfont{title}{size=\large}
+\setbeamerfont{subtitle}{size=\small}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{institute}{size=\small}
+
+
+
+%设置页码脚标
+%\setbeamertemplate{footline}[frame number]
+\defbeamertemplate{footline}{NGEGFootlineTemplate}{%
+	\leavevmode% 离开vmode，也就是离开竖直模式，进入水平模式
+	\hbox{%
+		\begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\ifnum \the\value{page}>1 \usebeamerfont{author in head/foot}\insertshortauthor\fi
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+			\ifnum \the\value{page}>1 \usebeamerfont{title in head/foot}\insertshorttitle\fi
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=0.2\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\ifnum \the\value{page}>1 \insertframenumber{} / \inserttotalframenumber\fi
+	\end{beamercolorbox}}%
+%	\vskip0pt%
+}
+\setbeamertemplate{footline}[NGEGFootlineTemplate]
+
+
+
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\dd}{\mathrm{d}}
+
+
+
+\title[Proximal Version of Gradient-Based Optimization]{Some Theoretical Studies on Proximal Gradient Descent and Its Acceleration}%主标题
+%\subtitle{ }%%副标题
+\author[Bowen Li]{Bowen Li
+\and joint work with Bin Shi and Ya-xiang Yuan}%%作者
+
+\institute[LSEC]{Institute of Computational Mathematics and Scientific/Engineering Computing,\\
+Academy of Mathematics and Systems Science,\\
+Chinese Academy of Sciences}
+\date[\textcolor{white} ]
+{December 13, 2022}
+
+%------------------------------------------------------------
+%This block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+%\AtBeginSection[]
+%{
+%  \begin{frame}
+%    \frametitle{Contents}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%}
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+%------------------------------------------------------------
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+\begin{frame}
+\frametitle{Contents}
+\tableofcontents
+\end{frame}
+%------------------------------------------------------------
+\section{Background}
+\begin{frame}{Unconstraint convex optimization}
+  The problem formulation is
+  \begin{equation}\label{pro}
+      \min_x f(x),
+  \end{equation}
+  where $x\in \mathbb{R}^n$ and $f(x)\in \mathcal{F}^1_L(\mathbb{R}^n)$, i.e.,
+  \begin{equation*}
+    f(x) \ge f(y) + \left\langle \nabla f(y), x - y\right\rangle, \quad \left\|\nabla f(x) - \nabla f(y)\right\| \le L \| x - y \|.
+  \end{equation*}
+
+  Gradient descent method (GD)
+  \begin{equation*}
+      x_{k+1} = x_k - s \nabla f(x_k),
+  \end{equation*}
+ where $s>0$ is the step size. This method can be traced back to~\citet{cauchy1847methode}.
+\end{frame}
+
+\begin{frame}{Nesterov's acceleration}
+  The global convergence rate for GD 
+  \begin{equation*}
+    f(x_k) - f(x^\star) \le O\left( \frac{1}{sk}\right).
+  \end{equation*}
+  \pause
+  The Nesterov's acceleration (NAG), ~\citet{nesterov1983method} 
+  \begin{equation}\label{NAG}
+    \left\{\begin{aligned}
+      & x_{k+1} = y_{k} - s\nabla f(y_{k}),              \\
+      & y_{k+1} = x_{k+1}  + \frac{k}{k+r+1}(x_{k+1} - x_{k}),
+      \end{aligned}\right.
+  \end{equation}
+  where $r \ge 2$.
+\end{frame}
+
+\begin{frame}{Counterpart continuous dynamics}
+  In~\citet{su2016differential}, it is found that NAG (with $r=2$) has relation to
+  \begin{equation*}
+    \ddot{X} + \frac{3}{t}\dot{X} + \nabla f(X) = 0.
+  \end{equation*}
+  \pause
+  This idea is developed by~\citet{shi2021understanding}
+  \begin{equation*}
+    \ddot{X} + \frac{3}{t}\dot{X} + \sqrt{s}\nabla^2f(X)\dot{X} + \left( 1 + \frac{3\sqrt{s}}{2t} \right)\nabla f(X) = 0.
+  \end{equation*}
+\end{frame}
+
+\begin{frame}
+  In~\citet{chen2022gradient}, a general simplified framework is proposed. \par 
+  
+  Construct the Lyapunov function
+  \begin{equation*}
+    \mathcal{E}(t) = t\left(t+\frac{\sqrt{s}}{2}\right)(f(X) - f(x^\star)) + \frac{1}{2}\left\|t\dot{X} + 2(X - x^\star) + t\sqrt{s}\nabla f(X)\right\|^2.
+  \end{equation*}
+
+  The convergence rate for NAG with $r > 2$ is
+  \begin{equation*}
+    \min_{0\le i \le k}f(x_i) - f(x^\star) \le o\left( \frac{1}{k^2} \right) \quad \min_{0\le i \le k}\left\| \nabla f(x_i) \right\|^2 \le o\left( \frac{1}{k^3} \right).
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Composite optimization}
+  Consider the following problem which arises often in learning problems
+  \begin{equation}\label{compro}
+    \min_x \Phi(x):= f(x) + g(x),
+  \end{equation}
+  where $f(x)$ is L-smooth and convex and $g(x)$ is only convex. \par
+  \pause
+  One model for image deblurring problem
+  \begin{equation*}
+    \min_x \|Ax - b\|^2 + \lambda\|x\|_1,
+  \end{equation*}
+  where $A\in\mathbb{R}^{m\times n}$ is the blur operator, $b\in\mathbb{R}^m$ represents the blurred image.
+\end{frame}
+
+\begin{frame}{Illustration}
+  \begin{figure}[htpb!]
+    \centering
+    \begin{subfigure}[t]{0.48\linewidth}
+    \centering
+    \includegraphics[scale=0.39]{fig/original.eps}
+    \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.48\linewidth}
+    \centering
+    \includegraphics[scale=0.39]{fig/corrupted.eps}
+    \caption{Blurred and Noisy}
+    \end{subfigure}
+    \caption{The image deblurring problem: An image of an elephant}
+    \label{fig: deblurring}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}{Proximal gradient descent (ISTA)}
+  
+
+  The proximal gradient descent method is 
+  \begin{equation}\label{nonacc}
+    x_{k+1} = P_s(x_k),
+  \end{equation} 
+  where $P_s$ is the proximal operator 
+  \begin{equation*}
+    P_s(x) = \mathop{\arg\min}_z \left\{\left\| z - \left( x - s\nabla f(x) \right) \right\|^2 + g(z) \right\}.
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Acceleratd proximal gradient descent (FISTA)}
+  The correspondent accelerated proximal gradient descent method is
+  \begin{equation*}
+    \left\{\begin{aligned}
+      & x_{k+1} = P_s(y_k),              \\
+      & y_{k+1} = x_{k+1}  + \frac{k}{k+r+1}(x_{k+1} - x_{k}).
+      \end{aligned}\right.
+  \end{equation*}
+Further, defined in~\citet{su2016differential}, the proximal subgradient
+\begin{equation*}
+  G_s(y):= \frac{y - P_s(y)}{s}
+\end{equation*}
+
+yields the rewritten scheme formation as 
+\begin{equation}\label{acc}
+  \left\{\begin{aligned}
+    & x_{k+1} = y_k - sG_s(y_k),              \\
+    & y_{k+1} = x_{k+1}  + \frac{k}{k+r+1}(x_{k+1} - x_{k}).
+    \end{aligned}\right.
+\end{equation}
+\end{frame}
+
+\begin{frame}{Illustration}
+  \begin{figure}[htpb!]
+    \centering
+    \begin{subfigure}[t]{0.48\linewidth}
+    \centering
+    \includegraphics[scale=0.39]{fig/ista.eps}
+    \caption{ISTA}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.48\linewidth}
+    \centering
+    \includegraphics[scale=0.39]{fig/fista.eps}
+    \caption{FISTA}
+    \end{subfigure}
+    \caption{Deblurred elephant's image by ISTA and FISTA.} 
+    \end{figure}
+\end{frame}
+
+
+\section{Pillar inequality of analysis}
+\begin{frame}{Key inequality}
+	 In the convergence rate proof of NAG method for
+   \begin{equation*}
+    \min_x f(x)
+   \end{equation*}
+  
+   the pivotal inequalities are 
+   \begin{equation*}
+    f(x) \ge f(y) + \left\langle \nabla f(y), x - y\right\rangle,
+   \end{equation*}
+   and 
+   \begin{equation*}
+    f(x) \le f(y) + \left\langle \nabla f(y), x - y\right\rangle - \frac{1}{2L}\left\| \nabla f(x) - \nabla f(y) \right\|^2.
+   \end{equation*}
+\end{frame}
+
+\begin{frame}{Key inequality}
+  For composite optimization,In~\citep[Lemma 2.3]{beck2009fast}, they derives an inequality 
+  \begin{equation*}
+    \Phi(y - sG_s(y)) - \Phi(x) \le \left\langle G_s(y), x - y\right\rangle - \frac{s^2}{2}\|G_s(y)\|^2,
+  \end{equation*}
+  where $s \le 1/L$. We tight this inequality to 
+  \begin{equation}\label{ine}
+    \Phi(y - sG_s(y)) \le \Phi(x) + \langle G_s(y), y - x\rangle - \left(s - \frac{s^2 L}{2}\right)\|G_s(y)\|^2,
+  \end{equation}
+  where $s < 1/L$. This improvement is essencial to get the subgradient norm minimization for FISTA.
+\end{frame}
+
+\begin{frame}
+  \begin{theorem}[Convergence rate for nonaccelerated case]
+    \label{thm: ista}
+    Let $\Phi = f + g$ be a composite function with $f \in \mathcal{F}_{L}^1(\mathbb{R}^d)$ and $g \in \mathcal{F}^0(\mathbb{R}^d)$. Taking any step size $0 < s \leq 1/L$, the iterative sequence $\{x_k\}_{k=0}^{\infty}$ generated by ISTA satisfies
+    \begin{equation}
+      \label{eqn: ista-s}
+      \Phi(x_k) - \Phi(x^\star) \leq \frac{\|x_0 - x^\star\|^2}{2sk}, \quad \min_{0\leq i \leq k} \| G_s(x_i) \|^2 \leq \frac{2\|x_0 - x^\star\|^2}{3s^2 k(k+1)};   
+    \end{equation}
+    Furthermore, the iterative sequence $\{x_k\}_{k=0}^{\infty}$ also satisfies
+    \begin{equation}
+      \label{eqn: ista-s1}
+      \lim_{k\rightarrow \infty} \left[k(k+1)\min_{0\leq i \leq k} \| G_s(x_i) \|^2\right] = 0.
+    \end{equation}
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \begin{theorem}[Convergence rate for accelerated case]
+    \label{thm: fista}
+    Let $\Phi = f + g$ be a composite function with $f \in \mathcal{F}_{L}^1(\mathbb{R}^d)$ and $g \in \mathcal{F}^0(\mathbb{R}^d)$. Taking any step size $0 < s \leq 1/L$, the iterative sequence $\{x_k\}_{k=0}^{\infty}$ generated by FISTA satisfies
+    \begin{equation}
+      \label{eqn: fista-obj}
+      \Phi(x_k) - \Phi(x^\star) \leq \frac{r^2\|y_0 - x^\star\|^2}{2s(k+1)(k+r+1)};   
+    \end{equation}
+    if the step size satisfies $0< s< 1/L$, the iterative sequence $\{y_k\}_{k=0}^{\infty}$ satisfies
+    \begin{equation}
+      \label{eqn: fista-grad}
+      \left\{\begin{aligned}
+      & \min_{0\leq i \leq k} \| G_s(y_i) \|^2 \leq \frac{6r^2\|y_0 - x^\star\|^2}{s^2(1-sL) (k+1)\left(2k^2 + (6r+1)k + 6r^2 \right)},\\
+      & \lim_{k\rightarrow \infty} \left(k^3\min_{0\leq i \leq k} \| G_s(y_i) \|^2\right) = 0.
+      \end{aligned} \right.
+    \end{equation}
+    Furthermore, if $r>2$, the iterative sequence $\{x_k\}_{k=0}^{\infty}$ also satisfies
+    \begin{equation}
+      \label{eqn: fista-obj-fast}
+      \lim_{k\rightarrow \infty} \left[k^2 \left(\min_{0\leq i \leq k} \Phi(x_k) - \Phi(x^\star)\right)\right] = 0.
+    \end{equation}
+  \end{theorem}
+\end{frame}
+
+
+\section{Gradient norm minimization for convex case}
+\begin{frame}{Explicity-velocity phase-spase representation}
+  We concentrate on accelerated proximal gradient descent method
+  \begin{equation*}
+    \left\{\begin{aligned}
+      & x_{k} = y_{k-1} - sG_s(y_{k-1}),              \\
+      & y_{k} = x_{k}  + \frac{k-1}{k+r}(x_{k} - x_{k-1}).
+      \end{aligned}\right.
+  \end{equation*}
+  \pause
+  With the velocity iterates
+  \begin{equation*}
+    v_{k-1}= (y_k - y_{k-1})/\sqrt{s},
+  \end{equation*}
+  we obtain the gradient-correction phase-space representation
+  \begin{equation*}
+    \label{phs}
+    \left\{\begin{aligned}
+      & y_k - y_{k-1} = \sqrt{s}v_{k-1},\\
+      & v_k - v_{k-1} = -\frac{r+1}{k}v_k - \left(1 + \frac{r+1}{k}\right)\sqrt{s}G_s(y_k) - \sqrt{s}(G_s(y_k) - G_s(y_{k-1})).
+      \end{aligned}\right.
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Lyapunov function}
+  We construct the discrete Lyapunov function 
+  \begin{equation*}
+     \mathcal{E}(k) = \underbrace{sk(k+r)(\Phi(x_k) - \Phi(x^\star))}_{\textbf{potential}} + \underbrace{\frac{1}{2}\|\sqrt{s}kv_{k-1} + r(y_k - y^\star) + skG_s(y_{k-1})\|^2}_{\textbf{mixed\ energy}}.
+  \end{equation*} 
+  \pause
+  The continuous Lyapunov function aforementioned
+  \begin{equation*}
+    \mathcal{E}(t) = t\left(t+\frac{\sqrt{s}}{2}\right)(f(X) - f(x^\star)) + \frac{1}{2}\left\|t\dot{X} + 2(X - x^\star) + t\sqrt{s}\nabla f(X)\right\|^2.
+  \end{equation*}
+  \pause
+  The proof then is calculating the difference $\mathcal{E}(k+1) - \mathcal{E}(k)$.
+\end{frame}
+
+\begin{frame}{Convex case}
+  First we have
+  \begin{align*}
+    \mathcal{E}&(k+1) - \mathcal{E}(k) \\
+    & =   \underbrace{sk(k+r)\left( \Phi(x_{k+1}) - \Phi(x_{k}) \right) }_{\mathbf{I}_1}+ \underbrace{s(2k+r+1)\left( \Phi(x_{k+1}) - \Phi(x^\star) \right)}_{\mathbf{I}_2}  \\
+    & \mathrel{\phantom{=}} - \underbrace{sk(k+r)\left\langle G_s(y_{k}), y_{k} - y_{k-1} \right\rangle }_{\mathbf{II}_1}- \underbrace{sr(k+r)\left\langle G_s(y_{k}),  y_{k} - x^\star\right\rangle}_{\mathbf{II}_2}  \\
+    & \mathrel{\phantom{=}} + \frac{s^2(k+r)^2}{2}\big\| G_s(y_{k}) \big\|^2 - \underbrace{s^{2}k(k+r)\langle G_s(y_{k}), G_s(y_{k-1}) \rangle}_{\mathbf{II}_3}
+  \end{align*}
+  \pause
+  By inequality (\ref{ine}), there are 
+  \begin{align}
+    &\Phi(x_{k+1}) - \Phi(x_k) \le \langle G_s(y_k), y_k - x_k\rangle - \left(s - \frac{s^2 L}{2}\right)\|G_s(y_k)\|^2, \label{eqn: key-1-inq} \\
+    &\Phi(x_{k+1}) - \Phi(x^\star) \le \langle G_s(y_k), y_k - x^\star\rangle - \left(s - \frac{s^2 L}{2}\right)\|G_s(y_k)\|^2. \label{eqn: key-2-inq}
+\end{align}
+\end{frame}
+
+\begin{frame}{Convex case}
+  After some cancellation, finally it yields
+  \begin{align}
+    \mathcal{E}(k+1) - \mathcal{E}(k) \leq & - \frac{s^2(k+r)^2}{2}\left(1- sL\right)\|G_s(y_k)\|^2 \nonumber \\
+    & - s \left[ (r-2)k + r^2 - r - 1  \right]\left( \Phi(x_{k+1}) - \Phi(x^\star) \right). 
+  \label{eqn: final-iterative}   
+  \end{align}
+  Thus $\mathcal{E}(k)$ is monotonically decreasing. Our result follows after summing up all the inequalities from $0$ to $k$ and $\lfloor k/2 \rfloor$ to $k$.
+\end{frame}
+
+
+\section{Linear convergence rate for strongly convex objectives}
+\begin{frame}{Closer investigation}
+  Let us consider the linear inverse problem with $l_1$ regularization 
+  \begin{equation}\label{scpro}
+    \min_x \|Ax - b\|^2 + \lambda\|x\|_1.
+  \end{equation}
+  The matrix $A$ is usually ill-conditioned but inversable. Thus (\ref{scpro}) is a strongly convex optimization problem.
+\end{frame}
+
+\begin{frame}{Proximal sc-NAG}
+	Reconsider
+  \begin{equation*}
+    \min_x \Phi(x) := f(x) + g(x).
+  \end{equation*}
+  If $f(x)$ is in addition $\mu$-strongly convex, i.e., 
+  \begin{equation}\label{scine}
+    f(x) \ge f(y) + \left\langle \nabla f(y), x - y\right\rangle + \frac{\mu}{2}\left\| x - y\right\|^2.
+  \end{equation}
+  In this case, we consider the proximal sc-NAG scheme 
+  \begin{equation}\label{scNAG}
+    \left\{\begin{aligned}
+      & x_{k} =y_{k-1} - sG_s(y_{k-1}),              \\
+      & y_{k} = x_{k}  + \frac{x_{k} - x_{k-1}}{1+2\sqrt{\mu s}}.
+    \end{aligned}\right.
+  \end{equation}
+\end{frame}
+
+\begin{frame}{Numerical experiment}
+  We experiment an artificial example of problem 
+  \begin{equation*}
+    \min_x \|Ax - b\|^2 + \lambda\|x\|_1,
+  \end{equation*}
+  where we set $A$ as a $500\times 500$ tridiagonal matrix and $b$ as a $500$-dimensional vector,
+  \begin{equation*}
+    A = \begin{pmatrix}
+      2 & 1 &   &   &  \\
+      1 & 2 & 1 &   &  \\
+        & \ddots & \ddots & \ddots &  \\
+        &   & 1 & 2 & 1  \\
+        &   &   & 1 & 2 
+    \end{pmatrix}\quad
+    b = \begin{pmatrix}
+      1 \\
+      \vdots \\
+      1 
+    \end{pmatrix}.
+  \end{equation*}
+  In this case the optimization parameters can be computed as 
+  $\mu = \min_{1\leq i \leq d}\lambda_i(A^{T}A) = 1.5461 \times 10^{-9}$ and $L=\max_{1\leq i \leq d} \lambda_i(A^{T}A) = 15.9997$, respectively.
+\end{frame}
+
+\begin{frame}{Numerical experiment}
+  \begin{figure}[htpb!]
+    \centering
+    \includegraphics[scale=0.2]{fig/ista_fista.eps}
+    \caption{The convergence behavior of the squared proximal subgradient norm by implementing ISTA and FISTA in the least square model with $\ell_1$-regularization.}
+    \label{fig: fista}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Lyapunov function}
+  First consider the implicit-velocity phase-space representation of proximal sc-NAG
+  \begin{equation}
+    \label{eqn: iv-phase}
+    \left\{
+    \begin{aligned}
+      & x_{k+1} - x_{k} = \sqrt{s}v_{k+1},  \\
+      & v_{k+1} - v_{k} = - \frac{2\sqrt{\mu s}v_{k}}{1+2\sqrt{\mu s}} - \sqrt{s}G_s(y_k),
+    \end{aligned}
+    \right.
+    \end{equation}
+    where 
+    \begin{equation*}
+      y_k = x_{k} + \frac{\sqrt{s}v_{k}}{1+2\sqrt{\mu s}}.
+    \end{equation*}
+    Then construct the discrete Lyapunov function as 
+    \begin{equation*}
+      \mathcal{E}(k) = \underbrace{\Phi(x_{k}) - \Phi(x^{\star})}_{\mathcal{E}_{\textbf{pot}}(k)} + \underbrace{\frac{\|v_{k}\|^2}{4(1+2\sqrt{\mu s})^2}}_{\mathcal{E}_{\textbf{kin}}(k)} +  \underbrace{\frac{\left\|v_{k} +2\sqrt{\mu}(x_{k} - x^\star)\right\|^2 }{4}}_{\mathcal{E}_{\textbf{mix}}(k)}.
+      \end{equation*}
+\end{frame}
+
+\begin{frame}{Proof of linear convergence}
+  We are able to show that 
+  \begin{align*}
+    \mathcal{E}(k+1) - \mathcal{E}(k) \leq & -\sqrt{\mu s} \min\left\{1, \frac{1+\sqrt{\mu s}}{\frac{3}{4} + \sqrt{\mu s} + \mu s}, \frac14 \right\}\mathcal{E}(k+1) \\
+    & -\frac{s (1-sL) }{2} \|G_s(y_k)\|^2.
+  \end{align*}
+  With initial value $x_0\in \mathbb{R}^n$ and $v_0 = 0$, we get the conclusion.
+\end{frame}
+
+\begin{frame}{Linear convergence}
+  \begin{theorem}
+    Let $\Phi = f+ g$ be a composite function with $f \in \mathcal{S}_{\mu,L}^{1}(\mathbb{R}^d)$ and $g \in \mathcal{F}^0(\mathbb{R}^d)$. Taking any step size $0 < s \leq 1/L$, the iterative sequence $\{x_k\}_{k=0}^{\infty}$ generated by FISTA satisfies
+    \begin{equation}
+    \label{eqn: fista_rate_obj_1}
+    \Phi(x_{k}) - \Phi(x^\star) \leq \frac{\Phi(x_0) - \Phi(x^\star) + \mu\|x_0 - x^\star\|^2}{\left(1 + \frac{\sqrt{\mu s}}{4}\right)^k};
+    \end{equation}
+    if the step size satisfies $0 < s < 1/L$, the iterative sequence $\{y_k\}_{k=0}^{\infty}$ satisfies
+    \begin{equation}
+    \label{eqn: fista_rate_gn_1}
+    \|G_s(y_k)\|^2 \leq \frac{2L\left(\Phi(x_0) - \Phi(x^\star) + \mu\|x_0 - x^\star\|^2\right)}{(1-sL)\left(1 + \frac{\sqrt{\mu s}}{4}\right)^k}.
+    \end{equation}
+    \end{theorem}
+\end{frame}
+
+
+\section{Research plan on game theory}  
+\begin{frame}{Overview}
+	Game theory is a large area of subject. It research on the descision behavior of multiple players (or agents) against or cooperate with each other. This can be viewed as a generalization of optimization problem, where optimization has only one player while a game has more than two. \par 
+  
+  One discipline is \emph{differential games} which considers the game of several agents under the contraints of specified continuous dynamical systems. Examples are like isotropic rocket game, optimal program of steel production, etc..
+\end{frame}
+
+\begin{frame}{Differential games}
+  Homicidal chauffeur game 
+  \begin{figure}[htpb!]
+    \centering
+    \includegraphics[scale=0.36]{fig/homicidal chauffeur game.png}
+    \caption{The swerve phenomenon}
+    \end{figure}
+\end{frame}
+\begin{frame}{Differential games}
+  The optimal program of steel production 
+  \begin{figure}[htpb!]
+    \centering
+    \includegraphics[scale=0.36]{fig/steel production.png}
+    \caption{The division of state spase}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Procedure of solving differential games}
+  First, call the two players $P$ and $E$. Specify the state variable $\x$, state space $\E$, and the control variables $\phi = (\phi_1,\ldots,\phi_\lambda)$ and $\varphi = (\varphi_1,\ldots,\phi_\mu)$ and their constraints. Suppose the dimension of $\E$ is $n$. Also specify the terminal surface $\C$. \par 
+
+  Second, write down the kinematic equations (KE) of the problem as 
+  \begin{equation}
+    \dot{\x} = f(\x, \phi, \varphi),
+  \end{equation}
+  where $\x\in \E$, $f = (f_1,\ldots,f_n)^T$, and $\dot{\x} = \frac{\dd \x}{\dd t}$ is the time derivative. Also the payoff function is claimed as 
+  \begin{equation}
+    L(\x, \phi, \varphi) = \int G(\x, \phi, \varphi) \dd t + H(\x_T).
+  \end{equation}
+  Here $\x_T$ is the terminal position and $H(\x_T)$ is called the terminal payoff.
+\end{frame}
+
+\begin{frame}{Procedure of solving differential games}
+  The value of game is defined as 
+  \begin{equation}
+    V(\x) = \min_{\phi} \max_{\varphi} L(\x,\phi,\varphi).
+  \end{equation}
+  \par 
+  Third, deduce the first main equation (ME$_1$)
+  \begin{equation}
+    \min_{\phi} \max_{\varphi} V_i f_i(\x,\phi,\varphi) + G(\x,\phi,\varphi) = 0,
+  \end{equation}
+  and solve the minimax by
+  \begin{equation}
+    \bar{\phi}(\x,V_x)\quad \bar{\varphi}(\x,V_x),
+  \end{equation}
+  then we get the second mean equation (ME$_2$) 
+  \begin{equation}
+    V_{x_i}f_i(\x,\bar{\phi},\bar{\varphi}) + G(\x,\bar{\phi},\bar{\varphi}) = 0.
+  \end{equation}
+\end{frame}
+
+\begin{frame}{Procedure of solving differential games}
+  Fourth, if $\phi$ and $\varphi$ are subject to constant bounded, write out the Retrogressive path equations (RPE) 
+  \begin{align}
+    & \mathring{\x_k} = -f_k(\x,\bar{\phi},\bar{\varphi})\\
+    & \mathring{V_k} = \sum_i V_i f_{ik}(\x,\bar{\phi},\bar{\varphi}) + G_k(\x,\bar{\phi},\bar{\varphi}).
+  \end{align}
+  Or else we can obtain a more general RPE by differentiating ME$_2$ with respect to time variable $t$. Note that in this case, if one goes through the procedure of deriving the RPE again, it can be found that the right hand side of RPE for $\mathring{V_k}$ is just the partial derivative of $x_k$ of ME$_2$, viewing $V_x$ as constant and other $f$, $G$, $\bar{\phi}$, and $\bar{\varphi}$ as functions of $\x$.
+\end{frame}
+
+\begin{frame}{Procedure of solving differential games}
+  Fifth, calculate the initial conditions. let $\nu = (\nu_1,\ldots,\nu_n)$ be the vector normal to $\C$ from point $\x$ on $\C$ and extending into $\E$. Solve the useable part of $\C$ by 
+  \begin{equation}
+    \min_{\phi} \max_{\varphi} \sum_i \nu_i f_i(\x,\phi,\varphi) < 0.
+  \end{equation}
+  Parameterize the terminal surface as 
+  \begin{equation}
+    x_i = h_i(s_i,\ldots,s_{n-1}),
+  \end{equation}
+  then we have the initial condition for $x_i$ given $s_i$. For $V_i$, use the fact $V = H = H(s_1,\ldots,s_{n-1})$ on $\C$, we have 
+  \begin{equation}
+    \frac{\partial H}{\partial s_k} = \sum_i V_i \frac{\partial h_i}{\partial s_k}, \quad k = 1,\ldots,n-1.
+  \end{equation}
+  Combined with ME$_2$ on $\C$, we thus solve $V_i$. \par 
+  Finally, integrating the RPE gives the rough solution.
+\end{frame}
+
+\begin{frame}{Equilibrium problem}
+  The Nash equilibrium is a point $x^\star = (x_1^\star,\ldots,x_n^\star)$ that satisfies 
+  \begin{equation*}
+    \min_{x_i\in \mathcal{C}_i} f_i(x_1^\star,\ldots, x_{i-1}^\star, x_i, x_{i+1}^\star,\ldots, x_n^\star)
+  \end{equation*}
+  For two-player zero-sum games, 
+  \begin{equation*}
+    \max_x \min_y L(x, y),
+  \end{equation*}
+  there are algorithms like gradient ascent descent method (GAD)
+  \begin{equation*}
+    \left\{\begin{aligned}
+      & x_{k+1} = x_k + \eta \nabla_x L(x_k, y_k),\\
+      & y_{k+1} = y_k - \eta \nabla_y L(x_k, y_k).
+    \end{aligned}\right.
+  \end{equation*}
+\end{frame}
+
+\section*{Acknowledgement}
+\begin{frame}
+\textcolor{myNewColorA}{\Huge{\centerline{Thank you!}}}
+\end{frame}
+
+\section*{Reference}
+\begin{frame}
+{\small
+\bibliographystyle{abbrvnat}
+\bibliography{reference}
+}
+\end{frame}
+
+\end{document}
+
+
+
