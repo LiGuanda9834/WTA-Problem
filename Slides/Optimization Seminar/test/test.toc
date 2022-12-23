@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Formulations and Algorithms}{10}{0}{2}
+\beamer@sectionintoc {3}{Outer Approximation}{17}{0}{3}
+\beamer@sectionintoc {4}{Columnn Generation}{29}{0}{4}
+\beamer@sectionintoc {5}{Future Work}{40}{0}{5}

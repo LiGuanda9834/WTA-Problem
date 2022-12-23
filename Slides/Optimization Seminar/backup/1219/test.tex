@@ -1,0 +1,746 @@
+\documentclass[CJK,10pt]{beamer}
+%\usepackage[utf8]{inputenc}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage {mathtools}
+%\usepackage{utopia} %font utopia imported
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+
+% set colors
+\definecolor{myNewColorA}{RGB}{25,25,112}
+\definecolor{myNewColorB}{RGB}{25,25,112}
+\definecolor{myNewColorC}{RGB}{25,25,112}
+\setbeamercolor*{palette primary}{bg=myNewColorC}
+\setbeamercolor*{palette secondary}{bg=myNewColorB, fg = white}
+\setbeamercolor*{palette tertiary}{bg=myNewColorA, fg = white}
+\setbeamercolor*{titlelike}{fg=myNewColorA}
+\setbeamercolor*{title}{bg=myNewColorA, fg = white}
+\setbeamercolor*{item}{fg=myNewColorA}
+\setbeamercolor*{caption name}{fg=myNewColorA}
+\usefonttheme{professionalfonts}
+\usepackage{natbib}
+\usepackage{hyperref}
+%------------------------------------------------------------
+%\titlegraphic{\includegraphics[height=1.5cm]{logo.png}} 
+
+\setbeamerfont{title}{size=\large}
+\setbeamerfont{subtitle}{size=\small}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{institute}{size=\small}
+
+
+
+%设置页码脚标
+%\setbeamertemplate{footline}[frame number]
+\defbeamertemplate{footline}{NGEGFootlineTemplate}{%
+	\leavevmode% 离开vmode，也就是离开竖直模式，进入水平模式
+	\hbox{%
+		\begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\ifnum \the\value{page}>1 \usebeamerfont{author in head/foot}\insertshortauthor\fi
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+			\ifnum \the\value{page}>1 \usebeamerfont{title in head/foot}\insertshorttitle\fi
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=0.2\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\ifnum \the\value{page}>1 \insertframenumber{} / \inserttotalframenumber\fi
+	\end{beamercolorbox}}%
+%	\vskip0pt%
+}
+\setbeamertemplate{footline}[NGEGFootlineTemplate]
+
+
+
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\dd}{\mathrm{d}}
+
+\newcommand{\sumFromTo}[3]{\ensuremath{\sum_{#1}^{#2} #3}}
+
+\newcommand{\optimalProblem}[3]
+{\begin{align*}
+    #1 \quad &#2 \\
+    \mathrm{s. t.}\quad&#3
+\end{align*}}
+
+
+
+
+\title[Weapon Target Assignment problem]{Literature Review of Weapon Target Assignment problem}%主标题
+%\subtitle{ }%%副标题
+\author[Guanda Li]{Guanda Li
+\and joint work with Liang Chen and Yu-hong Dai}%%作者
+
+\institute[LSEC]{Institute of Computational Mathematics and Scientific/Engineering Computing,\\
+Academy of Mathematics and Systems Science,\\
+Chinese Academy of Sciences}
+\date[\textcolor{white} ]
+{December 20, 2022}
+
+%------------------------------------------------------------
+%This block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+%\AtBeginSection[]
+%{
+%  \begin{frame}
+%    \frametitle{Contents}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%}
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+%------------------------------------------------------------
+\AtBeginSubsection[]{
+    \begin{frame}
+    \vfill
+    \centering
+    \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+        \usebeamerfont{title}\insertsubsectionhead\par%
+    \end{beamercolorbox}
+    \vfill
+    \end{frame}
+}
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+\begin{frame}
+\frametitle{Contents}
+\tableofcontents
+\end{frame}
+
+
+\section{Introduction}
+\begin{frame}
+    \frametitle{Background}
+    \textbf{背景介绍}
+        \begin{itemize}
+            \item \textbf{Weapon Target Assignment problem}是一个军事领域中的问题
+            \item 其基本问题是考虑使用m个武器攻击n个目标，以最小化所有目标的加权存活概率.{\tiny（或等价地，对目标造成的加权伤害最大化）}
+            \item \textbf{该问题被证明是NP-C的}，并且通常被表述为非线性模型。
+            \item To best of my knowledge, 2015年前，在80个武器和80个目标的问题计算需要16.2个小时。
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{history}
+    \begin{itemize}
+        \item 提出WTA问题形式Manne (1958)
+        \item 通过对问题进行线性近似、求解问题的简化形式与求解小规模问题
+        \item 首次提出动态WTA问题 (1985)
+        \item 改进静态与动态WTA问题的模型，采用启发式算法进行求解
+        \item 对问题进行等价的线性转换并精确求解
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{basic formulation}
+    \begin{columns}
+        \begin{column}{.70\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $I = \left\{1,\cdots,m\right\} $, 武器集合.
+                \item $J = \left\{1,\cdots,n\right\} $, 目标集合.
+                \item $p_{ij}\in [0,1]$, $i$击落$j$的概率.
+            \end{itemize}
+        \end{column}
+    \hspace{-1cm}
+        \begin{column}{.35\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $V_j$, 目标$j$的权重.
+                \item $x_{ij}$,武器$i$是否攻击$j$.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \begin{align*} \tag{S0}
+        \max\quad & \sum_{j=1}^n (1 - V_j) \left( \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}} \right) \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq 1\quad \forall ~i \in I,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall~ j\in J , ~ i \in I.
+    \end{align*}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{basic formulation}
+    \begin{columns}
+        \begin{column}{.70\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $I = \left\{1,\cdots,m\right\} $, 武器集合.
+                \item $J = \left\{1,\cdots,n\right\} $, 目标集合.
+                \item $p_{ij}\in [0,1]$, $i$击落$j$的概率.
+            \end{itemize}
+        \end{column}
+    \hspace{-1cm}
+        \begin{column}{.35\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $V_j$, 目标$j$的权重.
+                \item $x_{ij}$,武器$i$是否攻击$j$.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \begin{align}
+        \min\quad & \sum_{j=1}^n V_j \left( \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}} \right) \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq 1\quad \forall ~i \in I,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall~ j\in J , ~ i \in I.
+    \end{align}
+\end{frame}
+
+
+
+\section{Formulations and algorithms}
+
+\begin{frame}
+    \frametitle{whether the problem is static}
+    \begin{itemize}
+        \item WTA问题主要分为了静态WTA问题（SWTA问题）与动态WTA问题（DWTA问题）
+        \item 静态WTA问题中不考虑不同的时间阶段，仅考虑针对一次目标来袭所做的拦截。
+        \item 动态WTA问题则考虑多阶段的问题，在不同的阶段呢可能有不同的目标出现，武器的分配也同样需要照顾多个不同的时间阶段。
+        \item 近年来，也有一些新的问题形式出现，比如加入更多的作战要素或者使用多目标规划。
+    \end{itemize}
+\end{frame}
+
+
+\subsection{Static Weapon Target Assignment problem}
+
+
+\begin{frame}
+    \frametitle{Notation}
+    \begin{columns}
+        \begin{column}{.50\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $I$, Weapon set.
+                \item $J$, Target set.
+                \item $n$, 目标的个数。
+                \item $m$, 武器种类的个数。如果限制每种武器只有一个，则该变量指示武器的个数。
+                \item $w_i$, 第i类武器的个数
+                \item $t$, 时间阶段（仅在DWTA问题中有效）
+            \end{itemize}
+        \end{column}
+        \begin{column}{.50\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $p_{ij}$, 武器i摧毁目标j的概率。
+                \item $q_{ij}$, 武器i未能摧毁目标j的概率。
+                \item $x_{ij}$, 分配给目标j的种类为i的武器个数，如果限制每种武器仅有一个，则该变量为0-1变量。
+                \item $V_j$, 目标j的摧毁价值。
+                \item $c_{ij}$, 将武器i分配给目标j的花费
+                \item $s_j$, 能够分配给目标j的最大武器数目
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{static WTA model 1}
+    \begin{itemize}
+        \item 相比于基础模型，允许每种武器有$w_i$个。
+    \end{itemize}
+    \begin{align*} \tag{S1.1}
+        \min\quad & \sum_{j=1}^n V_j \left( \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}} \right) \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq w_i\quad \forall ~i \in I,\\
+        & x_{ij} \in \mathbb{Z}^+ \quad \forall~ j\in J , ~ i \in I.
+    \end{align*}
+    
+\end{frame}
+\begin{frame}
+    \frametitle{static WTA model 1}
+    \begin{itemize}
+        \item 如果将$1-p_{ij}$记为$q_{ij}$，可以转化为看起来更简单的形式。
+    \end{itemize}
+    \begin{align*} \tag{S1.2}
+        \min\quad & \sum_{j=1}^n V_j \left( \prod_{i=1}^m q_j^{x_{ij}} \right) \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq w_i\quad \forall ~i \in I,\\
+        & x_{ij} \in \mathbb{Z}^+ \quad \forall~ j\in J , ~ i \in I.
+    \end{align*}
+\end{frame}
+
+\begin{frame}
+    \frametitle{static WTA model 2}
+    \begin{itemize}
+        \item 为了让计算更简便，假设任何武器攻击同一个目标的击毁概率都相同。
+    \end{itemize}
+    \begin{align*} \tag{S2}
+        \min\quad & \sum_{j=1}^n V_j q_j^{\sum_{i=1}^m x_{ij}} \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq w_i\quad \forall ~i \in I,\\
+        & x_{ij} \in \mathbb{Z}^+ \quad \forall~ j\in J , ~ i \in I.
+    \end{align*}
+\end{frame}
+
+\begin{frame}
+    \frametitle{static WTA model 3}
+    \begin{itemize}
+        \item 将S1中的目标函数取对数，即可得到如下模型
+    \end{itemize}
+    \begin{align*} \tag{S3.1}
+        \min\quad & \sum_{j=1}^n V_j \exp \left( \sum_{i=1}^m {x_{ij}\ln(1 -  p_{ij})} \right) \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq w_i\quad \forall ~i \in I,\\
+        & x_{ij} \in \mathbb{Z}^+ \quad \forall~ j\in J , ~ i \in I.
+    \end{align*}
+\end{frame}
+
+\begin{frame}
+    \frametitle{static WTA model 3}
+    \begin{itemize}
+        \item 将上述模型进行变量替换即可得到如下的模型
+    \end{itemize}
+    \begin{align*} \tag{S3.2}
+        \min\quad & \sum_{j=1}^n V_j e^{y_j}  \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq w_i\quad \forall ~i \in I,\\
+        & \sum_{i=1}^m {\ln(1 -  p_{ij}) x_{ij}} = y_j \quad \forall ~ j \in J\\
+        & x_{ij} \in \mathbb{Z}^+ \quad \forall~ j\in J , ~ i \in I.
+    \end{align*}
+    \begin{itemize}
+        \item 该模型从数学上与模型S1是等价的，但是新形式更方便求解器的求解。
+        \item \textcolor{red}{Kline et al.(2017b)} 指出，使用商用求解器BARON求解问题，该形式能够让正确率提高21\%
+    \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{static WTA model 4}
+    \begin{itemize}
+        \item 该模型与一开始介绍的基本模型相同，即限制每种武器的类型只有一个。如果某个类型的武器有不止一个，可以将它们视为不同的。
+        \item 由于$(1-p_{ij}x_{ij}) = (1-p_{ij})^{x_{ij}},~ x \in \left\{ 0,1\right\}$，可以将问题转化为如下形式。
+    \end{itemize}
+    \begin{align*} \tag{S4}
+        \min\quad & \sum_{j=1}^n V_j \left( \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}} \right) \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq 1\quad \forall ~i \in I,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall~ j\in J , ~ i \in I.
+    \end{align*}
+    \begin{itemize}
+        \item 该转化会导致问题的松弛从一个凸问题变成一个非凸问题，会导致一些凸的求解方法无法使用。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{static WTA model 5}
+    \begin{itemize}
+        \item 将问题转化为背包模型
+    \end{itemize}
+    \begin{align*} \tag{S5}
+        \min\quad & \sum_{j=1}^n{\sum_{x=1}^m{c_{ij}x_{ij}}} \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq 1\quad \forall ~i \in I,\\
+        & \sum_{i=1}^m x_{ij} \leq 1\quad \forall ~j \in J \\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall~ j\in J , ~ i \in I.
+    \end{align*}
+    \begin{itemize}
+        \item 该方法去掉了多个武器对同一个武器同时打击时的耦合，将困难的目标函数转化为了线性函数
+        \item 虽然该方法能够比较快的求解，但是却不如之前的模型更贴近现实情况。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{static WTA model 6}
+    \begin{itemize}
+        \item This is attacking model.
+        \item there are K assets we have to protect, and n targets try to destroy these assets. 
+        \item The probablitiy with target j will destroy k is $\gamma_{jk}$. 
+    \end{itemize}
+    \begin{align*} \tag{S6}
+        \min\quad & \sum_{k=1}{K}a_k\prod_{j=1}^{n_k}\left[ \gamma_{ij} \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}\right]\\
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq 1\quad \forall ~i \in I,\\
+        & \sum_{k=1}^{K}n_k = n\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall~ j\in J , ~ i \in I.
+    \end{align*}
+\end{frame}
+
+\subsection{Dynamic Weapon Target Assignment problem}
+\begin{frame}
+    \frametitle{dynamic WTA model 1 : shoot-look-shoot}
+    \begin{itemize}
+        \item 该模型假设可以在一次打击结束后对现状进行观察，对尚未被击毁的目标重新安排武器
+        \item 在该模型中，不会有新的目标出现
+        \item 将会对给定数量的目标进行反复攻击，直到全部目标都被摧毁或迭代次数到达上限
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{dynamic WTA model 2 : multi-stages}
+    \begin{itemize}
+        \item 该模型假设目标出现的过程会出现多个阶段
+        \item 仅在第一阶段出现的目标是给定的，之后阶段出现的新目标以概率分布的形式给出
+        \item 与look-shoot-look模型最大的不同即为look-shoot-look不会出现新的目标
+        \item 由于模型的复杂度较高，目前还没有比较好的精确解法，主要采用启发式解法
+    \end{itemize}
+\end{frame}
+
+\subsection{Recent Developments}
+\begin{frame}
+    \frametitle{Sensor WTA problems}
+    \begin{itemize}
+        \item 背景：在现代化战争中，需要引入传感器对要打击的目标进行识别，类似地还需要引入指挥所等要素
+        \item 下面是一个较为简单的模型：$S$表示传感器的集合，$o$表示传感器的数目
+    \end{itemize}
+    \begin{align*} \tag{Sensor}
+        \min\quad & \sum_{j=1}^n V_j \left( \prod_{i=1}^m {\prod_{s = 1}^{o} (1 -  p_{isj})^{x_{isj}}} \right) \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n {\sum_{s=1}^o x_{isj}} \leq 1\quad \forall ~i \in I,\\
+        &\sum_{j=1}^n {\sum_{i=1}^m x_{isj}} \leq 1\quad \forall ~s \in S,\\
+        & x_{isj} \in \left\{ 0,1 \right\} \quad \forall~ j\in J , ~ i \in I,~ s\in S.
+    \end{align*}
+    \begin{itemize}
+        \item 两个约束分别是每个武器与每个传感器仅能分配给一个目标。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Multi-objective programs}
+    \begin{itemize}
+        \item 在真实的作战环境中，不可能仅考虑对目标的杀伤概率
+        \item 比较常见引入的目标包括最小化花费、最小化作战时间
+        \item 最小化花费：对目标$j$使用武器$i$需要一个固定的花费
+        \item 最小化作战时间：使用武器攻击目标需要耗费时间，为了达到作战目的也需要最小化作战时间
+        \item 多个目标的结合方式包括将多个目标组合在一起，或者同时优化三个不同的目标，希望找到所有非占优解。在一些论文中，还提出了算法与指挥官结合的方法，即在算法执行过程中由指挥官选择不同目标的重要性。
+    \end{itemize}
+\end{frame}
+
+
+
+\section{Outer Approximation}
+\begin{frame}
+    \frametitle{basic formulation}
+    \begin{columns}
+        \begin{column}{.70\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $I = \left\{1,\cdots,m\right\} $, 武器集合.
+                \item $J = \left\{1,\cdots,n\right\} $, 目标集合.
+                \item $p_{ij}\in [0,1]$, $i$击落$j$的概率.
+            \end{itemize}
+        \end{column}
+    \hspace{-1cm}
+        \begin{column}{.35\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $a_j$, 目标$j$的权重.
+                \item $x_{ij}$,武器$i$是否攻击$j$.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \begin{align*} \tag{S0}
+        \min\quad & \sum_{j=1}^n a_j \left( \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}} \right) \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq 1\quad \forall ~i \in I,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall~ j\in J , ~ i \in I.
+    \end{align*}
+\end{frame}
+
+\begin{frame}
+    \frametitle{formulation}
+    \begin{equation*}
+        \prod_{i=1}^{m}{(1-p_{ij}x_{ij})} \iff \prod_{i=1}^{m}{(1-p_{ij})^{x_{ij}}}, x \in \left\{ 0,1 \right\}
+    \end{equation*}
+    \begin{itemize}
+        \item 当两个问题限定$x$取值为$0,1$时，取值相等
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{目标函数为多个凸函数的加权和}
+    采用后一种形式：
+    \begin{equation*}
+        f_j(x) =  \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}\quad \forall~  j \in J
+    \end{equation*}
+    考虑该问题的Hessian矩阵$H$：
+    \begin{equation*}
+        \frac{\partial f_j(x)}{\partial x_{aj} \partial x_{bj}} = \ln(1 - p_{aj}) \ln(1 - p_{bj}) f_j(x)
+    \end{equation*}
+    {
+    \scriptsize
+    \begin{equation*}
+        H = f(x)\begin{bmatrix}
+            \ln(1 - p_{1j}) \ln(1 - p_{1j}) & \ln(1 - p_{1j}) \ln(1 - p_{2j}) &\cdots & \ln(1 - p_{1j}) \ln(1 - p_{mj}) \\
+            \ln(1 - p_{2j}) \ln(1 - p_{1j}) & \ln(1 - p_{2j}) \ln(1 - p_{2j}) &\cdots & \ln(1 - p_{2j}) \ln(1 - p_{mj}) \\
+            \vdots & \vdots &\ddots &\vdots \\
+            \ln(1 - p_{mj}) \ln(1 - p_{1j}) & \ln(1 - p_{mj}) \ln(1 - p_{2j}) &\cdots & \ln(1 - p_{mj}) \ln(1 - p_{mj})
+
+
+        \end{bmatrix}
+    \end{equation*}
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{目标函数为多个凸函数的加权和}
+    若记
+    \begin{equation*}
+        l = \begin{bmatrix}
+            \ln(1 - p_{1j}) & \ln(1 - p_{2j}) & \cdots & \ln(1 - p_{mj})
+        \end{bmatrix}
+    \end{equation*}
+    可得到Hassien矩阵的形式为：
+    \begin{equation*}
+        H = f(x)l\cdot l^T
+    \end{equation*}
+    可以看出该矩阵是个秩一矩阵，即各列之间是线性相关的，从而其行列式为0，从而得到原函数是凸的。
+\end{frame}
+
+\begin{frame}
+    \frametitle{transformed model}
+    原模型的目标函数为:
+    \begin{equation*}
+        \sum_{j=1}^n a_j \left( \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}} \right)
+    \end{equation*}
+    {\footnotesize
+    希望通过引入辅助变量的形式，将非线性项从目标函数转化到约束中。
+    
+    若记$\eta_j$ 为代表 $\prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}$引入的变量，原问题可转化为：
+    \begin{align*} \tag{S0'}
+        \min\quad & \sum_{j=1}^n a_j \eta_j \\ 
+        \mathrm{s. t.}\quad & \eta_j \geq \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}, \quad \forall ~ j \in J \\ 
+        &\sum_{j=1}^n x_{ij} \leq 1\quad \forall ~ i \in I,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall ~ j\in J\quad i \in I.
+    \end{align*}
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{Basic idea of outer approximation}
+    若$f(x)$为凸函数，则对于可行域中的任意一个点$x^*$，有
+    \begin{equation*}
+        f(x) \geq f(x^*) + \nabla f(x^*)(x - x^*)
+    \end{equation*}
+    因此若原问题的约束为$\eta \geq f(x)$，则此时
+    \begin{equation*}
+        \eta \geq f(x) \geq f(x^*) + \nabla f(x^*)(x - x^*)
+    \end{equation*}
+    一定成立。
+    \begin{itemize}
+        \item 即对于任意一个给定的点，都可以引入一个线性约束，保证可行域满足该约束。
+        \item 外逼近方法即希望利用整数特性，通过引入多个线性约束来替代某个非线性约束，但保证转化前后问题是等价的。
+    \end{itemize}
+    
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{constraint formulation of outer approximation}
+    仍记$f_j(x) =  \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}\quad j \in J$，则对于任意给定的可行域中的点$\bar{x}$，有
+    \begin{align*}
+        \nabla f(\bar{x})(x - \bar{x}) & = f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}})\\
+        &= f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})x_{ij} - f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})\bar{x_{ij}}
+    \end{align*}
+    其中前一项是变量的线性组合，有一项在$\bar{x}$给定时是常数。
+
+    依据此外逼近约束的形式，即可得到问题的外逼近模型：
+\end{frame}
+
+\begin{frame}
+    \frametitle{outer approximation model}
+    
+    {\scriptsize
+    若记问题中的全部整数可行解为集合$X$，则模型可以描述为
+    \begin{align*} \tag{OA}
+        \min\quad & \sum_{j=1}^n a_j \eta_j \\ 
+        \mathrm{s. t.}\quad & \eta_j \geq f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}}) + f(\bar{x}), \quad \forall ~ j \in J,\ \bar{x} \in X \\ 
+        &\sum_{i=1}^m x_{ij} \leq 1\quad \forall ~ j \in J,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall ~ j\in J\quad i \in I.
+    \end{align*}
+    可以看出，此时外逼近约束的个数非常多，对问题的求解造成了一定的困难，因此考虑限制后的模型，即近考虑部分约束。
+    }
+   
+\end{frame}
+
+\begin{frame}
+    \frametitle{Idea of outer approximation method}
+    {
+    \scriptsize
+    基本思路：外逼近约束个数过多，仅考虑其子集$\hat{X} \subseteq X$
+    \begin{align*}
+        \min\quad & \sum_{j=1}^n a_j \eta_j \\ 
+        \mathrm{s. t.}\quad & \eta_j \geq f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}}) + f(\bar{x}), \quad j \in J,\ \bar{x} \in X \\ 
+        &\sum_{i=1}^m x_{ij} \leq 1\quad j \in J,\quad x_{ij} \in \left\{ 0,1 \right\} \quad j\in J\quad i \in I
+    \end{align*}
+    \begin{enumerate}
+        \item 去除全部外逼近约束，给出当前最优解$x, \eta$
+        \item 检验当前最优解是否能满足全部的外逼近约束，若可以，迭代终止，执行结束
+        \item 否则选择违背最严重的外逼近约束，加入到其中，重新求解并执行步骤2
+    \end{enumerate}
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{choose violate constraint}
+    {
+    \scriptsize
+    \begin{align*}
+        \min\quad & \sum_{j=1}^n a_j \eta_j \\ 
+        \mathrm{s. t.}\quad & \eta_j \geq f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}}) + f(\bar{x}), \quad j \in J,\ \bar{x} \in X \\ 
+        &\sum_{i=1}^m x_{ij} \leq 1\quad j \in J,\quad x_{ij} \in \left\{ 0,1 \right\} \quad j\in J\quad i \in I
+    \end{align*}
+    \begin{itemize}
+        \item 除非已经找到了最优解，否则限制后的问题的解一定会带来一个违背的约束（放大了可行域，目标函数一定会更小，说明它不在原问题的可行域当中）
+        \item 可以直观地理解，违背即指$\eta_j$在可行域之外了，由于本身是求的最小化的问题，因此在找到的点加割即为最违背的割。
+        \item 由此可以得到当求解出一个在可行域当中的点时，如果$\eta < f_j(x)$，就说明这个点应该被包含在可行域之外，因此可以在这个点加入一个割。
+    \end{itemize}
+    }
+\end{frame}
+
+
+\section{Columnn Generation}
+\begin{frame}
+    \frametitle{Basic Idea}
+    \begin{itemize}
+        \item 许多线性规划问题的列数（变量）太多而无法明确考虑所有变量
+        \item 在算法的开始仅使用部分变量，并假设其他变量全部为0
+        \item 迭代地将有可能改进目标函数的变量添加到数学规划模型中。一旦可以证明添加新变量将无法再提高目标函数的值，终止迭代过程并得到最优解。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{How to use column generation in WTA Problem}
+    \begin{itemize}
+		\item \textbf{基本思路}：通过将所有目标场景$S$列出来的方式，将问题转化为一个线性规划问题。
+		\item \textbf{转化方式}：假设一共有$m$个武器，则对于任意一个目标$j$，每个武器可以选择打击$j$或不打击$j$，因此共有$2^m$个不同的打击方案。
+		\item \textbf{一个例子}：一共有8个武器，则使用第1，3，6号武器的攻击方案即记为$s_{[1,0,1,0,0,1,0,0]}$，$|S| = 2^8 = 256$
+		\item $n_{si}$：0-1变量，表示在第$s$个场景下，是否启用武器$i$. 在上面的例子中，$n_{s1} = 1,\ n_{s2} = 0$
+		\item $q_{js} = a_j \prod_{i = 1}^m (1 - n_{si}\cdot p_{ij})$：使用第方案$s$打击目标$j$的概率并加权，比如$q_{3s}$就是采用1,3,6号武器打击$3$号目标的击毁概率乘以目标$j$的权重。
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{transformed formulation}
+    \optimalProblem{\min}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{q_{js}y_{js}}}\tag{CG}}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{n_{si}y_{js}}}\leq 1 \quad &\forall ~ i \in I\\& \sumFromTo{s = 0}{2^m - 1}{y_{js}} = 1 \quad &\forall ~ j \in J\\& y_{js} \in \left\{ 0,1 \right\} &\forall ~ j\in J,\ s\in S}
+    \begin{columns}
+        \begin{column}{.70\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $I = \left\{1,\cdots,m\right\} $, 武器集合.
+                \item $J = \left\{1,\cdots,n\right\} $, 目标集合.
+                \item $S = \left\{1,\cdots,2^m\right\}$, 场景集合.
+            \end{itemize}
+        \end{column}
+    \hspace{-3cm}
+        \begin{column}{.70\linewidth}
+            \footnotesize
+            \begin{itemize}
+                \item $n_{si}$：场景$s$是否使用武器$i$
+                \item $y_{js}$：0-1变量，是否对目标$j$应用$s$
+                \item $q_{js}$：赋权后的场景$s$对$j$的摧毁概率
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{transformed formulation continuous}
+    \optimalProblem{\min}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{q_{js}y_{js}}}\tag{CG}}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{n_{si}y_{js}}}\leq 1 \quad &\forall ~ i \in I\\& \sumFromTo{s = 0}{2^m - 1}{y_{js}} = 1 \quad &\forall ~ j \in J\\& y_{js} \in \left\{ 0,1 \right\} & \forall ~ j\in J,\ s\in S}
+    \begin{itemize}
+        \item \textbf{目标函数}：最小化赋权后的消灭概率
+        \item \textbf{第一个约束}：每个武器最多只能攻击一个目标
+        \item \textbf{第二个约束}：每个目标恰好安排一个场景
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{column enumeration}
+    \optimalProblem{\min}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{q_{js}y_{js}}}\tag{CG}}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{n_{si}y_{js}}}\leq 1 \quad &\forall ~ i \in I\\& \sumFromTo{s = 0}{2^m - 1}{y_{js}} = 1 \quad &\forall ~ j \in J\\& y_{js} \in \left\{ 0,1 \right\} & \forall ~ j\in J,\ s\in S}
+
+    \begin{itemize}
+        \item 列枚举方法的基本思路是采用较好的方式对全部列进行枚举
+        \item 文章中采用了两个技巧：weapon number bounding and weapon domination
+        \item weapon number bounding：如果给一个目标分配了太少或者太多武器的场景，一定会导致无法改进。
+        \item weapon domination：针对某个目标，安排某个武器一定比安排另一个武器更好
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{LP Relaxition}
+    \optimalProblem{\min}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{q_{js}y_{js}}}\tag{CG-LP}}{\sumFromTo{j = 1}{n}{\sumFromTo{s = 0}{2^m -1}{n_{si}y_{js}}}\leq 1 \quad &\forall ~ i \in I\\& \sumFromTo{s = 0}{2^m - 1}{y_{js}} = 1 \quad &\forall ~  j \in J\\& y_{js} \geq 0 &\forall ~ j\in J,\ s\in S}
+    \begin{itemize}
+        \item 将问题进行线性松弛，第三个约束可以直接放成$y_{js} \geq 0$
+        \item 此时线性规划的特点为包含了$n \times 2^m$列
+        \item 列生成思路：仅取其中的部分列(变量)，因为在线性规划的最优解中，最多有$m+n$个变量不为0，即其他变量对应的对偶约束不积极。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Dual Problem}
+    
+    \optimalProblem{\max}{\sumFromTo{i=1}{m}{u_i} + \sumFromTo{j=1}{n}{v_j}\tag{CG-Dual}}{\sumFromTo{i=1}{m}{x_{is}u_i}+ v_j \leq q_{js}\quad \forall ~(s,j) \in X\\ &u_i \leq 0,\quad v_j\ \mathrm{free}}
+    \begin{itemize}
+        \item 若记$X = \left\{(s,j) | s\in S , j \in J \right\}$，每一个$X$中的元素都对应一个约束。
+        \item \item 选择原问题中的部分列相当于对偶问题选择了部分行。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricted Dual Problem}
+    
+    \optimalProblem{\max}{\sumFromTo{i=1}{m}{u_i} + \sumFromTo{j=1}{n}{v_j}\tag{CG-Dual-R}}{\sumFromTo{i=1}{m}{x_{is}u_i}+ v_j \leq q_{js}\quad ~\forall (s,j) \in \hat{X} \\ &u_i \leq 0,\quad v_j\ \mathrm{free}}
+    \begin{itemize}
+        
+        \item 选择部分约束即为仅考虑由部分$(s,j)$生成的约束，记$\hat{X} \subseteq X$
+        \item 求解得到$u^*, v^*$并带入原对偶，若都成立则一定为最优解。
+        \item 否则希望选择一个违背最严重的，即$\sumFromTo{i=1}{m}{x_{is}u_i}+ v_j > q_{js}$中最大的。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{subproblem}
+    \optimalProblem{\min}{a_j \prod_{i=1}^{m}{(1-p_{ij}x_{is})} -\sumFromTo{i=1}{m}{x_{is}}u_i - v_j}{j \in J,\quad s \in S\tag{CG-sub}}
+    \begin{itemize}
+        \item 希望选择一个违背最严重的，即$\sumFromTo{i=1}{m}{x_{is}u_i}+ v_j > q_{js}$中最大的。
+        \item 将$q_{js}$的定义带入，即可得到上述子问题。
+        \item 可以将问题分离，之后对每个给定的目标$j$求解，其直观为使用每个武器攻击需要一个花费，希望平衡开启武器的花费和消灭目标的概率。
+        \item 该子问题的形式的形式可以有效利用之前的外逼近方法。
+    \end{itemize}
+\end{frame}
+
+
+
+\section{Future Research Plan}
+\begin{frame}
+    \frametitle{Future Research Plan}
+    \begin{itemize}
+        \item 实现列生成方法
+        \item 在问题中加入传感器
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Alternate applications}
+    \begin{align}
+        \min\quad & \sum_{j=1}^n V_j \left( \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}} \right) \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq 1\quad \forall ~i \in I,\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall~ j\in J , ~ i \in I.
+    \end{align}
+    \begin{itemize}
+        \item 该模型不仅可以被应用在武器目标分配问题中，一些资源有限的分配问题都可以利用该模型。
+        \item 目标函数可以变化为$\sum_{j=1}^n V_j f_j(x)$，只要它满足一定的条件，比如是凸函数，则可以考虑使用上述两个方法来进行求解。
+    \end{itemize}
+\end{frame}
+
+\section{Acknowledgement and Reference}
+\begin{frame}
+\textcolor{myNewColorA}{\Huge{\centerline{Thank you!}}}
+\end{frame}
+
+\begin{frame}
+{\small
+\bibliographystyle{abbrvnat}
+\bibliography{reference}
+}
+\end{frame}
+
+
+\end{document}

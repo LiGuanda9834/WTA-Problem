@@ -212,8 +212,7 @@ Chinese Academy of Sciences}
     \begin{itemize}
         \item Static WTA problems.
         \item Dynamic WTA problems
-        \item New developments.
-        \item My work is focus on Static WTA problems.
+        \item In recent years, some new problem forms have also be propose. such as adding more combat elements or using multi-objective programs.
     \end{itemize}
 \end{frame}
 
@@ -245,7 +244,7 @@ Chinese Academy of Sciences}
 \end{frame}
 
 \begin{frame}
-    \frametitle{WTA model 1}
+    \frametitle{static WTA model 1}
     \begin{itemize}
         \item Compared to the basic model, allows $w_i$ weapons for each weapon type.
     \end{itemize}
@@ -257,7 +256,7 @@ Chinese Academy of Sciences}
     
 \end{frame}
 \begin{frame}
-    \frametitle{WTA model 1}
+    \frametitle{static WTA model 1}
     \begin{itemize}
         \item Transform $1-p_{ij}$ to $q_{ij}$ to make the formulation simpler.
     \end{itemize}
@@ -269,7 +268,7 @@ Chinese Academy of Sciences}
 \end{frame}
 
 \begin{frame}
-    \frametitle{WTA model 2}
+    \frametitle{static WTA model 2}
     \begin{itemize}
         \item For Convenience，Assume that any weapon has the same probability of  hitting the same target.
     \end{itemize}
@@ -281,7 +280,7 @@ Chinese Academy of Sciences}
 \end{frame}
 
 \begin{frame}
-    \frametitle{WTA model 3}
+    \frametitle{static WTA model 3}
     \begin{itemize}
         \item Logarithm of the objective function in S1
     \end{itemize}
@@ -293,7 +292,7 @@ Chinese Academy of Sciences}
 \end{frame}
 
 \begin{frame}
-    \frametitle{WTA model 3}
+    \frametitle{static WTA model 3}
     \begin{itemize}
         \item replaced the objective function with $y_j$ to get the following model.
     \end{itemize}
@@ -312,9 +311,9 @@ Chinese Academy of Sciences}
 
 
 \begin{frame}
-    \frametitle{WTA model 4}
+    \frametitle{static WTA model 4}
     \begin{itemize}
-        \item Limit the $x_{ij}$ to bianry variable.
+        \item limit the $x_{ij}$ to bianry variable.
         \item For $(1-p_{ij}x_{ij}) = (1-p_{ij})^{x_{ij}},~ x \in \left\{ 0,1\right\}$，The problem can be transformed into the following form.
     \end{itemize}
     \begin{align*} \tag{S4}
@@ -328,7 +327,7 @@ Chinese Academy of Sciences}
 \end{frame}
 
 \begin{frame}
-    \frametitle{WTA model 5}
+    \frametitle{static WTA model 5}
     \begin{itemize}
         \item Transform the problem into a knapsack problem
     \end{itemize}
@@ -343,16 +342,79 @@ Chinese Academy of Sciences}
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{static WTA model 6}
+    \begin{itemize}
+        \item This is attacking model.
+        \item there are K assets we have to protect, and n targets try to destroy these assets. 
+        \item The probablitiy with target j will destroy k is $\gamma_{jk}$. 
+    \end{itemize}
+    \begin{align*} \tag{S6}
+        \min\quad & \sum_{k=1}{K}a_k\prod_{j=1}^{n_k}\left[ \gamma_{ij} \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}\right]\\
+        \mathrm{s. t.}\quad &\sum_{j=1}^n x_{ij} \leq 1\quad \forall ~i \in I,\\
+        & \sum_{k=1}^{K}n_k = n\\
+        & x_{ij} \in \left\{ 0,1 \right\} \quad \forall~ j\in J , ~ i \in I.
+    \end{align*}
+\end{frame}
+
+\begin{frame}
+    \frametitle{dynamic WTA model 1 : shoot-look-shoot}
+    \begin{itemize}
+        \item the model assumes that it is possible to observe the target situationn after a strike and rearrange weapons on targets that have not yet been destroyed
+        \item In this model, no new targets will appear in the new time stage.
+        \item Repeatedly attack the targets until all targets are destroyed or the number of iterations reaches the upper limit
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{dynamic WTA model 2 : multi-stages}
+    \begin{itemize}
+        \item The model assumes that targets emergence will occur in different stages
+        \item the given number of targets is engaged in first stage, the new targets that appear in later stages are given in the form of probability distributions
+        \item Due to the high complexity of the model, heuristic solutions are mainly used.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Sensor WTA problems}
+    \begin{itemize}
+        \item Considering the real scene, it is necessary to introduce sensors to identify targets to be attacked, and similarly, elements such as command posts also need to be introduced.
+        \item The following is a simpler model: $S$ represents the set of sensors, and $o$ represents the number of sensors
+    \end{itemize}
+    \begin{align*} \tag{Sensor}
+        \min\quad & \sum_{j=1}^n V_j \left( \prod_{i=1}^m {\prod_{s = 1}^{o} (1 -  p_{isj})^{x_{isj}}} \right) \\ 
+        \mathrm{s. t.}\quad &\sum_{j=1}^n {\sum_{s=1}^o x_{isj}} \leq 1\quad \forall ~i \in I,\\
+        &\sum_{j=1}^n {\sum_{i=1}^m x_{isj}} \leq 1\quad \forall ~s \in S,\\
+        & x_{isj} \in \left\{ 0,1 \right\} \quad \forall~ j\in J , ~ i \in I,~ s\in S.
+    \end{align*}
+    \begin{itemize}
+        \item The two constraints are each weapon and each sensor can only be assigned to one target.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Multi-objective programs}
+    \begin{itemize}
+        \item In the real scene, not only the probability of destroying the target needs to be considered
+        \item Introduced objectives include minimizing cost or minimizing time
+        \item minimizing cost: Using weapon $i$ on target $j$ requires a fixed cost
+        \item minimizing time: minimize combat time in order to achieve combat objectives
+        \item combine multiple goals or Simultaneously optimize multiple objectives.
+    \end{itemize}
+\end{frame}
+
+
 
 \section{Outer Approximation}
 \begin{frame}
-    \frametitle{Basic formulation}
+    \frametitle{basic formulation}
     \begin{columns}
         \begin{column}{.50\linewidth}
             \footnotesize
             \begin{itemize}
-                \item $I = \left\{1,\cdots,m\right\} $, weapon set.
-                \item $J = \left\{1,\cdots,n\right\} $, target set.
+                \item $I = \left\{1,\cdots,m\right\} $, Weapon set.
+                \item $J = \left\{1,\cdots,n\right\} $, Target set.
                 \item $p_{ij}\in [0,1]$, probability that $i$ hits $j$
             \end{itemize}
         \end{column}
@@ -360,7 +422,7 @@ Chinese Academy of Sciences}
         \begin{column}{.50\linewidth}
             \footnotesize
             \begin{itemize}
-                \item $V_j$, weight of the target $j$.
+                \item $V_j$, The weight of the target $j$.
                 \item $x_{ij}$, whether weapon $i$ attack $j$.
             \end{itemize}
         \end{column}
@@ -374,11 +436,22 @@ Chinese Academy of Sciences}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Convexity of the objective function}
+    \frametitle{formulation}
+    \begin{equation*}
+        \prod_{i=1}^{m}{(1-p_{ij}x_{ij})} \iff \prod_{i=1}^{m}{(1-p_{ij})^{x_{ij}}}, x \in \left\{ 0,1 \right\}
+    \end{equation*}
+    \begin{itemize}
+        \item When restricting $x$ to be a bianry variable, the objective function values are the same.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The convexity of the objective function}
+    consider the second formulation
     \begin{equation*}
         f_j(x) =  \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}\quad \forall~  j \in J
     \end{equation*}
-    Hessian matrix$H$:
+    Hessian matrix$H$：
     \begin{equation*}
         \frac{\partial f_j(x)}{\partial x_{aj} \partial x_{bj}} = \ln(1 - p_{aj}) \ln(1 - p_{bj}) f_j(x)
     \end{equation*}
@@ -390,34 +463,36 @@ Chinese Academy of Sciences}
             \ln(1 - p_{2j}) \ln(1 - p_{1j}) & \ln(1 - p_{2j}) \ln(1 - p_{2j}) &\cdots & \ln(1 - p_{2j}) \ln(1 - p_{mj}) \\
             \vdots & \vdots &\ddots &\vdots \\
             \ln(1 - p_{mj}) \ln(1 - p_{1j}) & \ln(1 - p_{mj}) \ln(1 - p_{2j}) &\cdots & \ln(1 - p_{mj}) \ln(1 - p_{mj})
+
+
         \end{bmatrix}
     \end{equation*}
     }
 \end{frame}
 
 \begin{frame}
-    \frametitle{Convexity of the objective function}
-    We assume that:
+    \frametitle{The convexity of the objective function}
+    we assume that:
     \begin{equation*}
         l = \begin{bmatrix}
             \ln(1 - p_{1j}) & \ln(1 - p_{2j}) & \cdots & \ln(1 - p_{mj})
         \end{bmatrix}
     \end{equation*}
-    The Hessian matrix is :
+    the Hessian matrix is :
     \begin{equation*}
         H = f(x)l\cdot l^T
     \end{equation*}
-    The Hessiann matrix is a rank-one matrix so the objective function is convex.
+    It can be seen that the matrix is a rank-one matrix, that is, the columns are linearly related, so the determinant is 0 so the original function is convex.
 \end{frame}
 
 \begin{frame}
-    \frametitle{Transformed model}
-    Objective function
+    \frametitle{transformed model}
+    objective function
     \begin{equation*}
         \sum_{j=1}^n a_j \left( \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}} \right)
     \end{equation*}
     {\footnotesize
-    By introducing auxiliary variables, the nonlinear term can be transformed from the objective function into the constraint.
+    by introducing auxiliary variables, the nonlinear term can be transformed from the objective function into the constraint.
     
     if we take $\eta_j$ as the auxiliary variables to $\prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}$ the model can be transformed to 
     \begin{align*} \tag{S0'}
@@ -441,21 +516,22 @@ Chinese Academy of Sciences}
     \end{equation*}
     must be correct
     \begin{itemize}
-        \item For any given point, a linear constraint can be introduced to ensure that the feasible region satisfies the constraint.
-        \item The outer approximation method try to replace a nonlinear constraint by some linear constraints, but guarantees the models are equivalent.
+        \item That is, for any given point, a linear constraint can be introduced to ensure that the feasible region satisfies the constraint.
+        \item The outer approximation method hopes to take advantage of the integer characteristics and replace a nonlinear constraint by introducing multiple linear constraints, but guarantees that the problems before and after the transformation are equivalent.
     \end{itemize}
     
     
 \end{frame}
 
 \begin{frame}
-    \frametitle{Outer approximation constraint}
+    \frametitle{constraint formulation of outer approximation}
     take $f_j(x) =  \prod_{i=1}^m (1 -  p_{ij})^{x_{ij}}\quad j \in J$，then for any given  $\bar{x}$ in feasible domain, we have 
     \begin{align*}
         \nabla f(\bar{x})(x - \bar{x}) & = f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}})\\
         &= f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})x_{ij} - f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})\bar{x_{ij}}
     \end{align*}
     \begin{itemize}
+        \item The first term is the linear combination of variables, and the second term is a constant when $\bar{x}$ is given.
         \item We denote this constraint as the outer approximation constraint.
     \end{itemize}
     
@@ -464,46 +540,41 @@ Chinese Academy of Sciences}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Outer approximation model}
-    Let $X$ donates the set of all integer feasible solutions in the problem, the model can be described as.
+    \frametitle{outer approximation model}
+    
     {\scriptsize
+    Let $X$ donates the set of all integer feasible solutions in the problem, the model can be described as.
     \begin{align*} \tag{OA}
         \min\quad & \sum_{j=1}^n a_j \eta_j \\ 
         \mathrm{s. t.}\quad & \eta_j \geq f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}}) + f(\bar{x}), \quad \forall ~ j \in J,\ \bar{x} \in X \\ 
         &\sum_{i=1}^m x_{ij} \leq 1\quad \forall ~ j \in J,\\
         & x_{ij} \in \left\{ 0,1 \right\} \quad \forall ~ j\in J\quad i \in I.
     \end{align*}
+    the number of outer approximation constraints is very large, which has caused certain difficulties in solving the problem. Therefore, the restricted model is considered, that is, only some constraints are considered.
     }
-    the number of outer approximation constraints is very large. The restricted model only take care of some of them.
    
 \end{frame}
 
 \begin{frame}
     \frametitle{Idea of outer approximation method}
-    We assume that $\hat{X} \subseteq X$.
     {
     \scriptsize
-    
+    There are too many outer approximation constraints, only a subset of them is considered : $\hat{X} \subseteq X$
     \begin{align*}
         \min\quad & \sum_{j=1}^n a_j \eta_j \\ 
-        \mathrm{s. t.}\quad & \eta_j \geq f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}}) + f(\bar{x}), \quad j \in J,\ \bar{x} \in \hat{X} \\ 
+        \mathrm{s. t.}\quad & \eta_j \geq f(\bar{x})\sum_{i = 1}^m \ln(1-p_{ij})(x_{ij} - \bar{x_{ij}}) + f(\bar{x}), \quad j \in J,\ \bar{x} \in X \\ 
         &\sum_{i=1}^m x_{ij} \leq 1\quad j \in J,\quad x_{ij} \in \left\{ 0,1 \right\} \quad j\in J\quad i \in I
     \end{align*}
-    }
-\end{frame}
-
-\begin{frame}
-    \frametitle{Algorithm of outer approximation}
     \begin{enumerate}
         \item Remove all outer approximation constraints and give the current optimal solution $x, \eta$
         \item Check whether the current optimal solution can satisfy all the outer approximation constraints. if true, the iteration terminates and end the execution.
         \item Otherwise, choose to outer approximation constraint that has been violate most and add it to the restricted model, resolve the model and go to step 2.
     \end{enumerate}
+    }
 \end{frame}
 
-
 \begin{frame}
-    \frametitle{Choose violate constraint}
+    \frametitle{choose violate constraint}
     {
     \scriptsize
     \begin{align*}
