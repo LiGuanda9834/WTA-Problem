@@ -5,6 +5,7 @@
 #include <fstream>
 #include <math.h>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 struct Target

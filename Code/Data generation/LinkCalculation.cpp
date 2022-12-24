@@ -264,6 +264,8 @@ void LinkCalculation::sort_ssl(vector<ssl> &ssl_temp, vector<double> &cur_weight
     vector<double> max_vec = get_max_vec(ssl_temp);
     vector<double> min_vec = get_min_vec(ssl_temp);
     normalization(max_vec, min_vec, ssl_temp, cur_weight);
+
+    //---LGD change---
     sort(ssl_temp.begin(), ssl_temp.end(), [](ssl &r, ssl &l)
          { return r.jc > l.jc; });
 }
