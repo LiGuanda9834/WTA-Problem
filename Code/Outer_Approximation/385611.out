@@ -1,0 +1,957 @@
+Sender: LSF System <lsfadmin@c3u26n02>
+Subject: Job 385611: <test> in cluster <cluster1> Done
+
+Job <test> was submitted from host <ln02> by user <liguanda> in cluster <cluster1> at Tue Dec 20 14:55:06 2022
+Job was executed on host(s) <36*c3u26n02>, in queue <batch>, as user <liguanda> in cluster <cluster1> at Tue Dec 20 14:55:08 2022
+                            <36*c1u19n03>
+                            <36*c1u12n04>
+                            <36*c2u26n02>
+                            <36*a3u08n03>
+                            <36*a3u01n04>
+</share/home/liguanda> was used as the home directory.
+</share/home/liguanda/WTA> was used as the working directory.
+Started at Tue Dec 20 14:55:08 2022
+Terminated at Tue Dec 20 15:55:18 2022
+Results reported at Tue Dec 20 15:55:18 2022
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+mpirun ~/lsf/lsf run.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   522529.00 sec.
+    Max Memory :                                 1086603 MB
+    Average Memory :                             780270.56 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   10899 MB
+    Max Processes :                              573
+    Max Threads :                                791
+    Run time :                                   3609 sec.
+    Turnaround time :                            3612 sec.
+
+The output (if any) follows:
+
+thread 0 starts in c3u26n02
+thread 1 starts in c3u26n02
+thread 2 starts in c3u26n02
+thread 3 starts in c3u26n02
+thread 4 starts in c3u26n02
+thread 5 starts in c3u26n02
+thread 6 starts in c3u26n02
+thread 7 starts in c3u26n02
+thread 8 starts in c3u26n02
+thread 9 starts in c3u26n02
+thread 10 starts in c3u26n02
+thread 11 starts in c3u26n02
+thread 12 starts in c3u26n02
+thread 13 starts in c3u26n02
+thread 14 starts in c3u26n02
+thread 15 starts in c3u26n02
+thread 16 starts in c3u26n02
+thread 17 starts in c3u26n02
+thread 18 starts in c3u26n02
+thread 19 starts in c3u26n02
+thread 20 starts in c3u26n02
+thread 21 starts in c3u26n02
+thread 22 starts in c3u26n02
+thread 23 starts in c3u26n02
+thread 24 starts in c3u26n02
+thread 25 starts in c3u26n02
+thread 26 starts in c3u26n02
+thread 27 starts in c3u26n02
+thread 28 starts in c3u26n02
+thread 29 starts in c3u26n02
+thread 30 starts in c3u26n02
+thread 31 starts in c3u26n02
+thread 32 starts in c3u26n02
+thread 33 starts in c3u26n02
+thread 34 starts in c3u26n02
+thread 35 starts in c3u26n02
+thread 36 starts in c1u19n03
+thread 37 starts in c1u19n03
+thread 38 starts in c1u19n03
+thread 39 starts in c1u19n03
+thread 40 starts in c1u19n03
+thread 41 starts in c1u19n03
+thread 42 starts in c1u19n03
+thread 43 starts in c1u19n03
+thread 44 starts in c1u19n03
+thread 45 starts in c1u19n03
+thread 46 starts in c1u19n03
+thread 47 starts in c1u19n03
+thread 48 starts in c1u19n03
+thread 49 starts in c1u19n03
+thread 50 starts in c1u19n03
+thread 51 starts in c1u19n03
+thread 52 starts in c1u19n03
+thread 53 starts in c1u19n03
+thread 54 starts in c1u19n03
+thread 55 starts in c1u19n03
+thread 56 starts in c1u19n03
+thread 57 starts in c1u19n03
+thread 58 starts in c1u19n03
+thread 59 starts in c1u19n03
+thread 60 starts in c1u19n03
+thread 61 starts in c1u19n03
+thread 62 starts in c1u19n03
+thread 63 starts in c1u19n03
+thread 64 starts in c1u19n03
+thread 65 starts in c1u19n03
+thread 66 starts in c1u19n03
+thread 67 starts in c1u19n03
+thread 68 starts in c1u19n03
+thread 69 starts in c1u19n03
+thread 70 starts in c1u19n03
+thread 71 starts in c1u19n03
+thread 72 starts in c1u12n04
+thread 73 starts in c1u12n04
+thread 74 starts in c1u12n04
+thread 75 starts in c1u12n04
+thread 76 starts in c1u12n04
+thread 77 starts in c1u12n04
+thread 78 starts in c1u12n04
+thread 79 starts in c1u12n04
+thread 80 starts in c1u12n04
+thread 81 starts in c1u12n04
+thread 82 starts in c1u12n04
+thread 83 starts in c1u12n04
+thread 84 starts in c1u12n04
+thread 85 starts in c1u12n04
+thread 86 starts in c1u12n04
+thread 87 starts in c1u12n04
+thread 88 starts in c1u12n04
+thread 89 starts in c1u12n04
+thread 90 starts in c1u12n04
+thread 91 starts in c1u12n04
+thread 92 starts in c1u12n04
+thread 93 starts in c1u12n04
+thread 94 starts in c1u12n04
+thread 95 starts in c1u12n04
+thread 96 starts in c1u12n04
+thread 97 starts in c1u12n04
+thread 98 starts in c1u12n04
+thread 99 starts in c1u12n04
+thread 100 starts in c1u12n04
+thread 101 starts in c1u12n04
+thread 102 starts in c1u12n04
+thread 103 starts in c1u12n04
+thread 104 starts in c1u12n04
+thread 105 starts in c1u12n04
+thread 106 starts in c1u12n04
+thread 107 starts in c1u12n04
+thread 108 starts in c2u26n02
+thread 109 starts in c2u26n02
+thread 110 starts in c2u26n02
+thread 111 starts in c2u26n02
+thread 112 starts in c2u26n02
+thread 113 starts in c2u26n02
+thread 114 starts in c2u26n02
+thread 115 starts in c2u26n02
+thread 116 starts in c2u26n02
+thread 117 starts in c2u26n02
+thread 118 starts in c2u26n02
+thread 119 starts in c2u26n02
+thread 120 starts in c2u26n02
+thread 121 starts in c2u26n02
+thread 122 starts in c2u26n02
+thread 123 starts in c2u26n02
+thread 124 starts in c2u26n02
+thread 125 starts in c2u26n02
+thread 126 starts in c2u26n02
+thread 127 starts in c2u26n02
+thread 128 starts in c2u26n02
+thread 129 starts in c2u26n02
+thread 130 starts in c2u26n02
+thread 131 starts in c2u26n02
+thread 132 starts in c2u26n02
+thread 133 starts in c2u26n02
+thread 134 starts in c2u26n02
+thread 135 starts in c2u26n02
+thread 136 starts in c2u26n02
+thread 137 starts in c2u26n02
+thread 138 starts in c2u26n02
+thread 139 starts in c2u26n02
+thread 140 starts in c2u26n02
+thread 141 starts in c2u26n02
+thread 142 starts in c2u26n02
+thread 143 starts in c2u26n02
+thread 144 starts in a3u08n03
+thread 145 starts in a3u08n03
+thread 146 starts in a3u08n03
+thread 147 starts in a3u08n03
+thread 148 starts in a3u08n03
+thread 149 starts in a3u08n03
+thread 150 starts in a3u08n03
+thread 151 starts in a3u08n03
+thread 152 starts in a3u08n03
+thread 153 starts in a3u08n03
+thread 154 starts in a3u08n03
+thread 155 starts in a3u08n03
+thread 156 starts in a3u08n03
+thread 157 starts in a3u08n03
+thread 158 starts in a3u08n03
+thread 159 starts in a3u08n03
+thread 160 starts in a3u08n03
+thread 161 starts in a3u08n03
+thread 162 starts in a3u08n03
+thread 163 starts in a3u08n03
+thread 164 starts in a3u08n03
+thread 165 starts in a3u08n03
+thread 166 starts in a3u08n03
+thread 167 starts in a3u08n03
+thread 168 starts in a3u08n03
+thread 169 starts in a3u08n03
+thread 170 starts in a3u08n03
+thread 171 starts in a3u08n03
+thread 172 starts in a3u08n03
+thread 173 starts in a3u08n03
+thread 174 starts in a3u08n03
+thread 175 starts in a3u08n03
+thread 176 starts in a3u08n03
+thread 177 starts in a3u08n03
+thread 178 starts in a3u08n03
+thread 179 starts in a3u08n03
+thread 180 starts in a3u01n04
+thread 181 starts in a3u01n04
+thread 182 starts in a3u01n04
+thread 183 starts in a3u01n04
+thread 184 starts in a3u01n04
+thread 185 starts in a3u01n04
+thread 186 starts in a3u01n04
+thread 187 starts in a3u01n04
+thread 188 starts in a3u01n04
+thread 189 starts in a3u01n04
+thread 190 starts in a3u01n04
+thread 191 starts in a3u01n04
+thread 192 starts in a3u01n04
+thread 193 starts in a3u01n04
+thread 194 starts in a3u01n04
+thread 195 starts in a3u01n04
+thread 196 starts in a3u01n04
+thread 197 starts in a3u01n04
+thread 198 starts in a3u01n04
+thread 199 starts in a3u01n04
+thread 200 starts in a3u01n04
+thread 201 starts in a3u01n04
+thread 202 starts in a3u01n04
+thread 203 starts in a3u01n04
+thread 204 starts in a3u01n04
+thread 205 starts in a3u01n04
+thread 206 starts in a3u01n04
+thread 207 starts in a3u01n04
+thread 208 starts in a3u01n04
+thread 209 starts in a3u01n04
+thread 210 starts in a3u01n04
+thread 211 starts in a3u01n04
+thread 212 starts in a3u01n04
+thread 213 starts in a3u01n04
+thread 214 starts in a3u01n04
+thread 215 starts in a3u01n04
+send work 0 to thread 36 runs ./bin/WTA 0 0 data/wta5.txt 1 > results/wta5_0_1.out 2>results/wta5_0_1.err
+send work 1 to thread 1 runs ./bin/WTA 0 0 data/wta10.txt 1 > results/wta10_0_1.out 2>results/wta10_0_1.err
+send work 2 to thread 37 runs ./bin/WTA 0 0 data/wta20.txt 1 > results/wta20_0_1.out 2>results/wta20_0_1.err
+send work 3 to thread 2 runs ./bin/WTA 0 0 data/wta30.txt 1 > results/wta30_0_1.out 2>results/wta30_0_1.err
+send work 4 to thread 38 runs ./bin/WTA 0 0 data/wta40.txt 1 > results/wta40_0_1.out 2>results/wta40_0_1.err
+send work 5 to thread 3 runs ./bin/WTA 0 0 data/wta50.txt 1 > results/wta50_0_1.out 2>results/wta50_0_1.err
+send work 6 to thread 39 runs ./bin/WTA 0 0 data/wta60.txt 1 > results/wta60_0_1.out 2>results/wta60_0_1.err
+send work 7 to thread 4 runs ./bin/WTA 0 0 data/wta70.txt 1 > results/wta70_0_1.out 2>results/wta70_0_1.err
+send work 8 to thread 40 runs ./bin/WTA 0 0 data/wta80.txt 1 > results/wta80_0_1.out 2>results/wta80_0_1.err
+send work 9 to thread 5 runs ./bin/WTA 0 0 data/wta90.txt 1 > results/wta90_0_1.out 2>results/wta90_0_1.err
+send work 10 to thread 41 runs ./bin/WTA 0 0 data/wta100.txt 1 > results/wta100_0_1.out 2>results/wta100_0_1.err
+send work 11 to thread 6 runs ./bin/WTA 0 0 data/wta200.txt 1 > results/wta200_0_1.out 2>results/wta200_0_1.err
+send work 12 to thread 42 runs ./bin/WTA 1 0 data/wta5.txt 1 > results/wta5_1_1.out 2>results/wta5_1_1.err
+send work 13 to thread 7 runs ./bin/WTA 1 0 data/wta10.txt 1 > results/wta10_1_1.out 2>results/wta10_1_1.err
+send work 14 to thread 43 runs ./bin/WTA 1 0 data/wta20.txt 1 > results/wta20_1_1.out 2>results/wta20_1_1.err
+send work 15 to thread 8 runs ./bin/WTA 1 0 data/wta30.txt 1 > results/wta30_1_1.out 2>results/wta30_1_1.err
+send work 16 to thread 9 runs ./bin/WTA 1 0 data/wta40.txt 1 > results/wta40_1_1.out 2>results/wta40_1_1.err
+send work 17 to thread 10 runs ./bin/WTA 1 0 data/wta50.txt 1 > results/wta50_1_1.out 2>results/wta50_1_1.err
+send work 18 to thread 44 runs ./bin/WTA 1 0 data/wta60.txt 1 > results/wta60_1_1.out 2>results/wta60_1_1.err
+send work 19 to thread 11 runs ./bin/WTA 1 0 data/wta70.txt 1 > results/wta70_1_1.out 2>results/wta70_1_1.err
+send work 20 to thread 12 runs ./bin/WTA 1 0 data/wta80.txt 1 > results/wta80_1_1.out 2>results/wta80_1_1.err
+send work 21 to thread 45 runs ./bin/WTA 1 0 data/wta90.txt 1 > results/wta90_1_1.out 2>results/wta90_1_1.err
+send work 22 to thread 13 runs ./bin/WTA 1 0 data/wta100.txt 1 > results/wta100_1_1.out 2>results/wta100_1_1.err
+send work 23 to thread 14 runs ./bin/WTA 1 0 data/wta200.txt 1 > results/wta200_1_1.out 2>results/wta200_1_1.err
+send work 24 to thread 46 runs ./bin/WTA 0 0 data/wta5.txt 2 > results/wta5_0_2.out 2>results/wta5_0_2.err
+send work 25 to thread 15 runs ./bin/WTA 0 0 data/wta10.txt 2 > results/wta10_0_2.out 2>results/wta10_0_2.err
+send work 26 to thread 16 runs ./bin/WTA 0 0 data/wta20.txt 2 > results/wta20_0_2.out 2>results/wta20_0_2.err
+send work 27 to thread 47 runs ./bin/WTA 0 0 data/wta30.txt 2 > results/wta30_0_2.out 2>results/wta30_0_2.err
+send work 28 to thread 17 runs ./bin/WTA 0 0 data/wta40.txt 2 > results/wta40_0_2.out 2>results/wta40_0_2.err
+send work 29 to thread 18 runs ./bin/WTA 0 0 data/wta50.txt 2 > results/wta50_0_2.out 2>results/wta50_0_2.err
+send work 30 to thread 48 runs ./bin/WTA 0 0 data/wta60.txt 2 > results/wta60_0_2.out 2>results/wta60_0_2.err
+send work 31 to thread 19 runs ./bin/WTA 0 0 data/wta70.txt 2 > results/wta70_0_2.out 2>results/wta70_0_2.err
+send work 32 to thread 49 runs ./bin/WTA 0 0 data/wta80.txt 2 > results/wta80_0_2.out 2>results/wta80_0_2.err
+send work 33 to thread 20 runs ./bin/WTA 0 0 data/wta90.txt 2 > results/wta90_0_2.out 2>results/wta90_0_2.err
+send work 34 to thread 21 runs ./bin/WTA 0 0 data/wta100.txt 2 > results/wta100_0_2.out 2>results/wta100_0_2.err
+send work 35 to thread 22 runs ./bin/WTA 0 0 data/wta200.txt 2 > results/wta200_0_2.out 2>results/wta200_0_2.err
+send work 36 to thread 50 runs ./bin/WTA 1 0 data/wta5.txt 2 > results/wta5_1_2.out 2>results/wta5_1_2.err
+send work 37 to thread 23 runs ./bin/WTA 1 0 data/wta10.txt 2 > results/wta10_1_2.out 2>results/wta10_1_2.err
+send work 38 to thread 24 runs ./bin/WTA 1 0 data/wta20.txt 2 > results/wta20_1_2.out 2>results/wta20_1_2.err
+send work 39 to thread 51 runs ./bin/WTA 1 0 data/wta30.txt 2 > results/wta30_1_2.out 2>results/wta30_1_2.err
+send work 40 to thread 25 runs ./bin/WTA 1 0 data/wta40.txt 2 > results/wta40_1_2.out 2>results/wta40_1_2.err
+send work 41 to thread 26 runs ./bin/WTA 1 0 data/wta50.txt 2 > results/wta50_1_2.out 2>results/wta50_1_2.err
+send work 42 to thread 52 runs ./bin/WTA 1 0 data/wta60.txt 2 > results/wta60_1_2.out 2>results/wta60_1_2.err
+send work 43 to thread 27 runs ./bin/WTA 1 0 data/wta70.txt 2 > results/wta70_1_2.out 2>results/wta70_1_2.err
+send work 44 to thread 28 runs ./bin/WTA 1 0 data/wta80.txt 2 > results/wta80_1_2.out 2>results/wta80_1_2.err
+send work 45 to thread 53 runs ./bin/WTA 1 0 data/wta90.txt 2 > results/wta90_1_2.out 2>results/wta90_1_2.err
+send work 46 to thread 29 runs ./bin/WTA 1 0 data/wta100.txt 2 > results/wta100_1_2.out 2>results/wta100_1_2.err
+send work 47 to thread 54 runs ./bin/WTA 1 0 data/wta200.txt 2 > results/wta200_1_2.out 2>results/wta200_1_2.err
+send work 48 to thread 30 runs ./bin/WTA 0 0 data/wta5.txt 3 > results/wta5_0_3.out 2>results/wta5_0_3.err
+send work 49 to thread 31 runs ./bin/WTA 0 0 data/wta10.txt 3 > results/wta10_0_3.out 2>results/wta10_0_3.err
+send work 50 to thread 32 runs ./bin/WTA 0 0 data/wta20.txt 3 > results/wta20_0_3.out 2>results/wta20_0_3.err
+send work 51 to thread 55 runs ./bin/WTA 0 0 data/wta30.txt 3 > results/wta30_0_3.out 2>results/wta30_0_3.err
+send work 52 to thread 33 runs ./bin/WTA 0 0 data/wta40.txt 3 > results/wta40_0_3.out 2>results/wta40_0_3.err
+send work 53 to thread 34 runs ./bin/WTA 0 0 data/wta50.txt 3 > results/wta50_0_3.out 2>results/wta50_0_3.err
+send work 54 to thread 56 runs ./bin/WTA 0 0 data/wta60.txt 3 > results/wta60_0_3.out 2>results/wta60_0_3.err
+send work 55 to thread 35 runs ./bin/WTA 0 0 data/wta70.txt 3 > results/wta70_0_3.out 2>results/wta70_0_3.err
+send work 56 to thread 57 runs ./bin/WTA 0 0 data/wta80.txt 3 > results/wta80_0_3.out 2>results/wta80_0_3.err
+send work 57 to thread 58 runs ./bin/WTA 0 0 data/wta90.txt 3 > results/wta90_0_3.out 2>results/wta90_0_3.err
+send work 58 to thread 59 runs ./bin/WTA 0 0 data/wta100.txt 3 > results/wta100_0_3.out 2>results/wta100_0_3.err
+send work 59 to thread 60 runs ./bin/WTA 0 0 data/wta200.txt 3 > results/wta200_0_3.out 2>results/wta200_0_3.err
+send work 60 to thread 61 runs ./bin/WTA 1 0 data/wta5.txt 3 > results/wta5_1_3.out 2>results/wta5_1_3.err
+send work 61 to thread 62 runs ./bin/WTA 1 0 data/wta10.txt 3 > results/wta10_1_3.out 2>results/wta10_1_3.err
+send work 62 to thread 63 runs ./bin/WTA 1 0 data/wta20.txt 3 > results/wta20_1_3.out 2>results/wta20_1_3.err
+send work 63 to thread 64 runs ./bin/WTA 1 0 data/wta30.txt 3 > results/wta30_1_3.out 2>results/wta30_1_3.err
+send work 64 to thread 66 runs ./bin/WTA 1 0 data/wta40.txt 3 > results/wta40_1_3.out 2>results/wta40_1_3.err
+send work 65 to thread 65 runs ./bin/WTA 1 0 data/wta50.txt 3 > results/wta50_1_3.out 2>results/wta50_1_3.err
+send work 66 to thread 67 runs ./bin/WTA 1 0 data/wta60.txt 3 > results/wta60_1_3.out 2>results/wta60_1_3.err
+send work 67 to thread 68 runs ./bin/WTA 1 0 data/wta70.txt 3 > results/wta70_1_3.out 2>results/wta70_1_3.err
+send work 68 to thread 69 runs ./bin/WTA 1 0 data/wta80.txt 3 > results/wta80_1_3.out 2>results/wta80_1_3.err
+send work 69 to thread 70 runs ./bin/WTA 1 0 data/wta90.txt 3 > results/wta90_1_3.out 2>results/wta90_1_3.err
+send work 70 to thread 71 runs ./bin/WTA 1 0 data/wta100.txt 3 > results/wta100_1_3.out 2>results/wta100_1_3.err
+send work 71 to thread 72 runs ./bin/WTA 1 0 data/wta200.txt 3 > results/wta200_1_3.out 2>results/wta200_1_3.err
+send work 72 to thread 74 runs ./bin/WTA 0 0 data/wta5.txt 4 > results/wta5_0_4.out 2>results/wta5_0_4.err
+send work 73 to thread 75 runs ./bin/WTA 0 0 data/wta10.txt 4 > results/wta10_0_4.out 2>results/wta10_0_4.err
+send work 74 to thread 76 runs ./bin/WTA 0 0 data/wta20.txt 4 > results/wta20_0_4.out 2>results/wta20_0_4.err
+send work 75 to thread 77 runs ./bin/WTA 0 0 data/wta30.txt 4 > results/wta30_0_4.out 2>results/wta30_0_4.err
+send work 76 to thread 73 runs ./bin/WTA 0 0 data/wta40.txt 4 > results/wta40_0_4.out 2>results/wta40_0_4.err
+send work 77 to thread 78 runs ./bin/WTA 0 0 data/wta50.txt 4 > results/wta50_0_4.out 2>results/wta50_0_4.err
+send work 78 to thread 79 runs ./bin/WTA 0 0 data/wta60.txt 4 > results/wta60_0_4.out 2>results/wta60_0_4.err
+send work 79 to thread 80 runs ./bin/WTA 0 0 data/wta70.txt 4 > results/wta70_0_4.out 2>results/wta70_0_4.err
+send work 80 to thread 81 runs ./bin/WTA 0 0 data/wta80.txt 4 > results/wta80_0_4.out 2>results/wta80_0_4.err
+send work 81 to thread 82 runs ./bin/WTA 0 0 data/wta90.txt 4 > results/wta90_0_4.out 2>results/wta90_0_4.err
+send work 82 to thread 83 runs ./bin/WTA 0 0 data/wta100.txt 4 > results/wta100_0_4.out 2>results/wta100_0_4.err
+send work 83 to thread 84 runs ./bin/WTA 0 0 data/wta200.txt 4 > results/wta200_0_4.out 2>results/wta200_0_4.err
+send work 84 to thread 85 runs ./bin/WTA 1 0 data/wta5.txt 4 > results/wta5_1_4.out 2>results/wta5_1_4.err
+send work 85 to thread 86 runs ./bin/WTA 1 0 data/wta10.txt 4 > results/wta10_1_4.out 2>results/wta10_1_4.err
+send work 86 to thread 87 runs ./bin/WTA 1 0 data/wta20.txt 4 > results/wta20_1_4.out 2>results/wta20_1_4.err
+send work 87 to thread 88 runs ./bin/WTA 1 0 data/wta30.txt 4 > results/wta30_1_4.out 2>results/wta30_1_4.err
+send work 88 to thread 89 runs ./bin/WTA 1 0 data/wta40.txt 4 > results/wta40_1_4.out 2>results/wta40_1_4.err
+send work 89 to thread 90 runs ./bin/WTA 1 0 data/wta50.txt 4 > results/wta50_1_4.out 2>results/wta50_1_4.err
+send work 90 to thread 91 runs ./bin/WTA 1 0 data/wta60.txt 4 > results/wta60_1_4.out 2>results/wta60_1_4.err
+send work 91 to thread 92 runs ./bin/WTA 1 0 data/wta70.txt 4 > results/wta70_1_4.out 2>results/wta70_1_4.err
+send work 92 to thread 93 runs ./bin/WTA 1 0 data/wta80.txt 4 > results/wta80_1_4.out 2>results/wta80_1_4.err
+send work 93 to thread 94 runs ./bin/WTA 1 0 data/wta90.txt 4 > results/wta90_1_4.out 2>results/wta90_1_4.err
+send work 94 to thread 95 runs ./bin/WTA 1 0 data/wta100.txt 4 > results/wta100_1_4.out 2>results/wta100_1_4.err
+send work 95 to thread 96 runs ./bin/WTA 1 0 data/wta200.txt 4 > results/wta200_1_4.out 2>results/wta200_1_4.err
+send work 96 to thread 97 runs ./bin/WTA 0 0 data/wta5.txt 5 > results/wta5_0_5.out 2>results/wta5_0_5.err
+send work 97 to thread 98 runs ./bin/WTA 0 0 data/wta10.txt 5 > results/wta10_0_5.out 2>results/wta10_0_5.err
+send work 98 to thread 99 runs ./bin/WTA 0 0 data/wta20.txt 5 > results/wta20_0_5.out 2>results/wta20_0_5.err
+send work 99 to thread 100 runs ./bin/WTA 0 0 data/wta30.txt 5 > results/wta30_0_5.out 2>results/wta30_0_5.err
+send work 100 to thread 101 runs ./bin/WTA 0 0 data/wta40.txt 5 > results/wta40_0_5.out 2>results/wta40_0_5.err
+send work 101 to thread 102 runs ./bin/WTA 0 0 data/wta50.txt 5 > results/wta50_0_5.out 2>results/wta50_0_5.err
+send work 102 to thread 103 runs ./bin/WTA 0 0 data/wta60.txt 5 > results/wta60_0_5.out 2>results/wta60_0_5.err
+send work 103 to thread 104 runs ./bin/WTA 0 0 data/wta70.txt 5 > results/wta70_0_5.out 2>results/wta70_0_5.err
+send work 104 to thread 105 runs ./bin/WTA 0 0 data/wta80.txt 5 > results/wta80_0_5.out 2>results/wta80_0_5.err
+send work 105 to thread 106 runs ./bin/WTA 0 0 data/wta90.txt 5 > results/wta90_0_5.out 2>results/wta90_0_5.err
+send work 106 to thread 107 runs ./bin/WTA 0 0 data/wta100.txt 5 > results/wta100_0_5.out 2>results/wta100_0_5.err
+send work 107 to thread 108 runs ./bin/WTA 0 0 data/wta200.txt 5 > results/wta200_0_5.out 2>results/wta200_0_5.err
+send work 108 to thread 109 runs ./bin/WTA 1 0 data/wta5.txt 5 > results/wta5_1_5.out 2>results/wta5_1_5.err
+send work 109 to thread 110 runs ./bin/WTA 1 0 data/wta10.txt 5 > results/wta10_1_5.out 2>results/wta10_1_5.err
+send work 110 to thread 111 runs ./bin/WTA 1 0 data/wta20.txt 5 > results/wta20_1_5.out 2>results/wta20_1_5.err
+send work 111 to thread 112 runs ./bin/WTA 1 0 data/wta30.txt 5 > results/wta30_1_5.out 2>results/wta30_1_5.err
+send work 112 to thread 113 runs ./bin/WTA 1 0 data/wta40.txt 5 > results/wta40_1_5.out 2>results/wta40_1_5.err
+send work 113 to thread 114 runs ./bin/WTA 1 0 data/wta50.txt 5 > results/wta50_1_5.out 2>results/wta50_1_5.err
+send work 114 to thread 115 runs ./bin/WTA 1 0 data/wta60.txt 5 > results/wta60_1_5.out 2>results/wta60_1_5.err
+send work 115 to thread 116 runs ./bin/WTA 1 0 data/wta70.txt 5 > results/wta70_1_5.out 2>results/wta70_1_5.err
+send work 116 to thread 117 runs ./bin/WTA 1 0 data/wta80.txt 5 > results/wta80_1_5.out 2>results/wta80_1_5.err
+send work 117 to thread 118 runs ./bin/WTA 1 0 data/wta90.txt 5 > results/wta90_1_5.out 2>results/wta90_1_5.err
+send work 118 to thread 119 runs ./bin/WTA 1 0 data/wta100.txt 5 > results/wta100_1_5.out 2>results/wta100_1_5.err
+send work 119 to thread 120 runs ./bin/WTA 1 0 data/wta200.txt 5 > results/wta200_1_5.out 2>results/wta200_1_5.err
+send work 120 to thread 121 runs ./bin/WTA 0 0 data/wta5.txt 6 > results/wta5_0_6.out 2>results/wta5_0_6.err
+send work 121 to thread 122 runs ./bin/WTA 0 0 data/wta10.txt 6 > results/wta10_0_6.out 2>results/wta10_0_6.err
+send work 122 to thread 123 runs ./bin/WTA 0 0 data/wta20.txt 6 > results/wta20_0_6.out 2>results/wta20_0_6.err
+send work 123 to thread 124 runs ./bin/WTA 0 0 data/wta30.txt 6 > results/wta30_0_6.out 2>results/wta30_0_6.err
+send work 124 to thread 125 runs ./bin/WTA 0 0 data/wta40.txt 6 > results/wta40_0_6.out 2>results/wta40_0_6.err
+send work 125 to thread 126 runs ./bin/WTA 0 0 data/wta50.txt 6 > results/wta50_0_6.out 2>results/wta50_0_6.err
+send work 126 to thread 127 runs ./bin/WTA 0 0 data/wta60.txt 6 > results/wta60_0_6.out 2>results/wta60_0_6.err
+send work 127 to thread 128 runs ./bin/WTA 0 0 data/wta70.txt 6 > results/wta70_0_6.out 2>results/wta70_0_6.err
+send work 128 to thread 129 runs ./bin/WTA 0 0 data/wta80.txt 6 > results/wta80_0_6.out 2>results/wta80_0_6.err
+send work 129 to thread 130 runs ./bin/WTA 0 0 data/wta90.txt 6 > results/wta90_0_6.out 2>results/wta90_0_6.err
+send work 130 to thread 131 runs ./bin/WTA 0 0 data/wta100.txt 6 > results/wta100_0_6.out 2>results/wta100_0_6.err
+send work 131 to thread 132 runs ./bin/WTA 0 0 data/wta200.txt 6 > results/wta200_0_6.out 2>results/wta200_0_6.err
+send work 132 to thread 133 runs ./bin/WTA 1 0 data/wta5.txt 6 > results/wta5_1_6.out 2>results/wta5_1_6.err
+send work 133 to thread 134 runs ./bin/WTA 1 0 data/wta10.txt 6 > results/wta10_1_6.out 2>results/wta10_1_6.err
+send work 134 to thread 135 runs ./bin/WTA 1 0 data/wta20.txt 6 > results/wta20_1_6.out 2>results/wta20_1_6.err
+send work 135 to thread 136 runs ./bin/WTA 1 0 data/wta30.txt 6 > results/wta30_1_6.out 2>results/wta30_1_6.err
+send work 136 to thread 137 runs ./bin/WTA 1 0 data/wta40.txt 6 > results/wta40_1_6.out 2>results/wta40_1_6.err
+send work 137 to thread 138 runs ./bin/WTA 1 0 data/wta50.txt 6 > results/wta50_1_6.out 2>results/wta50_1_6.err
+send work 138 to thread 139 runs ./bin/WTA 1 0 data/wta60.txt 6 > results/wta60_1_6.out 2>results/wta60_1_6.err
+send work 139 to thread 140 runs ./bin/WTA 1 0 data/wta70.txt 6 > results/wta70_1_6.out 2>results/wta70_1_6.err
+send work 140 to thread 141 runs ./bin/WTA 1 0 data/wta80.txt 6 > results/wta80_1_6.out 2>results/wta80_1_6.err
+send work 141 to thread 142 runs ./bin/WTA 1 0 data/wta90.txt 6 > results/wta90_1_6.out 2>results/wta90_1_6.err
+send work 142 to thread 143 runs ./bin/WTA 1 0 data/wta100.txt 6 > results/wta100_1_6.out 2>results/wta100_1_6.err
+send work 143 to thread 144 runs ./bin/WTA 1 0 data/wta200.txt 6 > results/wta200_1_6.out 2>results/wta200_1_6.err
+send work 144 to thread 145 runs ./bin/WTA 0 0 data/wta5.txt 7 > results/wta5_0_7.out 2>results/wta5_0_7.err
+send work 145 to thread 146 runs ./bin/WTA 0 0 data/wta10.txt 7 > results/wta10_0_7.out 2>results/wta10_0_7.err
+send work 146 to thread 147 runs ./bin/WTA 0 0 data/wta20.txt 7 > results/wta20_0_7.out 2>results/wta20_0_7.err
+send work 147 to thread 148 runs ./bin/WTA 0 0 data/wta30.txt 7 > results/wta30_0_7.out 2>results/wta30_0_7.err
+send work 148 to thread 149 runs ./bin/WTA 0 0 data/wta40.txt 7 > results/wta40_0_7.out 2>results/wta40_0_7.err
+send work 149 to thread 150 runs ./bin/WTA 0 0 data/wta50.txt 7 > results/wta50_0_7.out 2>results/wta50_0_7.err
+send work 150 to thread 151 runs ./bin/WTA 0 0 data/wta60.txt 7 > results/wta60_0_7.out 2>results/wta60_0_7.err
+send work 151 to thread 152 runs ./bin/WTA 0 0 data/wta70.txt 7 > results/wta70_0_7.out 2>results/wta70_0_7.err
+send work 152 to thread 153 runs ./bin/WTA 0 0 data/wta80.txt 7 > results/wta80_0_7.out 2>results/wta80_0_7.err
+send work 153 to thread 154 runs ./bin/WTA 0 0 data/wta90.txt 7 > results/wta90_0_7.out 2>results/wta90_0_7.err
+send work 154 to thread 155 runs ./bin/WTA 0 0 data/wta100.txt 7 > results/wta100_0_7.out 2>results/wta100_0_7.err
+send work 155 to thread 156 runs ./bin/WTA 0 0 data/wta200.txt 7 > results/wta200_0_7.out 2>results/wta200_0_7.err
+send work 156 to thread 157 runs ./bin/WTA 1 0 data/wta5.txt 7 > results/wta5_1_7.out 2>results/wta5_1_7.err
+send work 157 to thread 158 runs ./bin/WTA 1 0 data/wta10.txt 7 > results/wta10_1_7.out 2>results/wta10_1_7.err
+send work 158 to thread 159 runs ./bin/WTA 1 0 data/wta20.txt 7 > results/wta20_1_7.out 2>results/wta20_1_7.err
+send work 159 to thread 160 runs ./bin/WTA 1 0 data/wta30.txt 7 > results/wta30_1_7.out 2>results/wta30_1_7.err
+send work 160 to thread 161 runs ./bin/WTA 1 0 data/wta40.txt 7 > results/wta40_1_7.out 2>results/wta40_1_7.err
+send work 161 to thread 162 runs ./bin/WTA 1 0 data/wta50.txt 7 > results/wta50_1_7.out 2>results/wta50_1_7.err
+send work 162 to thread 163 runs ./bin/WTA 1 0 data/wta60.txt 7 > results/wta60_1_7.out 2>results/wta60_1_7.err
+send work 163 to thread 164 runs ./bin/WTA 1 0 data/wta70.txt 7 > results/wta70_1_7.out 2>results/wta70_1_7.err
+send work 164 to thread 165 runs ./bin/WTA 1 0 data/wta80.txt 7 > results/wta80_1_7.out 2>results/wta80_1_7.err
+send work 165 to thread 166 runs ./bin/WTA 1 0 data/wta90.txt 7 > results/wta90_1_7.out 2>results/wta90_1_7.err
+send work 166 to thread 167 runs ./bin/WTA 1 0 data/wta100.txt 7 > results/wta100_1_7.out 2>results/wta100_1_7.err
+send work 167 to thread 168 runs ./bin/WTA 1 0 data/wta200.txt 7 > results/wta200_1_7.out 2>results/wta200_1_7.err
+send work 168 to thread 169 runs ./bin/WTA 0 0 data/wta5.txt 8 > results/wta5_0_8.out 2>results/wta5_0_8.err
+send work 169 to thread 170 runs ./bin/WTA 0 0 data/wta10.txt 8 > results/wta10_0_8.out 2>results/wta10_0_8.err
+send work 170 to thread 171 runs ./bin/WTA 0 0 data/wta20.txt 8 > results/wta20_0_8.out 2>results/wta20_0_8.err
+send work 171 to thread 172 runs ./bin/WTA 0 0 data/wta30.txt 8 > results/wta30_0_8.out 2>results/wta30_0_8.err
+send work 172 to thread 173 runs ./bin/WTA 0 0 data/wta40.txt 8 > results/wta40_0_8.out 2>results/wta40_0_8.err
+send work 173 to thread 174 runs ./bin/WTA 0 0 data/wta50.txt 8 > results/wta50_0_8.out 2>results/wta50_0_8.err
+send work 174 to thread 175 runs ./bin/WTA 0 0 data/wta60.txt 8 > results/wta60_0_8.out 2>results/wta60_0_8.err
+send work 175 to thread 176 runs ./bin/WTA 0 0 data/wta70.txt 8 > results/wta70_0_8.out 2>results/wta70_0_8.err
+send work 176 to thread 177 runs ./bin/WTA 0 0 data/wta80.txt 8 > results/wta80_0_8.out 2>results/wta80_0_8.err
+send work 177 to thread 178 runs ./bin/WTA 0 0 data/wta90.txt 8 > results/wta90_0_8.out 2>results/wta90_0_8.err
+send work 178 to thread 179 runs ./bin/WTA 0 0 data/wta100.txt 8 > results/wta100_0_8.out 2>results/wta100_0_8.err
+send work 179 to thread 180 runs ./bin/WTA 0 0 data/wta200.txt 8 > results/wta200_0_8.out 2>results/wta200_0_8.err
+send work 180 to thread 181 runs ./bin/WTA 1 0 data/wta5.txt 8 > results/wta5_1_8.out 2>results/wta5_1_8.err
+send work 181 to thread 182 runs ./bin/WTA 1 0 data/wta10.txt 8 > results/wta10_1_8.out 2>results/wta10_1_8.err
+send work 182 to thread 183 runs ./bin/WTA 1 0 data/wta20.txt 8 > results/wta20_1_8.out 2>results/wta20_1_8.err
+send work 183 to thread 184 runs ./bin/WTA 1 0 data/wta30.txt 8 > results/wta30_1_8.out 2>results/wta30_1_8.err
+send work 184 to thread 185 runs ./bin/WTA 1 0 data/wta40.txt 8 > results/wta40_1_8.out 2>results/wta40_1_8.err
+send work 185 to thread 186 runs ./bin/WTA 1 0 data/wta50.txt 8 > results/wta50_1_8.out 2>results/wta50_1_8.err
+send work 186 to thread 187 runs ./bin/WTA 1 0 data/wta60.txt 8 > results/wta60_1_8.out 2>results/wta60_1_8.err
+send work 187 to thread 188 runs ./bin/WTA 1 0 data/wta70.txt 8 > results/wta70_1_8.out 2>results/wta70_1_8.err
+send work 188 to thread 190 runs ./bin/WTA 1 0 data/wta80.txt 8 > results/wta80_1_8.out 2>results/wta80_1_8.err
+send work 189 to thread 189 runs ./bin/WTA 1 0 data/wta90.txt 8 > results/wta90_1_8.out 2>results/wta90_1_8.err
+send work 190 to thread 191 runs ./bin/WTA 1 0 data/wta100.txt 8 > results/wta100_1_8.out 2>results/wta100_1_8.err
+send work 191 to thread 192 runs ./bin/WTA 1 0 data/wta200.txt 8 > results/wta200_1_8.out 2>results/wta200_1_8.err
+send work 192 to thread 193 runs ./bin/WTA 0 0 data/wta5.txt 9 > results/wta5_0_9.out 2>results/wta5_0_9.err
+send work 193 to thread 194 runs ./bin/WTA 0 0 data/wta10.txt 9 > results/wta10_0_9.out 2>results/wta10_0_9.err
+send work 194 to thread 195 runs ./bin/WTA 0 0 data/wta20.txt 9 > results/wta20_0_9.out 2>results/wta20_0_9.err
+send work 195 to thread 196 runs ./bin/WTA 0 0 data/wta30.txt 9 > results/wta30_0_9.out 2>results/wta30_0_9.err
+send work 196 to thread 197 runs ./bin/WTA 0 0 data/wta40.txt 9 > results/wta40_0_9.out 2>results/wta40_0_9.err
+send work 197 to thread 198 runs ./bin/WTA 0 0 data/wta50.txt 9 > results/wta50_0_9.out 2>results/wta50_0_9.err
+send work 198 to thread 199 runs ./bin/WTA 0 0 data/wta60.txt 9 > results/wta60_0_9.out 2>results/wta60_0_9.err
+send work 199 to thread 200 runs ./bin/WTA 0 0 data/wta70.txt 9 > results/wta70_0_9.out 2>results/wta70_0_9.err
+send work 200 to thread 201 runs ./bin/WTA 0 0 data/wta80.txt 9 > results/wta80_0_9.out 2>results/wta80_0_9.err
+send work 201 to thread 202 runs ./bin/WTA 0 0 data/wta90.txt 9 > results/wta90_0_9.out 2>results/wta90_0_9.err
+send work 202 to thread 203 runs ./bin/WTA 0 0 data/wta100.txt 9 > results/wta100_0_9.out 2>results/wta100_0_9.err
+send work 203 to thread 204 runs ./bin/WTA 0 0 data/wta200.txt 9 > results/wta200_0_9.out 2>results/wta200_0_9.err
+send work 204 to thread 205 runs ./bin/WTA 1 0 data/wta5.txt 9 > results/wta5_1_9.out 2>results/wta5_1_9.err
+send work 205 to thread 206 runs ./bin/WTA 1 0 data/wta10.txt 9 > results/wta10_1_9.out 2>results/wta10_1_9.err
+send work 206 to thread 207 runs ./bin/WTA 1 0 data/wta20.txt 9 > results/wta20_1_9.out 2>results/wta20_1_9.err
+send work 207 to thread 208 runs ./bin/WTA 1 0 data/wta30.txt 9 > results/wta30_1_9.out 2>results/wta30_1_9.err
+send work 208 to thread 209 runs ./bin/WTA 1 0 data/wta40.txt 9 > results/wta40_1_9.out 2>results/wta40_1_9.err
+send work 209 to thread 210 runs ./bin/WTA 1 0 data/wta50.txt 9 > results/wta50_1_9.out 2>results/wta50_1_9.err
+send work 210 to thread 211 runs ./bin/WTA 1 0 data/wta60.txt 9 > results/wta60_1_9.out 2>results/wta60_1_9.err
+send work 211 to thread 212 runs ./bin/WTA 1 0 data/wta70.txt 9 > results/wta70_1_9.out 2>results/wta70_1_9.err
+send work 212 to thread 213 runs ./bin/WTA 1 0 data/wta80.txt 9 > results/wta80_1_9.out 2>results/wta80_1_9.err
+send work 213 to thread 214 runs ./bin/WTA 1 0 data/wta90.txt 9 > results/wta90_1_9.out 2>results/wta90_1_9.err
+send work 214 to thread 215 runs ./bin/WTA 1 0 data/wta100.txt 9 > results/wta100_1_9.out 2>results/wta100_1_9.err
+send work 215 to thread 169 runs ./bin/WTA 1 0 data/wta200.txt 9 > results/wta200_1_9.out 2>results/wta200_1_9.err
+send work 216 to thread 145 runs ./bin/WTA 0 0 data/wta5.txt 10 > results/wta5_0_10.out 2>results/wta5_0_10.err
+send work 217 to thread 157 runs ./bin/WTA 0 0 data/wta10.txt 10 > results/wta10_0_10.out 2>results/wta10_0_10.err
+send work 218 to thread 146 runs ./bin/WTA 0 0 data/wta20.txt 10 > results/wta20_0_10.out 2>results/wta20_0_10.err
+send work 219 to thread 170 runs ./bin/WTA 0 0 data/wta30.txt 10 > results/wta30_0_10.out 2>results/wta30_0_10.err
+send work 220 to thread 181 runs ./bin/WTA 0 0 data/wta40.txt 10 > results/wta40_0_10.out 2>results/wta40_0_10.err
+send work 221 to thread 158 runs ./bin/WTA 0 0 data/wta50.txt 10 > results/wta50_0_10.out 2>results/wta50_0_10.err
+send work 222 to thread 50 runs ./bin/WTA 0 0 data/wta60.txt 10 > results/wta60_0_10.out 2>results/wta60_0_10.err
+send work 223 to thread 182 runs ./bin/WTA 0 0 data/wta70.txt 10 > results/wta70_0_10.out 2>results/wta70_0_10.err
+send work 224 to thread 36 runs ./bin/WTA 0 0 data/wta80.txt 10 > results/wta80_0_10.out 2>results/wta80_0_10.err
+send work 225 to thread 61 runs ./bin/WTA 0 0 data/wta90.txt 10 > results/wta90_0_10.out 2>results/wta90_0_10.err
+send work 226 to thread 46 runs ./bin/WTA 0 0 data/wta100.txt 10 > results/wta100_0_10.out 2>results/wta100_0_10.err
+send work 227 to thread 205 runs ./bin/WTA 0 0 data/wta200.txt 10 > results/wta200_0_10.out 2>results/wta200_0_10.err
+send work 228 to thread 42 runs ./bin/WTA 1 0 data/wta5.txt 10 > results/wta5_1_10.out 2>results/wta5_1_10.err
+send work 229 to thread 193 runs ./bin/WTA 1 0 data/wta10.txt 10 > results/wta10_1_10.out 2>results/wta10_1_10.err
+send work 230 to thread 62 runs ./bin/WTA 1 0 data/wta20.txt 10 > results/wta20_1_10.out 2>results/wta20_1_10.err
+send work 231 to thread 145 runs ./bin/WTA 1 0 data/wta30.txt 10 > results/wta30_1_10.out 2>results/wta30_1_10.err
+send work 232 to thread 194 runs ./bin/WTA 1 0 data/wta40.txt 10 > results/wta40_1_10.out 2>results/wta40_1_10.err
+send work 233 to thread 157 runs ./bin/WTA 1 0 data/wta50.txt 10 > results/wta50_1_10.out 2>results/wta50_1_10.err
+send work 234 to thread 206 runs ./bin/WTA 1 0 data/wta60.txt 10 > results/wta60_1_10.out 2>results/wta60_1_10.err
+send work 235 to thread 42 runs ./bin/WTA 1 0 data/wta70.txt 10 > results/wta70_1_10.out 2>results/wta70_1_10.err
+send work 236 to thread 193 runs ./bin/WTA 1 0 data/wta80.txt 10 > results/wta80_1_10.out 2>results/wta80_1_10.err
+send work 237 to thread 159 runs ./bin/WTA 1 0 data/wta90.txt 10 > results/wta90_1_10.out 2>results/wta90_1_10.err
+send work 238 to thread 183 runs ./bin/WTA 1 0 data/wta100.txt 10 > results/wta100_1_10.out 2>results/wta100_1_10.err
+send work 239 to thread 63 runs ./bin/WTA 1 0 data/wta200.txt 10 > results/wta200_1_10.out 2>results/wta200_1_10.err
+thread 43 ends!
+thread 195 ends!
+thread 207 ends!
+thread 62 ends!
+thread 147 ends!
+thread 1 ends!
+thread 30 ends!
+thread 31 ends!
+thread 15 ends!
+thread 7 ends!
+thread 23 ends!
+thread 146 ends!
+thread 171 ends!
+thread 109 ends!
+thread 121 ends!
+thread 133 ends!
+thread 122 ends!
+thread 110 ends!
+thread 134 ends!
+thread 24 ends!
+thread 74 ends!
+thread 97 ends!
+thread 86 ends!
+thread 98 ends!
+thread 75 ends!
+thread 85 ends!
+thread 111 ends!
+thread 135 ends!
+thread 87 ends!
+thread 37 ends!
+thread 32 ends!
+thread 76 ends!
+thread 16 ends!
+thread 99 ends!
+thread 123 ends!
+thread 112 ends!
+thread 100 ends!
+thread 184 ends!
+thread 145 ends!
+thread 170 ends!
+thread 8 ends!
+thread 51 ends!
+thread 208 ends!
+thread 9 ends!
+thread 113 ends!
+thread 136 ends!
+thread 2 ends!
+thread 88 ends!
+thread 194 ends!
+thread 47 ends!
+thread 160 ends!
+thread 64 ends!
+thread 137 ends!
+thread 25 ends!
+thread 209 ends!
+thread 89 ends!
+thread 172 ends!
+thread 161 ends!
+thread 185 ends!
+thread 148 ends!
+thread 66 ends!
+thread 196 ends!
+thread 55 ends!
+thread 193 ends!
+thread 206 ends!
+thread 44 ends!
+thread 211 ends!
+thread 67 ends!
+thread 138 ends!
+thread 186 ends!
+thread 163 ends!
+thread 68 ends!
+thread 115 ends!
+thread 187 ends!
+thread 42 ends!
+thread 164 ends!
+thread 140 ends!
+thread 190 ends!
+thread 90 ends!
+thread 27 ends!
+thread 65 ends!
+thread 162 ends!
+thread 212 ends!
+thread 117 ends!
+thread 52 ends!
+thread 92 ends!
+thread 11 ends!
+thread 157 ends!
+thread 210 ends!
+thread 139 ends!
+thread 69 ends!
+thread 166 ends!
+thread 10 ends!
+thread 214 ends!
+thread 93 ends!
+thread 114 ends!
+thread 70 ends!
+thread 96 ends!
+thread 192 ends!
+thread 169 ends!
+thread 14 ends!
+thread 72 ends!
+thread 54 ends!
+thread 144 ends!
+thread 168 ends!
+thread 63 ends!
+thread 120 ends!
+thread 95 ends!
+thread 13 ends!
+thread 159 ends!
+thread 38 ends!
+thread 183 ends!
+thread 29 ends!
+thread 167 ends!
+thread 215 ends!
+thread 191 ends!
+thread 180 ends!
+thread thread 124 ends!
+71 ends!
+thread 119 ends!
+thread 156 ends!
+thread 22 ends!
+thread 189 ends!
+thread 149 ends!
+thread 181 ends!
+thread 173 ends!
+thread 84 ends!
+thread 197 ends!
+thread 28 ends!
+thread 6 ends!
+thread 17 ends!
+thread 174 ends!
+thread 77 ends!
+thread 33 ends!
+thread 205 ends!
+thread 143 ends!
+thread 142 ends!
+thread 125 ends!
+thread 94 ends!
+thread 150 ends!
+thread 53 ends!
+thread 91 ends!
+thread 204 ends!
+thread 213 ends!
+thread 141 ends!
+thread 12 ends!
+thread 101 ends!
+thread 158 ends!
+thread 102 ends!
+thread 78 ends!
+thread 188 ends!
+thread 126 ends!
+thread 165 ends!
+thread 73 ends!
+thread 108 ends!
+thread 18 ends!
+thread 3 ends!
+thread 201 ends!
+thread 34 ends!
+thread 118 ends!
+thread 4 ends!
+thread 153 ends!
+thread 45 ends!
+thread thread 105 ends!132 ends!
+
+thread 21 ends!
+thread 5 ends!
+thread 203 ends!
+thread 20 ends!
+thread 104 ends!
+thread 198 ends!
+thread 83 ends!
+thread 35 ends!
+thread 202 ends!
+thread 199 ends!
+thread thread 154 ends!
+177 ends!
+thread 178 ends!
+thread 176 ends!
+thread 155 ends!
+thread 26 ends!
+thread 82 ends!
+thread 79 ends!
+thread 81 ends!thread 
+59 ends!
+thread 56 ends!
+thread 151 ends!
+thread 200 ends!
+thread 49 ends!
+thread 106 ends!
+thread 19 ends!
+thread 107 ends!
+thread 60 ends!
+thread 182 ends!
+thread 152 ends!
+thread 128 ends!
+thread 127 ends!
+thread 179 ends!
+thread 48 ends!
+thread 57 ends!
+thread 116 ends!
+thread 103 ends!
+thread 131 ends!
+thread 39 ends!
+thread 50 ends!
+thread 80 ends!
+thread 175 ends!
+thread 129 ends!
+thread 40 ends!
+thread 58 ends!
+thread 130 ends!
+thread 61 ends!
+thread 41 ends!
+thread 46 ends!
+work 0 costs 0.229647 seconds in thread 36 run ./bin/WTA 0 0 data/wta5.txt 1 > results/wta5_0_1.out 2>results/wta5_0_1.err
+work 1 costs 0 seconds in thread 1 run ./bin/WTA 0 0 data/wta10.txt 1 > results/wta10_0_1.out 2>results/wta10_0_1.err
+work 2 costs 0 seconds in thread 37 run ./bin/WTA 0 0 data/wta20.txt 1 > results/wta20_0_1.out 2>results/wta20_0_1.err
+work 3 costs 0 seconds in thread 2 run ./bin/WTA 0 0 data/wta30.txt 1 > results/wta30_0_1.out 2>results/wta30_0_1.err
+work 4 costs 0 seconds in thread 38 run ./bin/WTA 0 0 data/wta40.txt 1 > results/wta40_0_1.out 2>results/wta40_0_1.err
+work 5 costs 0 seconds in thread 3 run ./bin/WTA 0 0 data/wta50.txt 1 > results/wta50_0_1.out 2>results/wta50_0_1.err
+work 6 costs 0 seconds in thread 39 run ./bin/WTA 0 0 data/wta60.txt 1 > results/wta60_0_1.out 2>results/wta60_0_1.err
+work 7 costs 0 seconds in thread 4 run ./bin/WTA 0 0 data/wta70.txt 1 > results/wta70_0_1.out 2>results/wta70_0_1.err
+work 8 costs 0 seconds in thread 40 run ./bin/WTA 0 0 data/wta80.txt 1 > results/wta80_0_1.out 2>results/wta80_0_1.err
+work 9 costs 0 seconds in thread 5 run ./bin/WTA 0 0 data/wta90.txt 1 > results/wta90_0_1.out 2>results/wta90_0_1.err
+work 10 costs 0 seconds in thread 41 run ./bin/WTA 0 0 data/wta100.txt 1 > results/wta100_0_1.out 2>results/wta100_0_1.err
+work 11 costs 0 seconds in thread 6 run ./bin/WTA 0 0 data/wta200.txt 1 > results/wta200_0_1.out 2>results/wta200_0_1.err
+work 12 costs 0.2297 seconds in thread 42 run ./bin/WTA 1 0 data/wta5.txt 1 > results/wta5_1_1.out 2>results/wta5_1_1.err
+work 13 costs 0 seconds in thread 7 run ./bin/WTA 1 0 data/wta10.txt 1 > results/wta10_1_1.out 2>results/wta10_1_1.err
+work 14 costs 0 seconds in thread 43 run ./bin/WTA 1 0 data/wta20.txt 1 > results/wta20_1_1.out 2>results/wta20_1_1.err
+work 15 costs 0 seconds in thread 8 run ./bin/WTA 1 0 data/wta30.txt 1 > results/wta30_1_1.out 2>results/wta30_1_1.err
+work 16 costs 0 seconds in thread 9 run ./bin/WTA 1 0 data/wta40.txt 1 > results/wta40_1_1.out 2>results/wta40_1_1.err
+work 17 costs 0 seconds in thread 10 run ./bin/WTA 1 0 data/wta50.txt 1 > results/wta50_1_1.out 2>results/wta50_1_1.err
+work 18 costs 0 seconds in thread 44 run ./bin/WTA 1 0 data/wta60.txt 1 > results/wta60_1_1.out 2>results/wta60_1_1.err
+work 19 costs 0 seconds in thread 11 run ./bin/WTA 1 0 data/wta70.txt 1 > results/wta70_1_1.out 2>results/wta70_1_1.err
+work 20 costs 0 seconds in thread 12 run ./bin/WTA 1 0 data/wta80.txt 1 > results/wta80_1_1.out 2>results/wta80_1_1.err
+work 21 costs 0 seconds in thread 45 run ./bin/WTA 1 0 data/wta90.txt 1 > results/wta90_1_1.out 2>results/wta90_1_1.err
+work 22 costs 0 seconds in thread 13 run ./bin/WTA 1 0 data/wta100.txt 1 > results/wta100_1_1.out 2>results/wta100_1_1.err
+work 23 costs 0 seconds in thread 14 run ./bin/WTA 1 0 data/wta200.txt 1 > results/wta200_1_1.out 2>results/wta200_1_1.err
+work 24 costs 0.229532 seconds in thread 46 run ./bin/WTA 0 0 data/wta5.txt 2 > results/wta5_0_2.out 2>results/wta5_0_2.err
+work 25 costs 0 seconds in thread 15 run ./bin/WTA 0 0 data/wta10.txt 2 > results/wta10_0_2.out 2>results/wta10_0_2.err
+work 26 costs 0 seconds in thread 16 run ./bin/WTA 0 0 data/wta20.txt 2 > results/wta20_0_2.out 2>results/wta20_0_2.err
+work 27 costs 0 seconds in thread 47 run ./bin/WTA 0 0 data/wta30.txt 2 > results/wta30_0_2.out 2>results/wta30_0_2.err
+work 28 costs 0 seconds in thread 17 run ./bin/WTA 0 0 data/wta40.txt 2 > results/wta40_0_2.out 2>results/wta40_0_2.err
+work 29 costs 0 seconds in thread 18 run ./bin/WTA 0 0 data/wta50.txt 2 > results/wta50_0_2.out 2>results/wta50_0_2.err
+work 30 costs 0 seconds in thread 48 run ./bin/WTA 0 0 data/wta60.txt 2 > results/wta60_0_2.out 2>results/wta60_0_2.err
+work 31 costs 0 seconds in thread 19 run ./bin/WTA 0 0 data/wta70.txt 2 > results/wta70_0_2.out 2>results/wta70_0_2.err
+work 32 costs 0 seconds in thread 49 run ./bin/WTA 0 0 data/wta80.txt 2 > results/wta80_0_2.out 2>results/wta80_0_2.err
+work 33 costs 0 seconds in thread 20 run ./bin/WTA 0 0 data/wta90.txt 2 > results/wta90_0_2.out 2>results/wta90_0_2.err
+work 34 costs 0 seconds in thread 21 run ./bin/WTA 0 0 data/wta100.txt 2 > results/wta100_0_2.out 2>results/wta100_0_2.err
+work 35 costs 0 seconds in thread 22 run ./bin/WTA 0 0 data/wta200.txt 2 > results/wta200_0_2.out 2>results/wta200_0_2.err
+work 36 costs 0.228665 seconds in thread 50 run ./bin/WTA 1 0 data/wta5.txt 2 > results/wta5_1_2.out 2>results/wta5_1_2.err
+work 37 costs 0 seconds in thread 23 run ./bin/WTA 1 0 data/wta10.txt 2 > results/wta10_1_2.out 2>results/wta10_1_2.err
+work 38 costs 0 seconds in thread 24 run ./bin/WTA 1 0 data/wta20.txt 2 > results/wta20_1_2.out 2>results/wta20_1_2.err
+work 39 costs 0 seconds in thread 51 run ./bin/WTA 1 0 data/wta30.txt 2 > results/wta30_1_2.out 2>results/wta30_1_2.err
+work 40 costs 0 seconds in thread 25 run ./bin/WTA 1 0 data/wta40.txt 2 > results/wta40_1_2.out 2>results/wta40_1_2.err
+work 41 costs 0 seconds in thread 26 run thread 36 ends!
+./bin/WTA 1 0 data/wta50.txt 2 > results/wta50_1_2.out 2>results/wta50_1_2.err
+work 42 costs 0 seconds in thread 52 run ./bin/WTA 1 0 data/wta60.txt 2 > results/wta60_1_2.out 2>results/wta60_1_2.err
+work 43 costs 0 seconds in thread 27 run ./bin/WTA 1 0 data/wta70.txt 2 > results/wta70_1_2.out 2>results/wta70_1_2.err
+work 44 costs 0 seconds in thread 28 run ./bin/WTA 1 0 data/wta80.txt 2 > results/wta80_1_2.out 2>results/wta80_1_2.err
+work 45 costs 0 seconds in thread 53 run ./bin/WTA 1 0 data/wta90.txt 2 > results/wta90_1_2.out 2>results/wta90_1_2.err
+work 46 costs 0 seconds in thread 29 run ./bin/WTA 1 0 data/wta100.txt 2 > results/wta100_1_2.out 2>results/wta100_1_2.err
+work 47 costs 0 seconds in thread 54 run ./bin/WTA 1 0 data/wta200.txt 2 > results/wta200_1_2.out 2>results/wta200_1_2.err
+work 48 costs 0 seconds in thread 30 run ./bin/WTA 0 0 data/wta5.txt 3 > results/wta5_0_3.out 2>results/wta5_0_3.err
+work 49 costs 0 seconds in thread 31 run ./bin/WTA 0 0 data/wta10.txt 3 > results/wta10_0_3.out 2>results/wta10_0_3.err
+work 50 costs 0 seconds in thread 32 run ./bin/WTA 0 0 data/wta20.txt 3 > results/wta20_0_3.out 2>results/wta20_0_3.err
+work 51 costs 0 seconds in thread 55 run ./bin/WTA 0 0 data/wta30.txt 3 > results/wta30_0_3.out 2>results/wta30_0_3.err
+work 52 costs 0 seconds in thread 33 run ./bin/WTA 0 0 data/wta40.txt 3 > results/wta40_0_3.out 2>results/wta40_0_3.err
+work 53 costs 0 seconds in thread 34 run ./bin/WTA 0 0 data/wta50.txt 3 > results/wta50_0_3.out 2>results/wta50_0_3.err
+work 54 costs 0 seconds in thread 56 run ./bin/WTA 0 0 data/wta60.txt 3 > results/wta60_0_3.out 2>results/wta60_0_3.err
+work 55 costs 0 seconds in thread 35 run ./bin/WTA 0 0 data/wta70.txt 3 > results/wta70_0_3.out 2>results/wta70_0_3.err
+work 56 costs 0 seconds in thread 57 run ./bin/WTA 0 0 data/wta80.txt 3 > results/wta80_0_3.out 2>results/wta80_0_3.err
+work 57 costs 0 seconds in thread 58 run ./bin/WTA 0 0 data/wta90.txt 3 > results/wta90_0_3.out 2>results/wta90_0_3.err
+work 58 costs 0 seconds in thread 59 run ./bin/WTA 0 0 data/wta100.txt 3 > results/wta100_0_3.out 2>results/wta100_0_3.err
+work 59 costs 0 seconds in thread 60 run ./bin/WTA 0 0 data/wta200.txt 3 > results/wta200_0_3.out 2>results/wta200_0_3.err
+work 60 costs 0.229151 seconds in thread 61 run ./bin/WTA 1 0 data/wta5.txt 3 > results/wta5_1_3.out 2>results/wta5_1_3.err
+work 61 costs 0.232506 seconds in thread 62 run ./bin/WTA 1 0 data/wta10.txt 3 > results/wta10_1_3.out 2>results/wta10_1_3.err
+work 62 costs 0.328279 seconds in thread 63 run ./bin/WTA 1 0 data/wta20.txt 3 > results/wta20_1_3.out 2>results/wta20_1_3.err
+work 63 costs 0 seconds in thread 64 run ./bin/WTA 1 0 data/wta30.txt 3 > results/wta30_1_3.out 2>results/wta30_1_3.err
+work 64 costs 0 seconds in thread 66 run ./bin/WTA 1 0 data/wta40.txt 3 > results/wta40_1_3.out 2>results/wta40_1_3.err
+work 65 costs 0 seconds in thread 65 run ./bin/WTA 1 0 data/wta50.txt 3 > results/wta50_1_3.out 2>results/wta50_1_3.err
+work 66 costs 0 seconds in thread 67 run ./bin/WTA 1 0 data/wta60.txt 3 > results/wta60_1_3.out 2>results/wta60_1_3.err
+work 67 costs 0 seconds in thread 68 run ./bin/WTA 1 0 data/wta70.txt 3 > results/wta70_1_3.out 2>results/wta70_1_3.err
+work 68 costs 0 seconds in thread 69 run ./bin/WTA 1 0 data/wta80.txt 3 > results/wta80_1_3.out 2>results/wta80_1_3.err
+work 69 costs 0 seconds in thread 70 run ./bin/WTA 1 0 data/wta90.txt 3 > results/wta90_1_3.out 2>results/wta90_1_3.err
+work 70 costs 0 seconds in thread 71 run ./bin/WTA 1 0 data/wta100.txt 3 > results/wta100_1_3.out 2>results/wta100_1_3.err
+work 71 costs 0 seconds in thread 72 run ./bin/WTA 1 0 data/wta200.txt 3 > results/wta200_1_3.out 2>results/wta200_1_3.err
+work 72 costs 0 seconds in thread 74 run ./bin/WTA 0 0 data/wta5.txt 4 > results/wta5_0_4.out 2>results/wta5_0_4.err
+work 73 costs 0 seconds in thread 75 run ./bin/WTA 0 0 data/wta10.txt 4 > results/wta10_0_4.out 2>results/wta10_0_4.err
+work 74 costs 0 seconds in thread 76 run ./bin/WTA 0 0 data/wta20.txt 4 > results/wta20_0_4.out 2>results/wta20_0_4.err
+work 75 costs 0 seconds in thread 77 run ./bin/WTA 0 0 data/wta30.txt 4 > results/wta30_0_4.out 2>results/wta30_0_4.err
+work 76 costs 0 seconds in thread 73 run ./bin/WTA 0 0 data/wta40.txt 4 > results/wta40_0_4.out 2>results/wta40_0_4.err
+work 77 costs 0 seconds in thread 78 run ./bin/WTA 0 0 data/wta50.txt 4 > results/wta50_0_4.out 2>results/wta50_0_4.err
+work 78 costs 0 seconds in thread 79 run ./bin/WTA 0 0 data/wta60.txt 4 > results/wta60_0_4.out 2>results/wta60_0_4.err
+work 79 costs 0 seconds in thread 80 run ./bin/WTA 0 0 data/wta70.txt 4 > results/wta70_0_4.out 2>results/wta70_0_4.err
+work 80 costs 0 seconds in thread 81 run ./bin/WTA 0 0 data/wta80.txt 4 > results/wta80_0_4.out 2>results/wta80_0_4.err
+work 81 costs 0 seconds in thread 82 run ./bin/WTA 0 0 data/wta90.txt 4 > results/wta90_0_4.out 2>results/wta90_0_4.err
+work 82 costs 0 seconds in thread 83 run ./bin/WTA 0 0 data/wta100.txt 4 > results/wta100_0_4.out 2>results/wta100_0_4.err
+work 83 costs 0 seconds in thread 84 run ./bin/WTA 0 0 data/wta200.txt 4 > results/wta200_0_4.out 2>results/wta200_0_4.err
+work 84 costs 0 seconds in thread 85 run ./bin/WTA 1 0 data/wta5.txt 4 > results/wta5_1_4.out 2>results/wta5_1_4.err
+work 85 costs 0 seconds in thread 86 run ./bin/WTA 1 0 data/wta10.txt 4 > results/wta10_1_4.out 2>results/wta10_1_4.err
+work 86 costs 0 seconds in thread 87 run ./bin/WTA 1 0 data/wta20.txt 4 > results/wta20_1_4.out 2>results/wta20_1_4.err
+work 87 costs 0 seconds in thread 88 run ./bin/WTA 1 0 data/wta30.txt 4 > results/wta30_1_4.out 2>results/wta30_1_4.err
+work 88 costs 0 seconds in thread 89 run ./bin/WTA 1 0 data/wta40.txt 4 > results/wta40_1_4.out 2>results/wta40_1_4.err
+work 89 costs 0 seconds in thread 90 run ./bin/WTA 1 0 data/wta50.txt 4 > results/wta50_1_4.out 2>results/wta50_1_4.err
+work 90 costs 0 seconds in thread 91 run ./bin/WTA 1 0 data/wta60.txt 4 > results/wta60_1_4.out 2>results/wta60_1_4.err
+work 91 costs 0 seconds in thread 92 run ./bin/WTA 1 0 data/wta70.txt 4 > results/wta70_1_4.out 2>results/wta70_1_4.err
+work 92 costs 0 seconds in thread 93 run ./bin/WTA 1 0 data/wta80.txt 4 > results/wta80_1_4.out 2>results/wta80_1_4.err
+work 93 costs 0 seconds in thread 94 run ./bin/WTA 1 0 data/wta90.txt 4 > results/wta90_1_4.out 2>results/wta90_1_4.err
+work 94 costs 0 seconds in thread 95 run ./bin/WTA 1 0 data/wta100.txt 4 > results/wta100_1_4.out 2>results/wta100_1_4.err
+work 95 costs 0 seconds in thread 96 run ./bin/WTA 1 0 data/wta200.txt 4 > results/wta200_1_4.out 2>results/wta200_1_4.err
+work 96 costs 0 seconds in thread 97 run ./bin/WTA 0 0 data/wta5.txt 5 > results/wta5_0_5.out 2>results/wta5_0_5.err
+work 97 costs 0 seconds in thread 98 run ./bin/WTA 0 0 data/wta10.txt 5 > results/wta10_0_5.out 2>results/wta10_0_5.err
+work 98 costs 0 seconds in thread 99 run ./bin/WTA 0 0 data/wta20.txt 5 > results/wta20_0_5.out 2>results/wta20_0_5.err
+work 99 costs 0 seconds in thread 100 run ./bin/WTA 0 0 data/wta30.txt 5 > results/wta30_0_5.out 2>results/wta30_0_5.err
+work 100 costs 0 seconds in thread 101 run ./bin/WTA 0 0 data/wta40.txt 5 > results/wta40_0_5.out 2>results/wta40_0_5.err
+work 101 costs 0 seconds in thread 102 run ./bin/WTA 0 0 data/wta50.txt 5 > results/wta50_0_5.out 2>results/wta50_0_5.err
+work 102 costs 0 seconds in thread 103 run ./bin/WTA 0 0 data/wta60.txt 5 > results/wta60_0_5.out 2>results/wta60_0_5.err
+work 103 costs 0 seconds in thread 104 run ./bin/WTA 0 0 data/wta70.txt 5 > results/wta70_0_5.out 2>results/wta70_0_5.err
+work 104 costs 0 seconds in thread 105 run ./bin/WTA 0 0 data/wta80.txt 5 > results/wta80_0_5.out 2>results/wta80_0_5.err
+work 105 costs 0 seconds in thread 106 run ./bin/WTA 0 0 data/wta90.txt 5 > results/wta90_0_5.out 2>results/wta90_0_5.err
+work 106 costs 0 seconds in thread 107 run ./bin/WTA 0 0 data/wta100.txt 5 > results/wta100_0_5.out 2>results/wta100_0_5.err
+work 107 costs 0 seconds in thread 108 run ./bin/WTA 0 0 data/wta200.txt 5 > results/wta200_0_5.out 2>results/wta200_0_5.err
+work 108 costs 0 seconds in thread 109 run ./bin/WTA 1 0 data/wta5.txt 5 > results/wta5_1_5.out 2>results/wta5_1_5.err
+work 109 costs 0 seconds in thread 110 run ./bin/WTA 1 0 data/wta10.txt 5 > results/wta10_1_5.out 2>results/wta10_1_5.err
+work 110 costs 0 seconds in thread 111 run ./bin/WTA 1 0 data/wta20.txt 5 > results/wta20_1_5.out 2>results/wta20_1_5.err
+work 111 costs 0 seconds in thread 112 run ./bin/WTA 1 0 data/wta30.txt 5 > results/wta30_1_5.out 2>results/wta30_1_5.err
+work 112 costs 0 seconds in thread 113 run ./bin/WTA 1 0 data/wta40.txt 5 > results/wta40_1_5.out 2>results/wta40_1_5.err
+work 113 costs 0 seconds in thread 114 run ./bin/WTA 1 0 data/wta50.txt 5 > results/wta50_1_5.out 2>results/wta50_1_5.err
+work 114 costs 0 seconds in thread 115 run ./bin/WTA 1 0 data/wta60.txt 5 > results/wta60_1_5.out 2>results/wta60_1_5.err
+work 115 costs 0 seconds in thread 116 run ./bin/WTA 1 0 data/wta70.txt 5 > results/wta70_1_5.out 2>results/wta70_1_5.err
+work 116 costs 0 seconds in thread 117 run ./bin/WTA 1 0 data/wta80.txt 5 > results/wta80_1_5.out 2>results/wta80_1_5.err
+work 117 costs 0 seconds in thread 118 run ./bin/WTA 1 0 data/wta90.txt 5 > results/wta90_1_5.out 2>results/wta90_1_5.err
+work 118 costs 0 seconds in thread 119 run ./bin/WTA 1 0 data/wta100.txt 5 > results/wta100_1_5.out 2>results/wta100_1_5.err
+work 119 costs 0 seconds in thread 120 run ./bin/WTA 1 0 data/wta200.txt 5 > results/wta200_1_5.out 2>results/wta200_1_5.err
+work 120 costs 0 seconds in thread 121 run ./bin/WTA 0 0 data/wta5.txt 6 > results/wta5_0_6.out 2>results/wta5_0_6.err
+work 121 costs 0 seconds in thread 122 run ./bin/WTA 0 0 data/wta10.txt 6 > results/wta10_0_6.out 2>results/wta10_0_6.err
+work 122 costs 0 seconds in thread 123 run ./bin/WTA 0 0 data/wta20.txt 6 > results/wta20_0_6.out 2>results/wta20_0_6.err
+work 123 costs 0 seconds in thread 124 run ./bin/WTA 0 0 data/wta30.txt 6 > results/wta30_0_6.out 2>results/wta30_0_6.err
+work 124 costs 0 seconds in thread 125 run ./bin/WTA 0 0 data/wta40.txt 6 > results/wta40_0_6.out 2>results/wta40_0_6.err
+work 125 costs 0 seconds in thread 126 run ./bin/WTA 0 0 data/wta50.txt 6 > results/wta50_0_6.out 2>results/wta50_0_6.err
+work 126 costs 0 seconds in thread 127 run ./bin/WTA 0 0 data/wta60.txt 6 > results/wta60_0_6.out 2>results/wta60_0_6.err
+work 127 costs 0 seconds in thread 128 run ./bin/WTA 0 0 data/wta70.txt 6 > results/wta70_0_6.out 2>results/wta70_0_6.err
+work 128 costs 0 seconds in thread 129 run ./bin/WTA 0 0 data/wta80.txt 6 > results/wta80_0_6.out 2>results/wta80_0_6.err
+work 129 costs 0 seconds in thread 130 run ./bin/WTA 0 0 data/wta90.txt 6 > results/wta90_0_6.out 2>results/wta90_0_6.err
+work 130 costs 0 seconds in thread 131 run ./bin/WTA 0 0 data/wta100.txt 6 > results/wta100_0_6.out 2>results/wta100_0_6.err
+work 131 costs 0 seconds in thread 132 run ./bin/WTA 0 0 data/wta200.txt 6 > results/wta200_0_6.out 2>results/wta200_0_6.err
+work 132 costs 0 seconds in thread 133 run ./bin/WTA 1 0 data/wta5.txt 6 > results/wta5_1_6.out 2>results/wta5_1_6.err
+work 133 costs 0 seconds in thread 134 run ./bin/WTA 1 0 data/wta10.txt 6 > results/wta10_1_6.out 2>results/wta10_1_6.err
+work 134 costs 0 seconds in thread 135 run ./bin/WTA 1 0 data/wta20.txt 6 > results/wta20_1_6.out 2>results/wta20_1_6.err
+work 135 costs 0 seconds in thread 136 run ./bin/WTA 1 0 data/wta30.txt 6 > results/wta30_1_6.out 2>results/wta30_1_6.err
+work 136 costs 0 seconds in thread 137 run ./bin/WTA 1 0 data/wta40.txt 6 > results/wta40_1_6.out 2>results/wta40_1_6.err
+work 137 costs 0 seconds in thread 138 run ./bin/WTA 1 0 data/wta50.txt 6 > results/wta50_1_6.out 2>results/wta50_1_6.err
+work 138 costs 0 seconds in thread 139 run ./bin/WTA 1 0 data/wta60.txt 6 > results/wta60_1_6.out 2>results/wta60_1_6.err
+work 139 costs 0 seconds in thread 140 run ./bin/WTA 1 0 data/wta70.txt 6 > results/wta70_1_6.out 2>results/wta70_1_6.err
+work 140 costs 0 seconds in thread 141 run ./bin/WTA 1 0 data/wta80.txt 6 > results/wta80_1_6.out 2>results/wta80_1_6.err
+work 141 costs 0 seconds in thread 142 run ./bin/WTA 1 0 data/wta90.txt 6 > results/wta90_1_6.out 2>results/wta90_1_6.err
+work 142 costs 0 seconds in thread 143 run ./bin/WTA 1 0 data/wta100.txt 6 > results/wta100_1_6.out 2>results/wta100_1_6.err
+work 143 costs 0 seconds in thread 144 run ./bin/WTA 1 0 data/wta200.txt 6 > results/wta200_1_6.out 2>results/wta200_1_6.err
+work 144 costs 0.219115 seconds in thread 145 run ./bin/WTA 0 0 data/wta5.txt 7 > results/wta5_0_7.out 2>results/wta5_0_7.err
+work 145 costs 0.22128 seconds in thread 146 run ./bin/WTA 0 0 data/wta10.txt 7 > results/wta10_0_7.out 2>results/wta10_0_7.err
+work 146 costs 0 seconds in thread 147 run ./bin/WTA 0 0 data/wta20.txt 7 > results/wta20_0_7.out 2>results/wta20_0_7.err
+work 147 costs 0 seconds in thread 148 run ./bin/WTA 0 0 data/wta30.txt 7 > results/wta30_0_7.out 2>results/wta30_0_7.err
+work 148 costs 0 seconds in thread 149 run ./bin/WTA 0 0 data/wta40.txt 7 > results/wta40_0_7.out 2>results/wta40_0_7.err
+work 149 costs 0 seconds in thread 150 run ./bin/WTA 0 0 data/wta50.txt 7 > results/wta50_0_7.out 2>results/wta50_0_7.err
+work 150 costs 0 seconds in thread 151 run ./bin/WTA 0 0 data/wta60.txt 7 > results/wta60_0_7.out 2>results/wta60_0_7.err
+work 151 costs 0 seconds in thread 152 run ./bin/WTA 0 0 data/wta70.txt 7 > results/wta70_0_7.out 2>results/wta70_0_7.err
+work 152 costs 0 seconds in thread 153 run ./bin/WTA 0 0 data/wta80.txt 7 > results/wta80_0_7.out 2>results/wta80_0_7.err
+work 153 costs 0 seconds in thread 154 run ./bin/WTA 0 0 data/wta90.txt 7 > results/wta90_0_7.out 2>results/wta90_0_7.err
+work 154 costs 0 seconds in thread 155 run ./bin/WTA 0 0 data/wta100.txt 7 > results/wta100_0_7.out 2>results/wta100_0_7.err
+work 155 costs 0 seconds in thread 156 run ./bin/WTA 0 0 data/wta200.txt 7 > results/wta200_0_7.out 2>results/wta200_0_7.err
+work 156 costs 0.219043 seconds in thread 157 run ./bin/WTA 1 0 data/wta5.txt 7 > results/wta5_1_7.out 2>results/wta5_1_7.err
+work 157 costs 0.222779 seconds in thread 158 run ./bin/WTA 1 0 data/wta10.txt 7 > results/wta10_1_7.out 2>results/wta10_1_7.err
+work 158 costs 0.325307 seconds in thread 159 run ./bin/WTA 1 0 data/wta20.txt 7 > results/wta20_1_7.out 2>results/wta20_1_7.err
+work 159 costs 0 seconds in thread 160 run ./bin/WTA 1 0 data/wta30.txt 7 > results/wta30_1_7.out 2>results/wta30_1_7.err
+work 160 costs 0 seconds in thread 161 run ./bin/WTA 1 0 data/wta40.txt 7 > results/wta40_1_7.out 2>results/wta40_1_7.err
+work 161 costs 0 seconds in thread 162 run ./bin/WTA 1 0 data/wta50.txt 7 > results/wta50_1_7.out 2>results/wta50_1_7.err
+work 162 costs 0 seconds in thread 163 run ./bin/WTA 1 0 data/wta60.txt 7 > results/wta60_1_7.out 2>results/wta60_1_7.err
+work 163 costs 0 seconds in thread 164 run ./bin/WTA 1 0 data/wta70.txt 7 > results/wta70_1_7.out 2>results/wta70_1_7.err
+work 164 costs 0 seconds in thread 165 run ./bin/WTA 1 0 data/wta80.txt 7 > results/wta80_1_7.out 2>results/wta80_1_7.err
+work 165 costs 0 seconds in thread 166 run ./bin/WTA 1 0 data/wta90.txt 7 > results/wta90_1_7.out 2>results/wta90_1_7.err
+work 166 costs 0 seconds in thread 167 run ./bin/WTA 1 0 data/wta100.txt 7 > results/wta100_1_7.out 2>results/wta100_1_7.err
+work 167 costs 0 seconds in thread 168 run ./bin/WTA 1 0 data/wta200.txt 7 > results/wta200_1_7.out 2>results/wta200_1_7.err
+work 168 costs 0.21859 seconds in thread 169 run ./bin/WTA 0 0 data/wta5.txt 8 > results/wta5_0_8.out 2>results/wta5_0_8.err
+work 169 costs 0.221075 seconds in thread 170 run ./bin/WTA 0 0 data/wta10.txt 8 > results/wta10_0_8.out 2>results/wta10_0_8.err
+work 170 costs 0 seconds in thread 171 run ./bin/WTA 0 0 data/wta20.txt 8 > results/wta20_0_8.out 2>results/wta20_0_8.err
+work 171 costs 0 seconds in thread 172 run ./bin/WTA 0 0 data/wta30.txt 8 > results/wta30_0_8.out 2>results/wta30_0_8.err
+work 172 costs 0 seconds in thread 173 run ./bin/WTA 0 0 data/wta40.txt 8 > results/wta40_0_8.out 2>results/wta40_0_8.err
+work 173 costs 0 seconds in thread 174 run ./bin/WTA 0 0 data/wta50.txt 8 > results/wta50_0_8.out 2>results/wta50_0_8.err
+work 174 costs 0 seconds in thread 175 run ./bin/WTA 0 0 data/wta60.txt 8 > results/wta60_0_8.out 2>results/wta60_0_8.err
+work 175 costs 0 seconds in thread 176 run ./bin/WTA 0 0 data/wta70.txt 8 > results/wta70_0_8.out 2>results/wta70_0_8.err
+work 176 costs 0 seconds in thread 177 run ./bin/WTA 0 0 data/wta80.txt 8 > results/wta80_0_8.out 2>results/wta80_0_8.err
+work 177 costs 0 seconds in thread 178 run ./bin/WTA 0 0 data/wta90.txt 8 > results/wta90_0_8.out 2>results/wta90_0_8.err
+work 178 costs 0 seconds in thread 179 run ./bin/WTA 0 0 data/wta100.txt 8 > results/wta100_0_8.out 2>results/wta100_0_8.err
+work 179 costs 0 seconds in thread 180 run ./bin/WTA 0 0 data/wta200.txt 8 > results/wta200_0_8.out 2>results/wta200_0_8.err
+work 180 costs 0.221418 seconds in thread 181 run ./bin/WTA 1 0 data/wta5.txt 8 > results/wta5_1_8.out 2>results/wta5_1_8.err
+work 181 costs 0.227686 seconds in thread 182 run ./bin/WTA 1 0 data/wta10.txt 8 > results/wta10_1_8.out 2>results/wta10_1_8.err
+work 182 costs 0.325435 seconds in thread 183 run ./bin/WTA 1 0 data/wta20.txt 8 > results/wta20_1_8.out 2>results/wta20_1_8.err
+work 183 costs 0 seconds in thread 184 run ./bin/WTA 1 0 data/wta30.txt 8 > results/wta30_1_8.out 2>results/wta30_1_8.err
+work 184 costs 0 seconds in thread 185 run ./bin/WTA 1 0 data/wta40.txt 8 > results/wta40_1_8.out 2>results/wta40_1_8.err
+work 185 costs 0 seconds in thread 186 run ./bin/WTA 1 0 data/wta50.txt 8 > results/wta50_1_8.out 2>results/wta50_1_8.err
+work 186 costs 0 seconds in thread 187 run ./bin/WTA 1 0 data/wta60.txt 8 > results/wta60_1_8.out 2>results/wta60_1_8.err
+work 187 costs 0 seconds in thread 188 run ./bin/WTA 1 0 data/wta70.txt 8 > results/wta70_1_8.out 2>results/wta70_1_8.err
+work 188 costs 0 seconds in thread 190 run ./bin/WTA 1 0 data/wta80.txt 8 > results/wta80_1_8.out 2>results/wta80_1_8.err
+work 189 costs 0 seconds in thread 189 run ./bin/WTA 1 0 data/wta90.txt 8 > results/wta90_1_8.out 2>results/wta90_1_8.err
+work 190 costs 0 seconds in thread 191 run ./bin/WTA 1 0 data/wta100.txt 8 > results/wta100_1_8.out 2>results/wta100_1_8.err
+work 191 costs 0 seconds in thread 192 run ./bin/WTA 1 0 data/wta200.txt 8 > results/wta200_1_8.out 2>results/wta200_1_8.err
+work 192 costs 0.231257 seconds in thread 193 run ./bin/WTA 0 0 data/wta5.txt 9 > results/wta5_0_9.out 2>results/wta5_0_9.err
+work 193 costs 0.236212 seconds in thread 194 run ./bin/WTA 0 0 data/wta10.txt 9 > results/wta10_0_9.out 2>results/wta10_0_9.err
+work 194 costs 0 seconds in thread 195 run ./bin/WTA 0 0 data/wta20.txt 9 > results/wta20_0_9.out 2>results/wta20_0_9.err
+work 195 costs 0 seconds in thread 196 run ./bin/WTA 0 0 data/wta30.txt 9 > results/wta30_0_9.out 2>results/wta30_0_9.err
+work 196 costs 0 seconds in thread 197 run ./bin/WTA 0 0 data/wta40.txt 9 > results/wta40_0_9.out 2>results/wta40_0_9.err
+work 197 costs 0 seconds in thread 198 run ./bin/WTA 0 0 data/wta50.txt 9 > results/wta50_0_9.out 2>results/wta50_0_9.err
+work 198 costs 0 seconds in thread 199 run ./bin/WTA 0 0 data/wta60.txt 9 > results/wta60_0_9.out 2>results/wta60_0_9.err
+work 199 costs 0 seconds in thread 200 run ./bin/WTA 0 0 data/wta70.txt 9 > results/wta70_0_9.out 2>results/wta70_0_9.err
+work 200 costs 0 seconds in thread 201 run ./bin/WTA 0 0 data/wta80.txt 9 > results/wta80_0_9.out 2>results/wta80_0_9.err
+work 201 costs 0 seconds in thread 202 run ./bin/WTA 0 0 data/wta90.txt 9 > results/wta90_0_9.out 2>results/wta90_0_9.err
+work 202 costs 0 seconds in thread 203 run ./bin/WTA 0 0 data/wta100.txt 9 > results/wta100_0_9.out 2>results/wta100_0_9.err
+work 203 costs 0 seconds in thread 204 run ./bin/WTA 0 0 data/wta200.txt 9 > results/wta200_0_9.out 2>results/wta200_0_9.err
+work 204 costs 0.227951 seconds in thread 205 run ./bin/WTA 1 0 data/wta5.txt 9 > results/wta5_1_9.out 2>results/wta5_1_9.err
+work 205 costs 0.23982 seconds in thread 206 run ./bin/WTA 1 0 data/wta10.txt 9 > results/wta10_1_9.out 2>results/wta10_1_9.err
+work 206 costs 0 seconds in thread 207 run ./bin/WTA 1 0 data/wta20.txt 9 > results/wta20_1_9.out 2>results/wta20_1_9.err
+work 207 costs 0 seconds in thread 208 run ./bin/WTA 1 0 data/wta30.txt 9 > results/wta30_1_9.out 2>results/wta30_1_9.err
+work 208 costs 0 seconds in thread 209 run ./bin/WTA 1 0 data/wta40.txt 9 > results/wta40_1_9.out 2>results/wta40_1_9.err
+work 209 costs 0 seconds in thread 210 run ./bin/WTA 1 0 data/wta50.txt 9 > results/wta50_1_9.out 2>results/wta50_1_9.err
+work 210 costs 0 seconds in thread 211 run ./bin/WTA 1 0 data/wta60.txt 9 > results/wta60_1_9.out 2>results/wta60_1_9.err
+work 211 costs 0 seconds in thread 212 run ./bin/WTA 1 0 data/wta70.txt 9 > results/wta70_1_9.out 2>results/wta70_1_9.err
+work 212 costs 0 seconds in thread 213 run ./bin/WTA 1 0 data/wta80.txt 9 > results/wta80_1_9.out 2>results/wta80_1_9.err
+work 213 costs 0 seconds in thread 214 run ./bin/WTA 1 0 data/wta90.txt 9 > results/wta90_1_9.out 2>results/wta90_1_9.err
+work 214 costs 0 seconds in thread 215 run ./bin/WTA 1 0 data/wta100.txt 9 > results/wta100_1_9.out 2>results/wta100_1_9.err
+work 215 costs 0 seconds in thread 169 run ./bin/WTA 1 0 data/wta200.txt 9 > results/wta200_1_9.out 2>results/wta200_1_9.err
+work 216 costs 0.0154679 seconds in thread 145 run ./bin/WTA 0 0 data/wta5.txt 10 > results/wta5_0_10.out 2>results/wta5_0_10.err
+work 217 costs 0.0203768 seconds in thread 157 run ./bin/WTA 0 0 data/wta10.txt 10 > results/wta10_0_10.out 2>results/wta10_0_10.err
+work 218 costs 0 seconds in thread 146 run ./bin/WTA 0 0 data/wta20.txt 10 > results/wta20_0_10.out 2>results/wta20_0_10.err
+work 219 costs 0 seconds in thread 170 run ./bin/WTA 0 0 data/wta30.txt 10 > results/wta30_0_10.out 2>results/wta30_0_10.err
+work 220 costs 0 seconds in thread 181 run ./bin/WTA 0 0 data/wta40.txt 10 > results/wta40_0_10.out 2>results/wta40_0_10.err
+work 221 costs 0 seconds in thread 158 run ./bin/WTA 0 0 data/wta50.txt 10 > results/wta50_0_10.out 2>results/wta50_0_10.err
+work 222 costs 0 seconds in thread 50 run ./bin/WTA 0 0 data/wta60.txt 10 > results/wta60_0_10.out 2>results/wta60_0_10.err
+work 223 costs 0 seconds in thread 182 run ./bin/WTA 0 0 data/wta70.txt 10 > results/wta70_0_10.out 2>results/wta70_0_10.err
+work 224 costs 0 seconds in thread 36 run ./bin/WTA 0 0 data/wta80.txt 10 > results/wta80_0_10.out 2>results/wta80_0_10.err
+work 225 costs 0 seconds in thread 61 run ./bin/WTA 0 0 data/wta90.txt 10 > results/wta90_0_10.out 2>results/wta90_0_10.err
+work 226 costs 0 seconds in thread 46 run ./bin/WTA 0 0 data/wta100.txt 10 > results/wta100_0_10.out 2>results/wta100_0_10.err
+work 227 costs 0 seconds in thread 205 run ./bin/WTA 0 0 data/wta200.txt 10 > results/wta200_0_10.out 2>results/wta200_0_10.err
+work 228 costs 0.0183665 seconds in thread 42 run ./bin/WTA 1 0 data/wta5.txt 10 > results/wta5_1_10.out 2>results/wta5_1_10.err
+work 229 costs 0.0246862 seconds in thread 193 run ./bin/WTA 1 0 data/wta10.txt 10 > results/wta10_1_10.out 2>results/wta10_1_10.err
+work 230 costs 0 seconds in thread 62 run ./bin/WTA 1 0 data/wta20.txt 10 > results/wta20_1_10.out 2>results/wta20_1_10.err
+work 231 costs 0 seconds in thread 145 run ./bin/WTA 1 0 data/wta30.txt 10 > results/wta30_1_10.out 2>results/wta30_1_10.err
+work 232 costs 0 seconds in thread 194 run ./bin/WTA 1 0 data/wta40.txt 10 > results/wta40_1_10.out 2>results/wta40_1_10.err
+work 233 costs 0 seconds in thread 157 run ./bin/WTA 1 0 data/wta50.txt 10 > results/wta50_1_10.out 2>results/wta50_1_10.err
+work 234 costs 0 seconds in thread 206 run ./bin/WTA 1 0 data/wta60.txt 10 > results/wta60_1_10.out 2>results/wta60_1_10.err
+work 235 costs 0 seconds in thread 42 run ./bin/WTA 1 0 data/wta70.txt 10 > results/wta70_1_10.out 2>results/wta70_1_10.err
+work 236 costs 0 seconds in thread 193 run ./bin/WTA 1 0 data/wta80.txt 10 > results/wta80_1_10.out 2>results/wta80_1_10.err
+work 237 costs 0 seconds in thread 159 run ./bin/WTA 1 0 data/wta90.txt 10 > results/wta90_1_10.out 2>results/wta90_1_10.err
+work 238 costs 0 seconds in thread 183 run ./bin/WTA 1 0 data/wta100.txt 10 > results/wta100_1_10.out 2>results/wta100_1_10.err
+work 239 costs 0 seconds in thread 63 run ./bin/WTA 1 0 data/wta200.txt 10 > results/wta200_1_10.out 2>results/wta200_1_10.err
+
+
+PS:
+
+Read file <385611.err> for stderr output of this job.
+

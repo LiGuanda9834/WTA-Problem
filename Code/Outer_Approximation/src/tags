@@ -1,0 +1,59 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Arcs	ilobenders.cpp	/^typedef IloArray<IloIntVarArray> Arcs;$/;"	t	file:
+Delete	benders.cpp	/^      void Delete()$/;"	f	class:WTA
+ILOLAZYCONSTRAINTCALLBACK5	ilobenders.cpp	/^ILOLAZYCONSTRAINTCALLBACK5(BendersLazyCallback, Arcs, x, IloCplex, workerCplex,$/;"	f
+ILOUSERCUTCALLBACK5	ilobenders.cpp	/^ILOUSERCUTCALLBACK5(BendersUserCallback, Arcs, x, IloCplex, workerCplex,$/;"	f
+Init	benders.cpp	/^      void Init(FILE* fin, int function_form_)$/;"	f	class:WTA
+Init	benders.cpp	/^      void Init(int n_, int m_, int function_form_, int seed = 0)$/;"	f	class:WTA
+USER_CBHANDLE	benders.cpp	/^} USER_CBHANDLE;$/;"	t	typeref:struct:__anon1	file:
+WTA	benders.cpp	/^      WTA(){};$/;"	f	class:WTA
+WTA	benders.cpp	/^class WTA$/;"	c	file:
+benders_callback	benders.cpp	/^benders_callback  (CPXCENVptr env, void *cbdata, int wherefrom, $/;"	f	file:
+cal_fjx_	benders.cpp	/^      double cal_fjx_(int j)$/;"	f	class:WTA
+cal_fjx_exp_	benders.cpp	/^      double cal_fjx_exp_(int j)$/;"	f	class:WTA
+cal_fjx_poly_	benders.cpp	/^      double cal_fjx_poly_(int j)$/;"	f	class:WTA
+createMasterILP	ilobenders.cpp	/^createMasterILP(IloModel mod, Arcs x, IloNumArray2 arcCost)$/;"	f
+createWorkerLP	ilobenders.cpp	/^createWorkerLP(IloCplex cplex, IloNumVarArray v, IloNumVarArray u, $/;"	f
+create_master_ILP	benders.cpp	/^create_master_ILP   (CPXENVptr env, CPXLPptr lp, WTA& wta)$/;"	f	file:
+cutind	benders.cpp	/^      int* cutind;$/;"	m	class:WTA	file:
+cutind	benders.cpp	/^   int *cutind;$/;"	m	struct:__anon1	file:
+cutval	benders.cpp	/^      double* cutval;$/;"	m	class:WTA	file:
+cutval	benders.cpp	/^   double *cutval;$/;"	m	struct:__anon1	file:
+env	benders.cpp	/^   CPXENVptr env; $/;"	m	struct:__anon1	file:
+free_and_null	benders.cpp	/^free_and_null (char **ptr)$/;"	f	file:
+free_user_cbhandle	benders.cpp	/^free_user_cbhandle  (USER_CBHANDLE *user_cbhandle)$/;"	f	file:
+function_form	benders.cpp	/^      int function_form;$/;"	m	class:WTA	file:
+indices	benders.cpp	/^   int *indices;$/;"	m	struct:__anon1	file:
+init_user_cbhandle	benders.cpp	/^init_user_cbhandle  (USER_CBHANDLE *user_cbhandle, int num_nodes, $/;"	f	file:
+lp	benders.cpp	/^   CPXLPptr  lp;  $/;"	m	struct:__anon1	file:
+m	benders.cpp	/^      int m;$/;"	m	class:WTA	file:
+main	benders.cpp	/^main (int  argc, char *argv[])$/;"	f
+main	ilobenders.cpp	/^main(int argc, char **argv)$/;"	f
+n	benders.cpp	/^      int n;$/;"	m	class:WTA	file:
+num_nodes	benders.cpp	/^   int num_nodes; $/;"	m	struct:__anon1	file:
+num_u_cols	benders.cpp	/^   int num_v_cols, num_u_cols;$/;"	m	struct:__anon1	file:
+num_v_cols	benders.cpp	/^   int num_v_cols, num_u_cols;$/;"	m	struct:__anon1	file:
+num_x_cols	benders.cpp	/^   int num_x_cols;$/;"	m	struct:__anon1	file:
+p	benders.cpp	/^      double** p;$/;"	m	class:WTA	file:
+par_fj_xij_exp_	benders.cpp	/^      double par_fj_xij_exp_(int i, int j, double fjx)$/;"	f	class:WTA
+par_fj_xij_poly_	benders.cpp	/^      double par_fj_xij_poly_(int i, int j, double fjx)$/;"	f	class:WTA
+print_solution_of_targetj	benders.cpp	/^      bool print_solution_of_targetj(int j){$/;"	f	class:WTA
+ray	benders.cpp	/^   double *ray;$/;"	m	struct:__anon1	file:
+read_file	benders.cpp	/^read_file (FILE *in, WTA& wta)$/;"	f	file:
+read_xij_value_	benders.cpp	/^      double read_xij_value_(int i, int j){$/;"	f	class:WTA
+rhs	benders.cpp	/^      double rhs;$/;"	m	class:WTA	file:
+separate	ilobenders.cpp	/^separate(const Arcs x, const IloNumArray2 xSol, IloCplex cplex,$/;"	f
+separate_fractional_solutions	benders.cpp	/^      int separate_fractional_solutions;$/;"	m	class:WTA	file:
+separate_fractional_solutions	benders.cpp	/^   int separate_fractional_solutions; $/;"	m	struct:__anon1	file:
+set_benders_callback	benders.cpp	/^set_benders_callback  (CPXENVptr env, WTA *wta)$/;"	f	file:
+usage	benders.cpp	/^usage (char *progname)$/;"	f	file:
+usage	ilobenders.cpp	/^void usage (char *progname)$/;"	f
+w	benders.cpp	/^      double* w;$/;"	m	class:WTA	file:
+x	benders.cpp	/^      double* x;$/;"	m	class:WTA	file:
+x	benders.cpp	/^   double *x;$/;"	m	struct:__anon1	file:
+~WTA	benders.cpp	/^      ~WTA(){}$/;"	f	class:WTA

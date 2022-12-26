@@ -1,0 +1,2 @@
+valgrind --tool=memcheck --leak-check=yes $1 $2 $3 $4 $5 $6 $7 $8 $9 
+#valgrind --log-file=./valgrind_report.log --tool=memcheck --leak-check=yes $1 $2 $3 $4 $5 $6 $7 $8 $9

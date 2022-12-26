@@ -1,0 +1,59 @@
+proble size: m = 5 , n = 5 , seed = 6 
+Benders' cuts separated to cut off: Only integer infeasible solutions.
+seed = 6
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Threads                                 1
+CPXPARAM_RandomSeed                              6
+CPXPARAM_MIP_Strategy_CallbackReducedLP          0
+CPXPARAM_MIP_Strategy_Search                     1
+CPXPARAM_TimeLimit                               3600
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+Legacy callback                                  L
+Tried aggregator 1 time.
+Reduced MIP has 20 rows, 420 columns, and 400 nonzeros.
+Reduced MIP has 400 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.05 sec. (0.16 ticks)
+Probing time = 0.00 sec. (0.32 ticks)
+Clique table members: 20.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: traditional branch-and-cut.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.03 sec. (0.09 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap         Variable B NodeID Parent  Depth
+
+      0     0        0.0000    16                      0.0000        0         
+*     0+    0                          497.4853        0.0000           100.00%
+*     0+    0                          367.9887        0.0000           100.00%
+      0     0       79.2553    22      367.9887      Fract: 6       12   78.46%
+*     0+    0                          366.0451       79.2553            78.35%
+*     0+    0                          291.1213       79.2553            72.78%
+      0     0      117.2391    19      291.1213      Fract: 9       34   59.73%
+*     0+    0                          250.7955      117.2391            53.25%
+*     0+    0                          228.4610      117.2391            48.68%
+*     0+    0                          178.9127      117.2391            34.47%
+*     0+    0                          155.6224      117.2391            24.66%
+      0     2      135.9929    26      155.6224      136.0703       34   12.56%                        0             0
+Elapsed time = 0.24 sec. (14.90 ticks, tree = 0.01 MB, solutions = 8)
+*    10+    9                          144.0253      136.5967             5.16%
+*    50+   32                          142.8119      136.7400             4.25%
+*    80+   49                          142.7028      137.2551             3.82%
+*   290+  167                          142.1070      138.3745             2.63%
+   1500   234        cutoff            142.1070      141.0094     6349    0.77%         x.13.12 U   1500    500      8
+
+Gomory fractional cuts applied:  11
+User cuts applied:  78
+
+Root node processing (before b&c):
+  Real time             =    0.24 sec. (14.93 ticks)
+Sequential b&c:
+  Real time             =    0.33 sec. (267.80 ticks)
+                          ------------
+Total (root+branch&cut) =    0.57 sec. (282.73 ticks)
+
+Solution status: 101
+Objective value:  1.4210700000e+02
+Solution status is CPX_STAT_OPTIMAL
+Node: 1770
