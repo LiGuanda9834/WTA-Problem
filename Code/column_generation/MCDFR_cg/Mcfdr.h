@@ -19,21 +19,12 @@ using std::unordered_map;
 /* Problem data */
 #define EPS     1e-6
 #define BUFSIZE 1000
-#define alpha   140
-#define beta    100
-#define gamma   120
-#define viodist alpha+gamma
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-bool MCFDRReadData(
-   MCFDR*              mcfdr,
-   string              demandfile,
-   string              edgefile
-);
 
 /**
  * @brief Detailed Routed Vertex
@@ -47,7 +38,7 @@ class Vertex
       int y;               /** y-coordinate of a vertex */
       int z;               /** z-coordinate of a vertex */
 
-      Edge* relateEdge;    /** incidence edges of a vertex */
+      // Edge* relateEdge;    /** incidence edges of a vertex */
 
       /* reload operator of "==" and "<" */
       bool operator==(const Vertex ver)
@@ -94,9 +85,10 @@ class Edge
 class Com
 {
    public:
-      int commodity;
-      vector<Vertex> S;
-      vector<Vertex> T;
+      int commodity;         // index
+      Edge* egde;            // edges of coms
+      vector<Vertex> S;      // sources of commodity
+      vector<Vertex> T;      // targets of commodity
 };
 
 class Layer
@@ -123,6 +115,7 @@ class MCFDR
       ~MCFDR() = default;
 
    public:
+      string           probname;
       Vertex*          vertex;
       Edge*            edge;
       Com*             com;
@@ -130,8 +123,8 @@ class MCFDR
       Count*           count;
       vector<Vertex>   ST;                     /**> Source sets and target sets */
       
-      unordered_map<string, int>           varId;
-      unordered_map<string, int>::iterator varIdIter;
+      unordered_map<string, int>           vertexId;
+      unordered_map<string, int>::iterator vertexIdIter;
       unordered_map<int,string>            varName;
       unordered_map<int,string>::iterator  varNameIter;
       
@@ -139,17 +132,17 @@ class MCFDR
       bool FindConflict(vector<Vertex> *conflicts);
 };
 
-/* create a mcfdr 3D-graph */
-bool CreateGraph()
-{
+bool MCFDRReadData(
+   MCFDR*              mcfdr,
+   string              demandfile,
+   string              edgefile
+);
 
-};
+// /* create a mcfdr 3D-graph */
+// bool CreateGraph();
 
-/* free a mcfdr 3D-graph */
-bool FreeGraph()
-{
-
-};
+// /* free a mcfdr 3D-graph */
+// bool FreeGraph();
 
 #ifdef __cplusplus
 }

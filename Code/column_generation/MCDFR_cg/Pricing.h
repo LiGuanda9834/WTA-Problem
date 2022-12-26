@@ -1,11 +1,9 @@
 #ifndef ORA_PRICING_H
 #define ORA_PRICING_H
 
-#include <vector>
-#include <queue>
 #include "Mcfdr.h"
-#include "Path.h"
 #include "Node.h"
+#include "clique_graph.h"
 
 
 class Label {
@@ -25,20 +23,21 @@ public:
     bool pruned; // prune by bound or is dominated
 };
 
-auto CompareLabelAscending = [](const Label *a, const Label *b) {
-//    return a.score > b.score;
-    return a->cost > b->cost;
-};
+// auto CompareLabelAscending = [](const Label *a, const Label *b) 
+// {
+//     return a->cost > b->cost;
+// };
 
 class Pricing {
 public:
-    Pricing(MCFDR* mcfdr);
-    ~Pricing() = default;
+   Pricing();
+   Pricing(MCFDR *mcfdr);
+   ~Pricing() = default;
 
-    void Set(Node &node);
-    void Solve(const std::vector<double> &dual, int* colind);
-    void extend(const Label &parent);
-    bool dominance(int j);
+   void Set(Node &node);
+   void Solve(vector<double> &dual);
+   // void extend(const Label &parent);
+   // bool dominance(int j);
 
 public:
    MCFDR* mcfdr;

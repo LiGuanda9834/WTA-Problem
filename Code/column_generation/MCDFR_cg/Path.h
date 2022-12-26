@@ -1,8 +1,8 @@
 #ifndef ORA_PATH_H
 #define ORA_PATH_H
 
-#include <vector>
 #include "Mcfdr.h"
+#include "print.h"
 
 class Path : public vector<int> {
    public:
@@ -23,7 +23,7 @@ class Path : public vector<int> {
          return size() < 1;
       }
 
-      void PrintCol(){ printf("%.2f<%s>[%d]\n", this->obj, this->name, this->index); };
+      void PrintPath(){ printf("%.2f<%s>[%d]\n", this->obj, this->name.c_str(), this->index); };
     
 
 };
@@ -32,4 +32,4 @@ class PathPool : public vector<Path> {
 
 };
 
-#endif //ORA_ROUTE_H
+#endif //ORA_PATH_H

@@ -2,7 +2,6 @@
 #define ORA_SOLUTION_H
 
 #include "Path.h"
-#include "Mcfdr.h"
 
 class Solution : public vector<Path> 
 {

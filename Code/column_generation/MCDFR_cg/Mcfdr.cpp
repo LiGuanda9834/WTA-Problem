@@ -1,5 +1,5 @@
-#include "../common/huq.h"
 #include "Mcfdr.h"
+#include "print.h"
 
 MCFDR::MCFDR(Vertex* vertex_Set, Edge* edge_Set, Com* coms_Set, Layer* layer_Set, Count* count_Set)
 {
@@ -120,7 +120,19 @@ static int ReadNet(
    (*count)->nlayers      = nlayers;
    (*count)->ncommodities = ncommodities;
 
-   huq::println_tab("nlayers:", nlayers, "nnets:", ncommodities, "nvertexs:", nvertexs, "nedges:", nedges);
+   info::print_tab(debuginfo, "nlayers:", nlayers, "nnets:", ncommodities, "nvertexs:", nvertexs, "nedges:", nedges);
+#if 1
+   printf("Net info:");
+   for(int ll = 0; ll < l; ll++)
+      printf("%d %d %d\n", (*layer)[ll].num, (*layer)[ll].length, (*layer)[ll].width);
+   for(int mm = 0; mm < m; mm++)
+   {
+      for(int s = 0; s < (int)(*coms)[mm].S.size(); s++)
+         printf("%d %d %d %d\n", (*coms)[mm].commodity, (*coms)[mm].S[s].x, (*coms)[mm].S[s].y, (*coms)[mm].S[s].z);
+      for(int t = 0; t < (int)(*coms)[mm].T.size(); t++)
+         printf("%d %d %d %d\n", (*coms)[mm].commodity, (*coms)[mm].T[t].x, (*coms)[mm].T[t].y, (*coms)[mm].T[t].z);
+   }
+#endif
    fclose(infile);
    return 0;
 }
@@ -135,7 +147,6 @@ static int ReadEdge(
    vector<Vertex> vertexSet;
    char         line[BUFSIZE];
    char         ch; 
-   int          status     = 0;
    int          nrows      = 0;
    int          i          = 0;
    int          n;
@@ -165,14 +176,22 @@ static int ReadEdge(
 
    UniqueElement(vertexSet);  //remove duplicate elements
    sort(vertexSet.begin(), vertexSet.end());
-   for( i = 0; i < vertexSet.size(); i++ )
+   for( i = 0; i < (int)vertexSet.size(); i++ )
    {
       (*vertex)[i].index = i;
-      (*vertex)[i] = vertexSet[i];
+      (*vertex)[i].x = vertexSet[i].x;
+      (*vertex)[i].y = vertexSet[i].y;
+      (*vertex)[i].z = vertexSet[i].z;
+      
    }
 
-   huq::println_tab("edges:", n);
-   huq::println_tab("vertexs:", vertexSet.size(), i);
+   info::print_tab("edges:", n, "vertexs:", vertexSet.size(), i);
+#if 1
+   for( int v = 0; v < (int)vertexSet.size(); v++ )
+      printf("%d %d %d %d\n", (*vertex)[v].index, (*vertex)[v].x, (*vertex)[v].y, (*vertex)[v].z);
+   for( int e = 0; e < n; e++ )
+      printf("%d %d %d %d %d %d %d %.2f\n", (*edge)[e].commodity, (*edge)[e].tail.x, (*edge)[e].tail.y, (*edge)[e].tail.z, (*edge)[e].head.x, (*edge)[e].head.y, (*edge)[e].head.z, (*edge)[e].cost);
+#endif
    fclose(infile);
    return 0;
 }
@@ -184,6 +203,7 @@ bool MCFDRReadData(
    string              edgefile
 )
 {
+   info::print(debuginfo, "enter MCFDRReadData");
    Layer* layer;
    Vertex* vertex;
    Edge* edge;
@@ -193,9 +213,14 @@ bool MCFDRReadData(
 
    status = ReadNet(demandfile, &layer, &coms, &count);
    status = ReadEdge(edgefile, &vertex, &edge);
-
+   info::print_tab(status, count->ncommodities, count->nvertexs, count->nedges, count->nlayers);
    mcfdr = new MCFDR(vertex, edge, coms, layer, count);
    
-   // delete
+   delete[] layer;
+   delete[] vertex;
+   delete[] edge;
+   delete[] coms;
+   delete[] count;
+
    return status;
 }
